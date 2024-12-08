@@ -6,29 +6,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
-    <!-- ScrollView for scrolling content -->
     <ScrollView
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <!-- LinearLayout for the form content -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="8dp">
 
-            <!-- Username input field -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nameTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                >
+                android:layout_marginEnd="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_username"
@@ -41,15 +37,13 @@
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Email input field -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                >
+                android:layout_marginEnd="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_email"
@@ -61,7 +55,6 @@
                     android:textColorHint="@color/primaryColor" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Phone number input field -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/phoneTextInputLayout"
                 android:layout_width="match_parent"

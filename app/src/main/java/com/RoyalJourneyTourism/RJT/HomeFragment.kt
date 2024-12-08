@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import com.RoyalJourneyTourism.RJT.databinding.FragmentHomeBinding
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,10 +15,13 @@ import androidx.lifecycle.lifecycleScope
 import com.RoyalJourneyTourism.RJT.data.Booking
 import com.RoyalJourneyTourism.RJT.data.LocalDatabase
 import com.RoyalJourneyTourism.RJT.repository.FirebaseRepository
+import com.RoyalJourneyTourism.RJT.utils.PdfGenerator
+import com.RoyalJourneyTourism.RJT.utils.PdfGenerator.generateInvoicePdf
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Calendar
 
 class HomeFragment : Fragment() {
@@ -124,7 +128,14 @@ class HomeFragment : Fragment() {
         )
 
         lifecycleScope.launch(Dispatchers.IO) {
+            bookingDao.upsertRecord(booking)
+            Log.d("PdfDebugger", "upserted record}")
             firebaseRepository.syncNewRecord(booking)
+            Log.d("PdfDebugger", "record synced")
+            Log.d("PdfDebugger", "called pdf generation")
+            withContext(Dispatchers.Main) {
+                generateInvoicePdf(booking, requireContext())
+            }
         }
     }
 
