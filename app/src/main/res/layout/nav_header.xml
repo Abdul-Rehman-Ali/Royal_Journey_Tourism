@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="top"
+    android:id="@+id/nav_header_layout"
+    android:padding="@dimen/nav_header_padding"
+    android:layout_width="match_parent"
+    android:theme="@style/Theme.AppCompat"
+    android:background="@color/primary"
+    android:layout_height="@dimen/nav_header_height">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unlock your potential with SmartLoop! Explore courses, enhance your skills, and start learning today. Download the app now and take the first step towards success!"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        />
+
+
+</LinearLayout>
