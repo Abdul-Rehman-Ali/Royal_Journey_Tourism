@@ -22,10 +22,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.RoyalJourneyTourism.RJT" />
+                  <option name="mobileSdkAppId" value="1:741910613982:android:94df53dddbd67a94df574f" />
+                  <option name="projectId" value="royal-journey-tourism" />
+                  <option name="projectNumber" value="741910613982" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
