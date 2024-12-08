@@ -10,18 +10,30 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.lifecycleScope
+import com.RoyalJourneyTourism.RJT.data.LocalDatabase
 import com.RoyalJourneyTourism.RJT.databinding.ActivityMainBinding
+import com.RoyalJourneyTourism.RJT.repository.FirebaseRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var fragmentManager: FragmentManager
+    private lateinit var firebaseRepo: FirebaseRepository
 
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.primary)
+//        window.statusBarColor = ContextCompat.getColor(this, R.color.primaryColor)
+
+        // firebase sync
+        val bookingDao = LocalDatabase.getDatabase(this).bookingDao()
+        lifecycleScope.launch(Dispatchers.IO) {
+            firebaseRepo = FirebaseRepository(bookingDao)
+            firebaseRepo.syncMissedRecords()
+        }
 
         // Initialize View Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -47,12 +59,11 @@ class MainActivity : AppCompatActivity() {
             binding.drawerLayout.closeDrawers()
             true
         }
-        fragmentManager = supportFragmentManager
         openFragment(HomeFragment())
     }
 
     private fun openFragment(fragment: Fragment){
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.content_frame, fragment)
         fragmentTransaction.commit()
     }

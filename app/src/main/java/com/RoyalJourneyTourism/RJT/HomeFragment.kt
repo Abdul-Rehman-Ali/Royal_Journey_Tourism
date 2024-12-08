@@ -10,6 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TimePicker
+import androidx.lifecycle.lifecycleScope
+import com.RoyalJourneyTourism.RJT.data.Booking
+import com.RoyalJourneyTourism.RJT.data.LocalDatabase
+import com.RoyalJourneyTourism.RJT.repository.FirebaseRepository
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.Calendar
 
 class HomeFragment : Fragment() {
@@ -23,13 +31,15 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment using view binding
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        binding.btnGenerateInvoice.setOnClickListener { collectData() }
 
         // Initialize the EditTexts
         etDate = binding.etDate  // Assuming the EditText in your layout has the ID 'etDate'
@@ -59,28 +69,68 @@ class HomeFragment : Fragment() {
 
         // Set up the Time Picker
         etTime.setOnClickListener {
-            // Get the current time
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
+            val timePicker = MaterialTimePicker.Builder()
+                .setHour(12)
+                .setTitleText("Select Time")
+                .build()
 
-            // Launch the TimePickerDialog
-            val timePickerDialog = TimePickerDialog(
-                requireContext(),
-                { _: TimePicker, selectedHour: Int, selectedMinute: Int ->
-                    // Format the selected time and set it in the EditText
-                    val formattedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
-                    etTime.setText(formattedTime)
-                },
-                hour, minute, true // true for 24-hour format
-            )
+            timePicker.show(parentFragmentManager, "MaterialTimePicker")
 
-            timePickerDialog.show()
+            timePicker.addOnPositiveButtonClickListener {
+                val selectedHour = timePicker.hour
+                val selectedMinute = timePicker.minute
+                val formattedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
+                etTime.setText(formattedTime)
+            }
+        }
+
+
+    }
+    private fun collectData() {
+        val bookingDao = LocalDatabase.getDatabase(requireContext()).bookingDao()
+        val firebaseRepository = FirebaseRepository(bookingDao)
+
+        val name = binding.etUsername.text.toString()
+        val email = binding.etEmail.text.toString()
+        val phone = binding.etPhone.text.toString()
+        val packageName = binding.etPackageName.text.toString()
+        val additionalAddon = binding.etAddonDescription.text.toString()
+        val noOfAdults = binding.etAdults.text.toString().toIntOrNull()
+        val pkgPricePerAdult = binding.etPackagePrice.text.toString().toDoubleOrNull()
+        val noOfKids = binding.etKids.text.toString().toIntOrNull()
+        val pkgPricePerKid = binding.etPackagePriceKids.text.toString().toDoubleOrNull()
+        val pickupDate = binding.etDate.text.toString()
+        val pickupTime = binding.etTime.text.toString()
+        val paymentStatus = when (binding.radioGroupPaymentStatus.checkedRadioButtonId) {
+            R.id.radio_paid -> true
+            R.id.radio_pay_on_arrival -> false
+            else -> null
+        }
+
+        val booking = Booking(
+            id = 0,
+            name = name,
+            email = email.ifBlank { null },
+            phone = phone.ifBlank { null },
+            packageName = packageName.ifBlank { null },
+            additionalAddon = additionalAddon.ifBlank { null },
+            noOfAdults = noOfAdults,
+            pkgPricePerAdult = pkgPricePerAdult,
+            noOfKids = noOfKids,
+            pkgPricePerKid = pkgPricePerKid,
+            pickupDate = pickupDate.ifBlank { null },
+            pickupTime = pickupTime.ifBlank { null },
+            paymentStatus = paymentStatus
+        )
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            firebaseRepository.syncNewRecord(booking)
         }
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null // Nullify the binding reference to avoid memory leaks
+        _binding = null
     }
 }
