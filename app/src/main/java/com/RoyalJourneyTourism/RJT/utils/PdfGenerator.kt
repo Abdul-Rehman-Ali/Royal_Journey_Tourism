@@ -17,6 +17,9 @@ import android.widget.Toast
 import androidx.core.content.FileProvider
 import com.RoyalJourneyTourism.RJT.R
 import com.RoyalJourneyTourism.RJT.data.Booking
+import com.gkemon.XMLtoPDF.PdfGeneratorListener
+import com.gkemon.XMLtoPDF.model.FailureResponse
+import com.gkemon.XMLtoPDF.model.SuccessResponse
 import java.io.File
 import java.io.FileOutputStream
 
@@ -31,6 +34,14 @@ object PdfGenerator {
             view.findViewById<TextView>(R.id.tvPickupTime).text = "Customer Name: ${booking.pickupTime}"
             view.findViewById<TextView>(R.id.tvBookingDate).text = "Customer Name: ${booking.pickupDate}"
             view.findViewById<TextView>(R.id.tvGrandTotal).text = "Total Price: ${calculateTotalPrice(booking)}"
+            view.findViewById<TextView>(R.id.tvPackageName).text = "Total Price: ${calculateTotalPrice(booking)}"
+            view.findViewById<TextView>(R.id.tvPickupLocation).text = "Total Price: ${calculateTotalPrice(booking)}"
+            view.findViewById<TextView>(R.id.tvAdultCount).text = "Total Price: ${calculateTotalPrice(booking)}"
+            view.findViewById<TextView>(R.id.tvKidsCount).text = "Total Price: ${calculateTotalPrice(booking)}"
+            view.findViewById<TextView>(R.id.tvPricePerKid).text = "Total Price: ${calculateTotalPrice(booking)}"
+            view.findViewById<TextView>(R.id.tvPricePerAdult).text = "Total Price: ${calculateTotalPrice(booking)}"
+            view.findViewById<TextView>(R.id.tvTotalOnAdults).text = "Total Price: ${calculateTotalPrice(booking)}"
+            view.findViewById<TextView>(R.id.tvTotalOnKids).text = "Total Price: ${calculateTotalPrice(booking)}"
 
             val width = 595
             val height = 842

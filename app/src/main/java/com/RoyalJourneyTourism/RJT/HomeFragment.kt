@@ -17,6 +17,7 @@ import com.RoyalJourneyTourism.RJT.data.LocalDatabase
 import com.RoyalJourneyTourism.RJT.repository.FirebaseRepository
 import com.RoyalJourneyTourism.RJT.utils.PdfGenerator
 import com.RoyalJourneyTourism.RJT.utils.PdfGenerator.generateInvoicePdf
+import com.RoyalJourneyTourism.RJT.utils.PdfUtils
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import kotlinx.coroutines.Dispatchers
@@ -105,6 +106,7 @@ class HomeFragment : Fragment() {
         val pkgPricePerKid = binding.etPackagePriceKids.text.toString().toDoubleOrNull()
         val pickupDate = binding.etDate.text.toString()
         val pickupTime = binding.etTime.text.toString()
+        val pickupLocation = binding.etPickupLocation.text.toString()
         val paymentStatus = when (binding.radioGroupPaymentStatus.checkedRadioButtonId) {
             R.id.radio_paid -> true
             R.id.radio_pay_on_arrival -> false
@@ -124,6 +126,7 @@ class HomeFragment : Fragment() {
             pkgPricePerKid = pkgPricePerKid,
             pickupDate = pickupDate.ifBlank { null },
             pickupTime = pickupTime.ifBlank { null },
+            pickupLocation = pickupLocation.ifBlank { null },
             paymentStatus = paymentStatus
         )
 
@@ -134,7 +137,8 @@ class HomeFragment : Fragment() {
             Log.d("PdfDebugger", "record synced")
             Log.d("PdfDebugger", "called pdf generation")
             withContext(Dispatchers.Main) {
-                generateInvoicePdf(booking, requireContext())
+//                generateInvoicePdf(booking, requireContext())
+                PdfUtils.generateInvoicePdf(booking, requireContext())
             }
         }
     }

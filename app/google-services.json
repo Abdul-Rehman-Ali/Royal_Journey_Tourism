@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "741910613982",
+    "project_id": "royal-journey-tourism",
+    "storage_bucket": "royal-journey-tourism.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741910613982:android:94df53dddbd67a94df574f",
+        "android_client_info": {
+          "package_name": "com.RoyalJourneyTourism.RJT"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGanuTW_Y4Z2iud8d3_f21QSZwhgukKHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

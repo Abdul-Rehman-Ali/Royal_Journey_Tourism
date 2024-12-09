@@ -18,6 +18,7 @@ data class Booking(
     val pkgPricePerKid: Double? = null,
     val pickupDate: String? = null,
     val pickupTime: String? = null,
+    val pickupLocation: String? = null,
     val paymentStatus: Boolean? = null,
     val firebaseSync: Boolean = false
 )

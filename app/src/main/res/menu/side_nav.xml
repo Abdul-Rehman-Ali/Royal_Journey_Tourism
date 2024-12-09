@@ -7,6 +7,12 @@
         android:checkableBehavior="single"
         >
         <item
+            android:id="@+id/invoiceHistory"
+            android:icon="@drawable/ic_paper"
+            android:title="Invoice History"
+            />
+
+        <item
             android:id="@+id/about_us"
             android:icon="@drawable/logo"
             android:title="About Us"

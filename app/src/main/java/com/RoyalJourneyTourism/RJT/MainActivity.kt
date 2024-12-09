@@ -55,6 +55,10 @@ class MainActivity : AppCompatActivity() {
                     val i = Intent(this, splashScreen::class.java)
                     startActivity(i)
                 }
+
+                R.id.invoiceHistory -> {
+                    openFragment(InvoiceHistoryFragment())
+                }
             }
             binding.drawerLayout.closeDrawers()
             true
