@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.ComponentActivity;
@@ -20,7 +19,7 @@ public class PdfUtils {
     public static void generateInvoicePdf(Booking booking, Context context) {
         try {
             LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.invoice_layout, null);
+            View view = inflater.inflate(R.layout.invoice_layout_1, null);
 
 //            View footerView = inflater.inflate(R.layout.invoice_layout_footer_1, null);
 //

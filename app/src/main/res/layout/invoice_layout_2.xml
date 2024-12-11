@@ -12,8 +12,6 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -443,16 +441,14 @@
 
     <LinearLayout
         android:id="@+id/linearLayout000"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/primaryColor"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:paddingVertical="8px"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
 
         <TextView
@@ -460,9 +456,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:layout_weight=".33"
+            android:drawableStart="@drawable/baseline_call_24"
             android:gravity="center"
-            android:text="+924389428395"
-            android:drawableStart="@drawable/ic_phone_dial"
+            android:text="+971552255072"
             android:textColor="@color/white"
             android:textSize="10sp" />
 
@@ -472,7 +468,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:layout_weight=".33"
-            android:text="RoyalTours.com"
+            android:drawableStart="@drawable/ic_web"
+            android:text="royaljourneytourism.com"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="10sp" />
@@ -482,14 +479,43 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:layout_weight=".33"
-            android:text="info@royalTour.com"
             android:drawableStart="@drawable/ic_email"
+            android:text="info@royaljourneytourism.com"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="10sp" />
-
 
     </LinearLayout>
 
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/desertdubaii" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        app:cardCornerRadius="0dp"
+        android:backgroundTint="@color/primaryColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Invoice"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

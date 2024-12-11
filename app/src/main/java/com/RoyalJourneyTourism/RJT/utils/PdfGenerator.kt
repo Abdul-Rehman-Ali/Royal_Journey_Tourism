@@ -7,8 +7,6 @@ import android.graphics.Canvas
 import android.graphics.pdf.PdfDocument
 import android.net.Uri
 import android.os.Build
-import android.os.Environment
-import android.provider.DocumentsContract
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,9 +15,6 @@ import android.widget.Toast
 import androidx.core.content.FileProvider
 import com.RoyalJourneyTourism.RJT.R
 import com.RoyalJourneyTourism.RJT.data.Booking
-import com.gkemon.XMLtoPDF.PdfGeneratorListener
-import com.gkemon.XMLtoPDF.model.FailureResponse
-import com.gkemon.XMLtoPDF.model.SuccessResponse
 import java.io.File
 import java.io.FileOutputStream
 
@@ -28,7 +23,7 @@ object PdfGenerator {
     fun generateInvoicePdf(booking: Booking, context: Context) {
         try {
             val inflater = LayoutInflater.from(context)
-            val view = inflater.inflate(R.layout.invoice_layout, null)
+            val view = inflater.inflate(R.layout.invoice_layout_1, null)
 
             view.findViewById<TextView>(R.id.tvGuestName).text = "Customer Name: ${booking.name}"
             view.findViewById<TextView>(R.id.tvPickupTime).text = "Customer Name: ${booking.pickupTime}"
