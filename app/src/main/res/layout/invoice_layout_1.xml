@@ -460,9 +460,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:layout_weight=".33"
-            android:drawableStart="@drawable/ic_phone_dial"
+            android:drawableStart="@drawable/baseline_call_24"
             android:gravity="center"
-            android:text="+924389428395"
+            android:text="+971552255072"
             android:textColor="@color/white"
             android:textSize="10sp" />
 
@@ -472,7 +472,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:layout_weight=".33"
-            android:text="RoyalTours.com"
+            android:text="royaljourneytourism.com"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="10sp" />
@@ -483,7 +483,7 @@
             android:layout_marginHorizontal="4dp"
             android:layout_weight=".33"
             android:drawableStart="@drawable/ic_email"
-            android:text="info@royalTour.com"
+            android:text="info@royaljourneytourism.com"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="10sp" />
