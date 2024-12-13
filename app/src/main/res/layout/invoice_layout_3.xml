@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:padding="16px">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="80dp"
@@ -509,8 +510,8 @@
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="200dp"
-        android:layout_height="120dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -518,7 +519,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/desertdubaii" />
+            android:src="@drawable/tour" />
 
     </com.google.android.material.card.MaterialCardView>
 
