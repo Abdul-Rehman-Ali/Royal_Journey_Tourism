@@ -6,9 +6,7 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.lifecycleScope
 import com.RoyalJourneyTourism.RJT.data.LocalDatabase
@@ -33,22 +31,20 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.IO) {
             firebaseRepo = FirebaseRepository(bookingDao)
             firebaseRepo.syncMissedRecords()
+            bookingDao.deleteAllSyncedRecords()
         }
 
-        // Initialize View Binding
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set up Toolbar
         setSupportActionBar(binding.toolbar)
 
-        // Configure Drawer Toggle
         toggle = ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar,
             R.string.nav_open, R.string.nav_close)
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        // Handle Navigation Item Clicks
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.about_us -> {

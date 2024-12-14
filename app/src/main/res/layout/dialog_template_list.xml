@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="16dp">
+
+
+
+    <LinearLayout
+        android:id="@+id/item1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:gravity="center"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="250dp"
+            android:layout_height="300dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/thumb_layout_1" />
+
+        <TextView
+            android:id="@+id/caption1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Template 1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:gravity="center"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/image2"
+            android:layout_width="250dp"
+            android:layout_height="300dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/thumb_layout_2" />
+
+        <TextView
+            android:id="@+id/caption2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Template 2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:gravity="center"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/image3"
+            android:layout_width="250dp"
+            android:layout_height="300dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/thumb_layout_3" />
+
+        <TextView
+            android:id="@+id/caption3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Template 3" />
+    </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,7 +1,6 @@
 package com.RoyalJourneyTourism.RJT
 
 import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import com.RoyalJourneyTourism.RJT.databinding.FragmentHomeBinding
 import android.os.Bundle
 import android.util.Log
@@ -10,14 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.TimePicker
 import androidx.lifecycle.lifecycleScope
 import com.RoyalJourneyTourism.RJT.data.Booking
 import com.RoyalJourneyTourism.RJT.data.LocalDatabase
 import com.RoyalJourneyTourism.RJT.repository.FirebaseRepository
-import com.RoyalJourneyTourism.RJT.utils.PdfGenerator
-import com.RoyalJourneyTourism.RJT.utils.PdfGenerator.generateInvoicePdf
+import com.RoyalJourneyTourism.RJT.utils.CustomDialog.showMessageDialog
 import com.RoyalJourneyTourism.RJT.utils.PdfUtils
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import kotlinx.coroutines.Dispatchers
@@ -44,9 +42,16 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.btnGenerateInvoice.setOnClickListener { collectData() }
+        binding.btnGenerateInvoice.setOnClickListener {
+            showTemplateDialog { selectedTemplate ->
+                val templateLayout = getTemplateLayout(selectedTemplate)
+                templateLayout?.let { layout ->
+                    collectData(layout)
+                }
+            }
+        }
 
-        // Initialize the EditTexts
+
         etDate = binding.etDate  // Assuming the EditText in your layout has the ID 'etDate'
         etTime = binding.etTime  // Assuming you have an EditText for time in your layout
 
@@ -62,9 +67,24 @@ class HomeFragment : Fragment() {
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
                 { _, selectedYear, selectedMonth, selectedDay ->
-                    // Set the selected date in the EditText
                     val date = "$selectedDay/${selectedMonth + 1}/$selectedYear"
                     etDate.setText(date)
+
+                    val timePickerDialog = MaterialTimePicker.Builder()
+                        .setTimeFormat(TimeFormat.CLOCK_24H)
+                        .setHour(calendar.get(Calendar.HOUR_OF_DAY))
+                        .setMinute(calendar.get(Calendar.MINUTE))
+                        .setTitleText("Select Time")
+                        .build()
+
+                    timePickerDialog.addOnPositiveButtonClickListener {
+                        val selectedHour = timePickerDialog.hour
+                        val selectedMinute = timePickerDialog.minute
+                        val time = String.format("%02d:%02d", selectedHour, selectedMinute)
+                        etDate.append(" $time")
+                    }
+
+                    timePickerDialog.show(childFragmentManager, "TimePicker")
                 },
                 year, month, day
             )
@@ -84,14 +104,35 @@ class HomeFragment : Fragment() {
             timePicker.addOnPositiveButtonClickListener {
                 val selectedHour = timePicker.hour
                 val selectedMinute = timePicker.minute
-                val formattedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
+                val amPm = if (selectedHour < 12) "AM" else "PM"
+                val hourIn12HourFormat = if (selectedHour > 12) {
+                    selectedHour - 12
+                } else if (selectedHour == 0) {
+                    12
+                } else {
+                    selectedHour
+                }
+
+                val formattedTime = String.format("%02d:%02d %s", hourIn12HourFormat, selectedMinute, amPm)
                 etTime.setText(formattedTime)
             }
         }
 
 
     }
-    private fun collectData() {
+
+    private fun getTemplateLayout(selectedTemplate: String): Int? {
+        val templateLayout = when(selectedTemplate) {
+            "Template 1" -> R.layout.invoice_layout_1
+            "Template 2" -> R.layout.invoice_layout_2
+            "Template 3" -> R.layout.invoice_layout_3
+            else -> null
+        }
+        return templateLayout
+    }
+
+
+    private fun collectData(selectedTemplate: Int) {
         val bookingDao = LocalDatabase.getDatabase(requireContext()).bookingDao()
         val firebaseRepository = FirebaseRepository(bookingDao)
 
@@ -110,7 +151,7 @@ class HomeFragment : Fragment() {
         val paymentStatus = when (binding.radioGroupPaymentStatus.checkedRadioButtonId) {
             R.id.radio_paid -> true
             R.id.radio_pay_on_arrival -> false
-            else -> null
+            else -> false
         }
 
         val booking = Booking(
@@ -130,19 +171,47 @@ class HomeFragment : Fragment() {
             paymentStatus = paymentStatus
         )
 
-        lifecycleScope.launch(Dispatchers.IO) {
+        showMessageDialog("Generating Pdf, please wait...", "Action", requireContext())
+        lifecycleScope.launch(Dispatchers.IO){
             bookingDao.upsertRecord(booking)
             Log.d("PdfDebugger", "upserted record}")
             firebaseRepository.syncNewRecord(booking)
             Log.d("PdfDebugger", "record synced")
             Log.d("PdfDebugger", "called pdf generation")
             withContext(Dispatchers.Main) {
-//                generateInvoicePdf(booking, requireContext())
-                PdfUtils.generateInvoicePdf(booking, requireContext())
+                PdfUtils.generateInvoicePdf(selectedTemplate ,booking, requireContext())
             }
         }
     }
 
+
+    fun showTemplateDialog(onTemplateSelected: (String) -> Unit) {
+
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_template_list, null)
+
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Select a Template")
+            .setView(dialogView)
+            .setCancelable(true)
+            .create()
+
+        dialogView.findViewById<View>(R.id.item1).setOnClickListener {
+            onTemplateSelected("Template 1")
+            dialog.dismiss()
+        }
+
+        dialogView.findViewById<View>(R.id.item2).setOnClickListener {
+            onTemplateSelected("Template 2")
+            dialog.dismiss()
+        }
+
+        dialogView.findViewById<View>(R.id.item3).setOnClickListener {
+            onTemplateSelected("Template 3")
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

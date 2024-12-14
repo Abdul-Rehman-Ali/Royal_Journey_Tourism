@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="1000px"
-    android:layout_height="1414.4px"
+    android:layout_width="match_parent"
+    android:layout_height="3508px"
     android:orientation="vertical"
     android:padding="16px">
 
@@ -20,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Booking"
+        android:layout_gravity="center_horizontal"
         android:textSize="13sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +34,7 @@
         android:layout_height="wrap_content"
         android:text="Reservation"
         android:textColor="@color/primaryColor"
+        android:layout_gravity="center_horizontal"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -436,113 +438,130 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
-    <TextView
-        android:id="@+id/tvGrandTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Grand Total"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:text="Grand Total"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tvGrandTotal"
-        app:layout_constraintTop_toBottomOf="@+id/materialDivider11" />
-
 
     <LinearLayout
-        android:id="@+id/linearLayout000"
-        android:layout_width="wrap_content"
+        android:layout_width="950px"
         android:layout_height="wrap_content"
-        android:background="@color/primaryColor"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:paddingVertical="8px"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
+        android:gravity="end"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="4dp"
-            android:layout_weight=".33"
-            android:drawableStart="@drawable/baseline_call_24"
-            android:gravity="center"
-            android:text="+971552255072"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="4dp"
-            android:layout_weight=".33"
-            android:drawableStart="@drawable/ic_web"
-            android:text="royaljourneytourism.com"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
+            android:text="Grand Total"
+            android:textSize="20px"
+            android:layout_marginEnd="8dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView9" />
 
         <TextView
+            android:id="@+id/tvGrandTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="4dp"
-            android:layout_weight=".33"
-            android:drawableStart="@drawable/ic_email"
-            android:text="info@royaljourneytourism.com"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
+            android:text="Grand Total"
+            android:textSize="20px"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvGrandTotal"
+            app:layout_constraintTop_toBottomOf="@+id/materialDivider11" />
 
     </LinearLayout>
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="200dp"
-        android:layout_height="120dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="32dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/confirmtour" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/desertdubaii" />
 
-    </com.google.android.material.card.MaterialCardView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:orientation="horizontal">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout000"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        >
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="80px"
+            android:layout_height="200px"
+            android:layout_weight="1"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/confirmtour" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/desertdubaii" />
 
-    </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:id="@+id/linearLayout000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/primaryColor"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_gravity="end|bottom"
+            android:paddingVertical="8px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4dp"
+                android:layout_weight=".33"
+                android:drawableStart="@drawable/baseline_call_24"
+                android:gravity="center"
+                android:text="+971552255072"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4dp"
+                android:layout_weight=".33"
+                android:drawableStart="@drawable/ic_web"
+                android:text="royaljourneytourism.com"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4dp"
+                android:layout_weight=".33"
+                android:drawableStart="@drawable/ic_email"
+                android:text="info@royaljourneytourism.com"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="120dp"
         android:layout_height="40dp"
         app:cardCornerRadius="0dp"
+        android:visibility="gone"
         android:backgroundTint="@color/primaryColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -556,4 +575,4 @@
             android:textStyle="bold" />
     </com.google.android.material.card.MaterialCardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

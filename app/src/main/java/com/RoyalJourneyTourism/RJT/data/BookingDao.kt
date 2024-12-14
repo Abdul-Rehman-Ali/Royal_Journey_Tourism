@@ -13,8 +13,8 @@ interface BookingDao {
     @Delete
     suspend fun deleteRecord(invoiceRecord: Booking)
 
-    @Query("delete from Booking")
-    suspend fun deleteAll()
+    @Query("delete from Booking where firebaseSync = 1")
+    suspend fun deleteAllSyncedRecords()
 
     @Query("select * from Booking where firebaseSync = 0")
     suspend fun getMissedRecords() : List<Booking>

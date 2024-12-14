@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="1000px"
-    android:layout_height="1414.4px"
+    android:layout_width="match_parent"
+    android:layout_height="3508px"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     android:padding="16px">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="180px"
+        android:layout_height="180px"
+        android:layout_marginTop="8dp"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -19,10 +21,10 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="100px"
         android:layout_height="wrap_content"
         android:text="Booking"
-        android:textSize="13sp"
+        android:textSize="26px"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -31,10 +33,13 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="170px"
         android:layout_height="wrap_content"
         android:text="Reservation"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
         android:textColor="@color/primaryColor"
+        android:textSize="30px"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -43,8 +48,8 @@
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider"
-        android:layout_width="match_parent"
-        android:layout_height="10px"
+        android:layout_width="950px"
+        android:layout_height="5px"
         android:layout_marginTop="12dp"
         app:dividerColor="@color/primaryColor"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +60,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+        android:layout_width="950px"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:orientation="horizontal"
@@ -70,56 +75,56 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="150px"
                 android:layout_height="wrap_content"
                 android:text="Booking Date:"
-                android:textSize="10sp"
+                android:textSize="20px"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="150px"
                 android:layout_height="wrap_content"
                 android:text="Guest Name:"
-                android:textSize="10sp"
+                android:textSize="20px"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="150px"
                 android:layout_height="wrap_content"
                 android:text="Package Name:"
-                android:textSize="10sp"
+                android:textSize="20px"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="150px"
                 android:layout_height="wrap_content"
                 android:text="Pickup Time:"
-                android:textSize="10sp"
+                android:textSize="20px"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="150px"
                 android:layout_height="wrap_content"
                 android:text="Pickup Location:"
-                android:textSize="10sp"
+                android:textSize="20px"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="150px"
                 android:layout_height="wrap_content"
                 android:text="Payment Status:"
-                android:textSize="10sp"
+                android:textSize="20px"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
@@ -137,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Booking Date"
-                android:textSize="10sp"
+                android:textSize="20px"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -148,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Guest Name"
-                android:textSize="10sp"
+                android:textSize="20px"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -159,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Package Name"
-                android:textSize="10sp"
+                android:textSize="20px"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -170,7 +175,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Booking Date"
-                android:textSize="10sp"
+                android:textSize="20px"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -181,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Pickup Loc"
-                android:textSize="10sp"
+                android:textSize="20px"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -192,7 +197,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Paid"
-                android:textSize="10sp"
+                android:textSize="20px"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -299,11 +304,13 @@
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="match_parent"
+        android:layout_width="950px"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:layout_editor_absoluteX="16dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <!-- Table Row 1: Header Row -->
         <TableRow
@@ -354,37 +361,37 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="8px"
                 android:layout_weight="1"
                 android:text="Adult"
-                android:textSize="10sp" />
+                android:textSize="20px" />
 
             <TextView
                 android:id="@+id/tvAdultCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="8px"
                 android:text="3"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="20px" />
 
             <TextView
                 android:id="@+id/tvPricePerAdult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="8px"
                 android:text="43"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="20px" />
 
             <TextView
                 android:id="@+id/tvTotalOnAdults"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="8px"
                 android:text="100"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="20px" />
         </TableRow>
 
         <TableRow android:paddingVertical="4dp">
@@ -392,37 +399,37 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="8px"
                 android:layout_weight="1"
                 android:text="Kid"
-                android:textSize="10sp" />
+                android:textSize="20px" />
 
             <TextView
                 android:id="@+id/tvKidsCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="8px"
                 android:text="3"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="20px" />
 
             <TextView
                 android:id="@+id/tvPricePerKid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="8px"
                 android:text="43"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="20px" />
 
             <TextView
                 android:id="@+id/tvTotalOnKids"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="8px"
                 android:text="100"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="20px" />
         </TableRow>
 
     </TableLayout>
@@ -430,7 +437,7 @@
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider11"
-        android:layout_width="match_parent"
+        android:layout_width="950px"
         android:layout_height="4px"
         app:dividerColor="@color/primaryColor"
         app:layout_constraintEnd_toEndOf="parent"
@@ -438,34 +445,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
-    <TextView
-        android:id="@+id/tvGrandTotal"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="950px"
         android:layout_height="wrap_content"
-        android:text="Grand Total"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
+        android:gravity="end"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:text="Grand Total"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tvGrandTotal"
-        app:layout_constraintTop_toBottomOf="@+id/materialDivider11" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grand Total"
+            android:textSize="20px"
+            android:layout_marginEnd="8dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView9" />
 
+        <TextView
+            android:id="@+id/tvGrandTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grand Total"
+            android:textSize="20px"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvGrandTotal"
+            app:layout_constraintTop_toBottomOf="@+id/materialDivider11" />
+
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="44px"
+        android:scaleType="fitXY"
+        android:layout_marginVertical="64dp"
+        android:layout_gravity="end"
+        android:src="@drawable/confirmtour"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout000"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
     <LinearLayout
         android:id="@+id/linearLayout000"
-        android:layout_width="match_parent"
+        android:layout_width="950px"
         android:layout_height="wrap_content"
         android:background="@color/primaryColor"
         android:gravity="center_vertical"
@@ -486,7 +513,7 @@
             android:gravity="center"
             android:text="+971552255072"
             android:textColor="@color/white"
-            android:textSize="10sp" />
+            android:textSize="20px" />
 
 
         <TextView
@@ -497,7 +524,7 @@
             android:text="royaljourneytourism.com"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="10sp" />
+            android:textSize="20px" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -508,28 +535,13 @@
             android:text="info@royaljourneytourism.com"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="10sp" />
-
+            android:textSize="20px" />
 
 
     </LinearLayout>
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout000"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        >
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/confirmtour" />
-
-    </com.google.android.material.card.MaterialCardView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
