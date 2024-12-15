@@ -218,7 +218,7 @@
                     android:id="@+id/et_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Select Pickup Date"
+                    android:hint="Select Booking Date/Time"
                     android:textColor="@color/black"
                     android:focusable="false"
                     android:clickable="true"/>

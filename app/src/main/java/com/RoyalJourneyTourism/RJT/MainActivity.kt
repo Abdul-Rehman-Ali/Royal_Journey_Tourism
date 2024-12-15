@@ -48,13 +48,12 @@ class MainActivity : AppCompatActivity() {
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.about_us -> {
-                    val i = Intent(this, splashScreen::class.java)
-                    startActivity(i)
+                    openFragment(AboutUsFragment())
                 }
 
-                R.id.invoiceHistory -> {
-                    openFragment(InvoiceHistoryFragment())
-                }
+//                R.id.invoiceHistory -> {
+//                    openFragment(InvoiceHistoryFragment())
+//                }
             }
             binding.drawerLayout.closeDrawers()
             true
