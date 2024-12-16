@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AboutUsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</FrameLayout>
+        <!-- Heading -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About Us"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="@color/primaryColor"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Content -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Royal Journey Tourism\n\nThe Gateway to Your Dream Dubai Experience\n\nAt Royal Journey Tourism, we take pride in being a leading provider of unforgettable tours and activities in Dubai. Our mission is to offer each guest a seamless and deeply personal exploration of Dubai, from its towering skyscrapers and bustling markets to its tranquil deserts and stunning coastlines. Our tours are designed to cater to the desires of every traveler, ensuring an experience that’s as unique as it is memorable.\n\nAt Royal Journey Tourism, we offer a variety of tours to showcase the UAE’s best. Our desert safaris feature dune bashing, camel rides, and BBQ dinners at a traditional Bedouin camp. Our city tours highlight famous landmarks in Dubai and Abu Dhabi, while Dhow cruises offer a relaxing evening with scenic views and a buffet dinner. We also provide private luxury tours for a personalized experience and cultural tours that explore the UAE’s rich history and heritage. Each tour is designed for comfort, adventure, and unforgettable memories."
+            android:textSize="16sp"
+            android:lineSpacingExtra="6dp" />
+    </LinearLayout>
+</ScrollView>

@@ -509,11 +509,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:layout_weight=".33"
-            android:drawableStart="@drawable/baseline_call_24"
             android:gravity="center"
             android:text="+971552255072"
             android:textColor="@color/white"
-            android:textSize="20px" />
+            android:textSize="20px"
+            app:drawableStartCompat="@drawable/baseline_call_24" />
 
 
         <TextView
@@ -531,11 +531,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:layout_weight=".33"
-            android:drawableStart="@drawable/ic_email"
             android:text="info@royaljourneytourism.com"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20px" />
+            android:textSize="20px"
+            app:drawableStartCompat="@drawable/ic_email" />
 
 
     </LinearLayout>

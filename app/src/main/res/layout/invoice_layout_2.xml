@@ -469,14 +469,14 @@
 
     </LinearLayout>
 
+
     <ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:scaleType="fitXY"
-        android:layout_marginTop="32dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:scaleType="fitXY"
         android:src="@drawable/confirmtour" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -485,8 +485,8 @@
         android:orientation="horizontal">
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="80px"
-            android:layout_height="200px"
+            android:layout_width="70px"
+            android:layout_height="250px"
             android:layout_weight="1"
             android:layout_marginEnd="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -518,11 +518,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
                 android:layout_weight=".33"
-                android:drawableStart="@drawable/baseline_call_24"
                 android:gravity="center"
                 android:text="+971552255072"
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                app:drawableStartCompat="@drawable/baseline_call_24" />
 
 
             <TextView
@@ -530,22 +530,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
                 android:layout_weight=".33"
-                android:drawableStart="@drawable/ic_web"
                 android:text="royaljourneytourism.com"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                app:drawableStartCompat="@drawable/ic_web" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
                 android:layout_weight=".33"
-                android:drawableStart="@drawable/ic_email"
                 android:text="info@royaljourneytourism.com"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                app:drawableStartCompat="@drawable/ic_email" />
 
         </LinearLayout>
 
