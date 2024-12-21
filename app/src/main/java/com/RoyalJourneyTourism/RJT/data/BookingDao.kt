@@ -7,6 +7,11 @@ import androidx.room.Upsert
 
 @Dao
 interface BookingDao {
+
+    // insert -> inserts new data
+    // update -> updates existing data, if not exists, does nothing
+    // upsert -> if (new record): inserts, else: updates
+
     @Upsert
     suspend fun upsertRecord(invoiceRecord: Booking)
 

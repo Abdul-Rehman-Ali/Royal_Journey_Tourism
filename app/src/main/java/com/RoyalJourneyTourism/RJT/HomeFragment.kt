@@ -41,6 +41,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+val db = LocalDatabase.getDatabase(requireContext())
 
         binding.btnGenerateInvoice.setOnClickListener {
             showTemplateDialog { selectedTemplate ->
