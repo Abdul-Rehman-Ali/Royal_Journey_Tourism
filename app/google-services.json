@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "741910613982",
-    "project_id": "royal-journey-tourism",
-    "storage_bucket": "royal-journey-tourism.firebasestorage.app"
+    "project_number": "312724048876",
+    "firebase_url": "https://foodieflixdb-default-rtdb.firebaseio.com",
+    "project_id": "foodieflixdb",
+    "storage_bucket": "foodieflixdb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:741910613982:android:94df53dddbd67a94df574f",
+        "mobilesdk_app_id": "1:312724048876:android:92e1435f99de2b203c4ec9",
         "android_client_info": {
           "package_name": "com.RDM.TourSum"
         }
@@ -15,7 +16,45 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCGanuTW_Y4Z2iud8d3_f21QSZwhgukKHw"
+          "current_key": "AIzaSyBxV3i1gH2GbU5Aa8y9MO05eZGnYa4rD9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312724048876:android:f2313c3473da60113c4ec9",
+        "android_client_info": {
+          "package_name": "com.example.my_first_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxV3i1gH2GbU5Aa8y9MO05eZGnYa4rD9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312724048876:android:8f5a909d9743b4ac3c4ec9",
+        "android_client_info": {
+          "package_name": "com.royaljourneytourism.rdminvoice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxV3i1gH2GbU5Aa8y9MO05eZGnYa4rD9M"
         }
       ],
       "services": {
