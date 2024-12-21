@@ -1,4 +1,4 @@
-package com.RoyalJourneyTourism.RJT
+package com.RDM.TourSum
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

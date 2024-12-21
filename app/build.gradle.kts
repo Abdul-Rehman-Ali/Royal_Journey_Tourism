@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.RoyalJourneyTourism.RJT"
+    namespace = "com.RDM.TourSum"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.RoyalJourneyTourism.RJT"
+        applicationId = "com.RDM.TourSum"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

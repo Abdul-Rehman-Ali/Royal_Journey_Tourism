@@ -1,8 +1,8 @@
-package com.RoyalJourneyTourism.RJT.repository
+package com.RDM.TourSum.repository
 
 import android.util.Log
-import com.RoyalJourneyTourism.RJT.data.Booking
-import com.RoyalJourneyTourism.RJT.data.BookingDao
+import com.RDM.TourSum.data.Booking
+import com.RDM.TourSum.data.BookingDao
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 

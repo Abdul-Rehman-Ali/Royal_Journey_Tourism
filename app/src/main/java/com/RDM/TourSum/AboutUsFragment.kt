@@ -1,4 +1,4 @@
-package com.RoyalJourneyTourism.RJT
+package com.RDM.TourSum
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

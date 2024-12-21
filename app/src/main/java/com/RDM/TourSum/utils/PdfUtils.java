@@ -1,4 +1,4 @@
-package com.RoyalJourneyTourism.RJT.utils;
+package com.RDM.TourSum.utils;
 
 import android.content.Context;
 import android.os.Environment;
@@ -6,10 +6,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.activity.ComponentActivity;
-import com.RoyalJourneyTourism.RJT.R;
-import com.RoyalJourneyTourism.RJT.data.Booking;
+import com.RDM.TourSum.R;
+import com.RDM.TourSum.data.Booking;
 import com.gkemon.XMLtoPDF.PdfGenerator;
 import com.gkemon.XMLtoPDF.PdfGeneratorListener;
 import com.gkemon.XMLtoPDF.model.FailureResponse;

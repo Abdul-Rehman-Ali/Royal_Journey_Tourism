@@ -1,4 +1,4 @@
-package com.RoyalJourneyTourism.RJT
+package com.RDM.TourSum
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.RoyalJourneyTourism.RJT.databinding.ActivitySplashBinding
+import com.RDM.TourSum.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
 

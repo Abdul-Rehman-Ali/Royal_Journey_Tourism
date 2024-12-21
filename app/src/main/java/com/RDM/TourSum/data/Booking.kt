@@ -1,4 +1,4 @@
-package com.RoyalJourneyTourism.RJT.data
+package com.RDM.TourSum.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

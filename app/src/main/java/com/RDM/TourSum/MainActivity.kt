@@ -1,6 +1,5 @@
-package com.RoyalJourneyTourism.RJT
+package com.RDM.TourSum
 
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
@@ -9,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.lifecycleScope
-import com.RoyalJourneyTourism.RJT.data.LocalDatabase
-import com.RoyalJourneyTourism.RJT.databinding.ActivityMainBinding
-import com.RoyalJourneyTourism.RJT.repository.FirebaseRepository
+import com.RDM.TourSum.data.LocalDatabase
+import com.RDM.TourSum.databinding.ActivityMainBinding
+import com.RDM.TourSum.repository.FirebaseRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package com.RoyalJourneyTourism.RJT
+package com.RDM.TourSum
 
 import org.junit.Test
 

@@ -1,7 +1,6 @@
-package com.RoyalJourneyTourism.RJT
+package com.RDM.TourSum
 
 import android.app.DatePickerDialog
-import com.RoyalJourneyTourism.RJT.databinding.FragmentHomeBinding
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,11 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.lifecycle.lifecycleScope
-import com.RoyalJourneyTourism.RJT.data.Booking
-import com.RoyalJourneyTourism.RJT.data.LocalDatabase
-import com.RoyalJourneyTourism.RJT.repository.FirebaseRepository
-import com.RoyalJourneyTourism.RJT.utils.CustomDialog.showMessageDialog
-import com.RoyalJourneyTourism.RJT.utils.PdfUtils
+import com.RDM.TourSum.data.Booking
+import com.RDM.TourSum.data.LocalDatabase
+import com.RDM.TourSum.databinding.FragmentHomeBinding
+import com.RDM.TourSum.repository.FirebaseRepository
+import com.RDM.TourSum.utils.CustomDialog.showMessageDialog
+import com.RDM.TourSum.utils.PdfUtils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat

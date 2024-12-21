@@ -1,4 +1,4 @@
-package com.RoyalJourneyTourism.RJT.utils
+package com.RDM.TourSum.utils
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
