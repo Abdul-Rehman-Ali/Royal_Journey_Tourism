@@ -22,10 +22,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.RoyalJourneyTourism.RJT" />
-                  <option name="mobileSdkAppId" value="1:741910613982:android:94df53dddbd67a94df574f" />
-                  <option name="projectId" value="royal-journey-tourism" />
-                  <option name="projectNumber" value="741910613982" />
+                  <option name="appId" value="com.RDM.TourSum" />
+                  <option name="mobileSdkAppId" value="1:312724048876:android:92e1435f99de2b203c4ec9" />
+                  <option name="projectId" value="foodieflixdb" />
+                  <option name="projectNumber" value="312724048876" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

@@ -32,7 +32,7 @@ class SplashActivity : AppCompatActivity() {
         // Splash screen delay logic
         Handler(Looper.getMainLooper()).postDelayed({
             // Intent to navigate to MainActivity after 3 seconds
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish() // Close SplashActivity
         }, 3000) // Delay in milliseconds (3000ms = 3 seconds)
