@@ -1,4 +1,4 @@
-package com.RDM.TourSum
+package com.Trip.Trip360
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

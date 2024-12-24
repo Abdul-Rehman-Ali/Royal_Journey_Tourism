@@ -1,4 +1,4 @@
-package com.RDM.TourSum.data
+package com.Trip.Trip360.data
 
 import android.content.Context
 import androidx.room.Database

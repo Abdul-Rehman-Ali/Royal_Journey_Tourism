@@ -1,4 +1,4 @@
-package com.RDM.TourSum
+package com.Trip.Trip360
 
 import android.content.Context
 import android.content.Intent
@@ -9,7 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.RDM.TourSum.databinding.ActivityLoginBinding
+import com.Trip.Trip360.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 

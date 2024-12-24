@@ -1,4 +1,4 @@
-package com.RDM.TourSum.utils
+package com.Trip.Trip360.utils
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog

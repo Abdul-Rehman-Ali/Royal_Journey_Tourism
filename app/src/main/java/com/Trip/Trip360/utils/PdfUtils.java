@@ -1,4 +1,4 @@
-package com.RDM.TourSum.utils;
+package com.Trip.Trip360.utils;
 
 import android.content.Context;
 import android.os.Environment;
@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import androidx.activity.ComponentActivity;
-import com.RDM.TourSum.R;
-import com.RDM.TourSum.data.Booking;
+import com.Trip.Trip360.R;
+import com.Trip.Trip360.data.Booking;
 import com.gkemon.XMLtoPDF.PdfGenerator;
 import com.gkemon.XMLtoPDF.PdfGeneratorListener;
 import com.gkemon.XMLtoPDF.model.FailureResponse;

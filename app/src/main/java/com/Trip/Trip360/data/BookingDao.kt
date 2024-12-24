@@ -1,4 +1,4 @@
-package com.RDM.TourSum.data
+package com.Trip.Trip360.data
 
 import androidx.room.Dao
 import androidx.room.Delete

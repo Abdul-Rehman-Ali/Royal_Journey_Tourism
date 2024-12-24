@@ -1,8 +1,8 @@
-package com.RDM.TourSum.repository
+package com.Trip.Trip360.repository
 
 import android.util.Log
-import com.RDM.TourSum.data.Booking
-import com.RDM.TourSum.data.BookingDao
+import com.Trip.Trip360.data.Booking
+import com.Trip.Trip360.data.BookingDao
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 

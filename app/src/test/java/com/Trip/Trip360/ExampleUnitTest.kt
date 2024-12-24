@@ -1,4 +1,4 @@
-package com.RDM.TourSum
+package com.Trip.Trip360
 
 import org.junit.Test
 

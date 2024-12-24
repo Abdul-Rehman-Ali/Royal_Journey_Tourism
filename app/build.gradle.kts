@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.RDM.TourSum"
+    namespace = "com.Trip.Trip360"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.RDM.TourSum"
+        applicationId = "com.Trip.Trip360"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

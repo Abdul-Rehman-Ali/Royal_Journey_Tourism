@@ -1,4 +1,4 @@
-package com.RDM.TourSum
+package com.Trip.Trip360
 
 import android.content.Context
 import android.graphics.Color
@@ -11,9 +11,9 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.lifecycleScope
-import com.RDM.TourSum.data.LocalDatabase
-import com.RDM.TourSum.databinding.ActivityMainBinding
-import com.RDM.TourSum.repository.FirebaseRepository
+import com.Trip.Trip360.data.LocalDatabase
+import com.Trip.Trip360.databinding.ActivityMainBinding
+import com.Trip.Trip360.repository.FirebaseRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
