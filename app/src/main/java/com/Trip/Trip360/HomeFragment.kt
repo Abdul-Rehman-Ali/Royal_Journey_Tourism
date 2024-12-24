@@ -152,6 +152,8 @@ class HomeFragment : Fragment() {
             else -> false
         }
 
+        val totalPrice = calculateTotalPrice(noOfAdults, pkgPricePerAdult, noOfKids, pkgPricePerKid)
+
         val currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
 
         // Retrieve webName from SharedPreferences
@@ -175,7 +177,8 @@ class HomeFragment : Fragment() {
             pickupLocation = pickupLocation.ifBlank { null },
             paymentStatus = paymentStatus,
             webName = webName,
-            currentDate = currentDate
+            currentDate = currentDate,
+            totalPrice = totalPrice
         )
 
 
@@ -187,6 +190,15 @@ class HomeFragment : Fragment() {
                 PdfUtils.generateInvoicePdf(selectedTemplate, booking, requireContext())
             }
         }
+    }
+
+    private fun calculateTotalPrice(
+        noOfAdults: Int?, pkgPricePerAdult: Double?,
+        noOfKids: Int?, pkgPricePerKid: Double?
+    ): Double {
+        val adultsTotal = (noOfAdults ?: 0) * (pkgPricePerAdult ?: 0.0)
+        val kidsTotal = (noOfKids ?: 0) * (pkgPricePerKid ?: 0.0)
+        return adultsTotal + kidsTotal
     }
 
     fun showTemplateDialog(onTemplateSelected: (String) -> Unit) {

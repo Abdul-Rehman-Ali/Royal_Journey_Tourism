@@ -22,6 +22,7 @@ data class Booking(
     val paymentStatus: Boolean = false,
     val firebaseSync: Boolean = false,
     val webName: String,
-    val currentDate: String
+    val currentDate: String,
+    val totalPrice: Double = 0.0
 )
 

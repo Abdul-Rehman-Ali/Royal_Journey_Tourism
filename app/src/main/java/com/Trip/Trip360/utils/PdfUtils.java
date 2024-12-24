@@ -29,7 +29,7 @@ public class PdfUtils {
             ((TextView) view.findViewById(R.id.tvGuestName)).setText(booking.getName());
             ((TextView) view.findViewById(R.id.tvPickupTime)).setText(booking.getPickupTime());
             ((TextView) view.findViewById(R.id.tvBookingDate)).setText(booking.getPickupDate());
-            ((TextView) view.findViewById(R.id.tvGrandTotal)).setText("AED "+calculateTotalPrice(booking));
+            ((TextView) view.findViewById(R.id.tvGrandTotal)).setText("AED "+ calculateTotalPrice(booking));
             ((TextView) view.findViewById(R.id.tvPackageName)).setText(booking.getPackageName() != null ? booking.getPackageName() : "N/A");
             ((TextView) view.findViewById(R.id.tvPickupLocation)).setText(booking.getPickupLocation() != null ? booking.getPickupLocation() : "N/A");
             ((TextView) view.findViewById(R.id.tvAdultCount)).setText(booking.getNoOfAdults() != null ? String.valueOf(booking.getNoOfAdults()) : "0");
