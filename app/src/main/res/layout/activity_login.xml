@@ -36,7 +36,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:textColor="#474545"
-        android:text="Sign in to Trip Track"
+        android:text="Sign in to Trip 360"
         android:textSize="15sp"
         android:gravity="center" />
 
