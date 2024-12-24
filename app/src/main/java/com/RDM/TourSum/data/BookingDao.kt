@@ -8,19 +8,16 @@ import androidx.room.Upsert
 @Dao
 interface BookingDao {
 
-    // insert -> inserts new data
-    // update -> updates existing data, if not exists, does nothing
-    // upsert -> if (new record): inserts, else: updates
-
     @Upsert
     suspend fun upsertRecord(invoiceRecord: Booking)
 
     @Delete
     suspend fun deleteRecord(invoiceRecord: Booking)
 
-    @Query("delete from Booking where firebaseSync = 1")
-    suspend fun deleteAllSyncedRecords()
+    @Query("delete from Booking where firebaseSync = 1 and webName = :currentWebName")
+    suspend fun deleteAllSyncedRecordsForWebName(currentWebName: String)
 
-    @Query("select * from Booking where firebaseSync = 0")
-    suspend fun getMissedRecords() : List<Booking>
+    @Query("select * from Booking where firebaseSync = 0 and webName = :currentWebName")
+    suspend fun getMissedRecordsForWebName(currentWebName: String): List<Booking>
+
 }

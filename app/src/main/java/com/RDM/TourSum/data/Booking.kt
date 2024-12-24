@@ -3,10 +3,10 @@ package com.RDM.TourSum.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
 @Entity
 data class Booking(
     @PrimaryKey(autoGenerate = true) val id: Int,
+    val invoiceId: String, // Unique identifier for each invoice
     val name: String,
     val email: String? = null,
     val phone: String? = null,
@@ -20,5 +20,8 @@ data class Booking(
     val pickupTime: String? = null,
     val pickupLocation: String? = null,
     val paymentStatus: Boolean = false,
-    val firebaseSync: Boolean = false
+    val firebaseSync: Boolean = false,
+    val webName: String,
+    val currentDate: String
 )
+

@@ -1,6 +1,7 @@
 package com.RDM.TourSum
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -21,7 +22,11 @@ import com.google.android.material.timepicker.TimeFormat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
+import java.util.Locale
+import java.util.UUID
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -41,7 +46,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-val db = LocalDatabase.getDatabase(requireContext())
+        val db = LocalDatabase.getDatabase(requireContext())
 
         binding.btnGenerateInvoice.setOnClickListener {
             showTemplateDialog { selectedTemplate ->
@@ -52,19 +57,16 @@ val db = LocalDatabase.getDatabase(requireContext())
             }
         }
 
-
-        etDate = binding.etDate  // Assuming the EditText in your layout has the ID 'etDate'
-        etTime = binding.etTime  // Assuming you have an EditText for time in your layout
+        etDate = binding.etDate
+        etTime = binding.etTime
 
         // Set up the Date Picker
         etDate.setOnClickListener {
-            // Get the current date
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-            // Launch the DatePickerDialog
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
                 { _, selectedYear, selectedMonth, selectedDay ->
@@ -118,20 +120,16 @@ val db = LocalDatabase.getDatabase(requireContext())
                 etTime.setText(formattedTime)
             }
         }
-
-
     }
 
     private fun getTemplateLayout(selectedTemplate: String): Int? {
-        val templateLayout = when(selectedTemplate) {
+        return when (selectedTemplate) {
             "Template 1" -> R.layout.invoice_layout_1
             "Template 2" -> R.layout.invoice_layout_2
             "Template 3" -> R.layout.invoice_layout_3
             else -> null
         }
-        return templateLayout
     }
-
 
     private fun collectData(selectedTemplate: Int) {
         val bookingDao = LocalDatabase.getDatabase(requireContext()).bookingDao()
@@ -155,8 +153,15 @@ val db = LocalDatabase.getDatabase(requireContext())
             else -> false
         }
 
+        val currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+
+        // Retrieve webName from SharedPreferences
+        val sharedPreferences = requireContext().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
+        val webName = sharedPreferences.getString("webName", "default_collection") ?: "default_collection"
+
         val booking = Booking(
             id = 0,
+            invoiceId = UUID.randomUUID().toString(), // Unique ID for each invoice
             name = name,
             email = email.ifBlank { null },
             phone = phone.ifBlank { null },
@@ -169,25 +174,23 @@ val db = LocalDatabase.getDatabase(requireContext())
             pickupDate = pickupDate.ifBlank { null },
             pickupTime = pickupTime.ifBlank { null },
             pickupLocation = pickupLocation.ifBlank { null },
-            paymentStatus = paymentStatus
+            paymentStatus = paymentStatus,
+            webName = webName,
+            currentDate = currentDate
         )
 
+
         showMessageDialog("Generating Pdf, please wait...", "Action", requireContext())
-        lifecycleScope.launch(Dispatchers.IO){
+        lifecycleScope.launch(Dispatchers.IO) {
             bookingDao.upsertRecord(booking)
-            Log.d("PdfDebugger", "upserted record}")
-            firebaseRepository.syncNewRecord(booking)
-            Log.d("PdfDebugger", "record synced")
-            Log.d("PdfDebugger", "called pdf generation")
+            firebaseRepository.syncNewRecord(booking, webName) // Using webName as the collection name
             withContext(Dispatchers.Main) {
-                PdfUtils.generateInvoicePdf(selectedTemplate ,booking, requireContext())
+                PdfUtils.generateInvoicePdf(selectedTemplate, booking, requireContext())
             }
         }
     }
 
-
     fun showTemplateDialog(onTemplateSelected: (String) -> Unit) {
-
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_template_list, null)
 
         val dialog = MaterialAlertDialogBuilder(requireContext())

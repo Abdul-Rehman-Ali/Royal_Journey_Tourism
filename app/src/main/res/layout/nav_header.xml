@@ -10,11 +10,12 @@
     android:background="@color/primaryColor"
     android:layout_height="@dimen/nav_header_height">
 
-<!--    <ImageView-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:src="@drawable/logo"-->
-<!--        app:tint="@color/white"/>-->
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/logo"
+        android:layout_gravity="center"
+        app:tint="@color/white"/>
 
     <TextView
         android:layout_width="wrap_content"

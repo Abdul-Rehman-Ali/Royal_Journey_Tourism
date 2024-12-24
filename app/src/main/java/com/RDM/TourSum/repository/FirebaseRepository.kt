@@ -10,48 +10,48 @@ class FirebaseRepository(private val bookingDao: BookingDao) {
 
     private val firestore = FirebaseFirestore.getInstance()
 
-    suspend fun syncMissedRecords() {
-        val missedRecords = bookingDao.getMissedRecords()
+    suspend fun syncMissedRecords(webName: String) {
+        val missedRecords = bookingDao.getMissedRecordsForWebName(webName) // Scoped to webName
         if (missedRecords.isEmpty()) return
 
         Log.d("FirebaseSync", "Starting sync for missed records: $missedRecords")
 
         try {
-            val chunks = missedRecords.chunked(500)
-            chunks.forEach { chunk ->
-                val batch = firestore.batch()
-                chunk.forEach { record ->
-                    val docRef = firestore.collection(COLLECTION_BOOKINGS).document()
-                    batch.set(docRef, record)
+            for (record in missedRecords) {
+                // Check if the record already exists in Firestore
+                val existingDocument = firestore.collection(webName)
+                    .whereEqualTo("invoiceId", record.invoiceId)
+                    .get()
+                    .await()
+
+                if (existingDocument.isEmpty) {
+                    // Only upload if the record doesn't already exist in Firestore
+                    val docRef = firestore.collection(webName).document()
+                    docRef.set(record).await()
+
+                    // Mark the record as synced in Room
+                    val updatedRecord = record.copy(firebaseSync = true)
+                    bookingDao.upsertRecord(updatedRecord)
+                } else {
+                    Log.d("FirebaseSync", "Invoice already exists in Firestore: ${record.invoiceId}")
                 }
-                batch.commit().await()
             }
 
-            missedRecords.forEach { record ->
-                val updatedRecord = record.copy(firebaseSync = true)
-                bookingDao.upsertRecord(updatedRecord)
-            }
-
-            Log.d("FirebaseSync", "All records synced successfully.")
+            Log.d("FirebaseSync", "All records synced successfully to collection: $webName.")
         } catch (e: Exception) {
             Log.e("FirebaseSync", "Sync failed: ${e.message}")
-            // Optional: Mark records for retry or trigger retry logic
         }
     }
 
 
-
-    suspend fun syncNewRecord(booking: Booking) {
+    suspend fun syncNewRecord(booking: Booking, webName: String) {
         try {
-            firestore.collection(COLLECTION_BOOKINGS).add(booking).await()
+            firestore.collection(webName).add(booking).await()
             val updateRecord = booking.copy(firebaseSync = true)
             bookingDao.upsertRecord(updateRecord)
+            Log.d("FirebaseSync", "New record synced successfully to collection: $webName.")
         } catch (e: Exception) {
-            Log.e("FirebaseSync", "New record Sync failed: ${e.message}")
+            Log.e("FirebaseSync", "New record sync failed: ${e.message}")
         }
-    }
-
-    companion object {
-        const val COLLECTION_BOOKINGS = "Bookings"
     }
 }
