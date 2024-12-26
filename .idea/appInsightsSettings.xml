@@ -22,7 +22,7 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.RDM.TourSum" />
+                  <option name="appId" value="com.Trip.Trip360" />
                   <option name="mobileSdkAppId" value="1:312724048876:android:92e1435f99de2b203c4ec9" />
                   <option name="projectId" value="foodieflixdb" />
                   <option name="projectNumber" value="312724048876" />
