@@ -7,8 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import androidx.activity.ComponentActivity;
+
 import com.Trip.Trip360.R;
-import com.Trip.Trip360.data.Booking;
+import com.Trip.Trip360.data.Invoice;
 import com.gkemon.XMLtoPDF.PdfGenerator;
 import com.gkemon.XMLtoPDF.PdfGeneratorListener;
 import com.gkemon.XMLtoPDF.model.FailureResponse;
@@ -17,7 +18,7 @@ import java.io.File;
 
 public class PdfUtils {
 
-    public static void generateInvoicePdf(int selectedTemplate, Booking booking, Context context) {
+    public static void generateInvoicePdf(int selectedTemplate, Invoice booking, Context context, PdfGenerationCallback callback) {
         try {
 
             String paymentStatus = "N/A";
@@ -71,12 +72,12 @@ public class PdfUtils {
                     .build(new PdfGeneratorListener() {
                         @Override
                         public void onSuccess(SuccessResponse response) {
-                            CustomDialog.INSTANCE.showMessageDialog("Invoice successfully saved at InternalStorage/Documents/RoyalInvoices " , "Success",context);
+                            callback.onPdfGenerated(pdfFile.getAbsolutePath());
                         }
 
                         @Override
                         public void onFailure(FailureResponse failureResponse) {
-                            CustomDialog.INSTANCE.showMessageDialog("Failed to generate PDF: " + failureResponse.getErrorMessage(), "Failure",context);
+                            callback.onFailure(failureResponse.getErrorMessage());
                         }
 
                         @Override
@@ -98,11 +99,11 @@ public class PdfUtils {
         }
     }
 
-    private static double calculateTotalPrice(Booking booking) {
+    private static double calculateTotalPrice(Invoice booking) {
         return calculateTotalPriceForAdults(booking) + calculateTotalPriceForKids(booking);
     }
 
-    private static double calculateTotalPriceForAdults(Booking booking) {
+    private static double calculateTotalPriceForAdults(Invoice booking) {
 
         if (booking.getNoOfAdults() != null && booking.getPkgPricePerAdult() != null) {
             return booking.getNoOfAdults() * booking.getPkgPricePerAdult();
@@ -110,10 +111,11 @@ public class PdfUtils {
         return 0.00;
     }
 
-    private static double calculateTotalPriceForKids(Booking booking) {
+    private static double calculateTotalPriceForKids(Invoice booking) {
         if (booking.getNoOfKids() != null && booking.getPkgPricePerKid() != null) {
             return booking.getNoOfKids() * booking.getPkgPricePerKid();
         }
         return 0.00;
     }
 }
+

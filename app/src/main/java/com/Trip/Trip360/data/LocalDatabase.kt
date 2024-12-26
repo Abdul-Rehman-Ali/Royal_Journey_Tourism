@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [Booking::class], version = 5, exportSchema = false) // Updated to version 5
+@Database(entities = [Invoice::class], version = 5, exportSchema = false) // Updated to version 5
 abstract class LocalDatabase : RoomDatabase() {
 
     abstract fun bookingDao(): BookingDao

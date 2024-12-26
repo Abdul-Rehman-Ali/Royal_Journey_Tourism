@@ -4,8 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Booking(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+data class Invoice(
+    @PrimaryKey(autoGenerate = true) val id: Long,
     val invoiceId: String, // Unique identifier for each invoice
     val name: String,
     val email: String? = null,
@@ -23,6 +23,7 @@ data class Booking(
     val firebaseSync: Boolean = false,
     val webName: String,
     val currentDate: String,
-    val totalPrice: Double = 0.0
+    val totalPrice: Double = 0.0,
+    var filePath: String? = null
 )
 

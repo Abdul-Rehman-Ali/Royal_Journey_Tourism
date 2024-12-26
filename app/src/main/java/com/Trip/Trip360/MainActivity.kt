@@ -35,13 +35,13 @@ class MainActivity : AppCompatActivity() {
         val colorHex = sharedPreferences.getString("primaryColor", "#FF5733") ?: "#FF5733"
 
         // Firebase sync
-        val bookingDao = LocalDatabase.getDatabase(this).bookingDao()
+//        val bookingDao = LocalDatabase.getDatabase(this).bookingDao()
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            firebaseRepo = FirebaseRepository(bookingDao)
-            firebaseRepo.syncMissedRecords(webName)
-            bookingDao.deleteAllSyncedRecordsForWebName(webName) // Ensure scoped deletion
-        }
+//        lifecycleScope.launch(Dispatchers.IO) {
+//            firebaseRepo = FirebaseRepository(bookingDao)
+//            firebaseRepo.syncMissedRecords(webName)
+//            bookingDao.deleteAllSyncedRecordsForWebName(webName) // Ensure scoped deletion
+//        }
 
         // Set up the layout and toolbar
         binding = ActivityMainBinding.inflate(layoutInflater)

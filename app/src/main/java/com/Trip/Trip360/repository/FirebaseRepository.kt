@@ -1,7 +1,7 @@
 package com.Trip.Trip360.repository
 
 import android.util.Log
-import com.Trip.Trip360.data.Booking
+import com.Trip.Trip360.data.Invoice
 import com.Trip.Trip360.data.BookingDao
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
@@ -31,7 +31,7 @@ class FirebaseRepository(private val bookingDao: BookingDao) {
 
                     // Mark the record as synced in Room
                     val updatedRecord = record.copy(firebaseSync = true)
-                    bookingDao.upsertRecord(updatedRecord)
+                    bookingDao.updateInvoice(updatedRecord)
                 } else {
                     Log.d("FirebaseSync", "Invoice already exists in Firestore: ${record.invoiceId}")
                 }
@@ -44,11 +44,11 @@ class FirebaseRepository(private val bookingDao: BookingDao) {
     }
 
 
-    suspend fun syncNewRecord(booking: Booking, webName: String) {
+    suspend fun syncNewRecord(booking: Invoice, webName: String) {
         try {
             firestore.collection(webName).add(booking).await()
             val updateRecord = booking.copy(firebaseSync = true)
-            bookingDao.upsertRecord(updateRecord)
+            bookingDao.updateInvoice(updateRecord)
             Log.d("FirebaseSync", "New record synced successfully to collection: $webName.")
         } catch (e: Exception) {
             Log.e("FirebaseSync", "New record sync failed: ${e.message}")

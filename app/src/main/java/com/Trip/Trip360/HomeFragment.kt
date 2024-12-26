@@ -3,24 +3,24 @@ package com.Trip.Trip360
 import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.Trip.Trip360.data.Booking
+import com.Trip.Trip360.data.Invoice
 import com.Trip.Trip360.data.LocalDatabase
 import com.Trip.Trip360.databinding.FragmentHomeBinding
 import com.Trip.Trip360.repository.FirebaseRepository
 import com.Trip.Trip360.utils.CustomDialog.showMessageDialog
+import com.Trip.Trip360.utils.PdfGenerationCallback
 import com.Trip.Trip360.utils.PdfUtils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -160,7 +160,7 @@ class HomeFragment : Fragment() {
         val sharedPreferences = requireContext().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
         val webName = sharedPreferences.getString("webName", "default_collection") ?: "default_collection"
 
-        val booking = Booking(
+        val booking = Invoice(
             id = 0,
             invoiceId = UUID.randomUUID().toString(), // Unique ID for each invoice
             name = name,
@@ -183,14 +183,33 @@ class HomeFragment : Fragment() {
 
 
         showMessageDialog("Generating Pdf, please wait...", "Action", requireContext())
-        lifecycleScope.launch(Dispatchers.IO) {
-            bookingDao.upsertRecord(booking)
-            firebaseRepository.syncNewRecord(booking, webName) // Using webName as the collection name
-            withContext(Dispatchers.Main) {
-                PdfUtils.generateInvoicePdf(selectedTemplate, booking, requireContext())
+
+                PdfUtils.generateInvoicePdf(selectedTemplate, booking, requireContext(), object : PdfGenerationCallback {
+                    override fun onPdfGenerated(filePath: String?) {
+                        booking.filePath = filePath
+
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            bookingDao.insertInvoice(booking)
+                            firebaseRepository.syncNewRecord(booking, webName)
+                        }
+
+                        showMessageDialog(
+                            "Invoice successfully Created",
+                            "Success",
+                            requireContext()
+                        )
+                    }
+
+                    override fun onFailure(errorMessage: String?) {
+                        showMessageDialog(
+                            "Failed to generate PDF: $errorMessage",
+                            "Failure",
+                            requireContext()
+                        )
+                    }
+
+                })
             }
-        }
-    }
 
     private fun calculateTotalPrice(
         noOfAdults: Int?, pkgPricePerAdult: Double?,
