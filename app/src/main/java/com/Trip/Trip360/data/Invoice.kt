@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Invoice(
-    @PrimaryKey(autoGenerate = true) val id: Long,
-    val invoiceId: String, // Unique identifier for each invoice
+    @PrimaryKey(autoGenerate = true) var id: Long,
+    var invoiceId: String, // Unique identifier for each invoice
     val name: String,
     val email: String? = null,
     val phone: String? = null,

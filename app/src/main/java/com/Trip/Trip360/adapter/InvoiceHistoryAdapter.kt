@@ -35,7 +35,7 @@ class InvoiceHistoryAdapter(
 
             // for viewing pdf
             binding.btnViewInvoice.setOnClickListener {
-                invoice.filePath?.let { it1 -> PdfUtilsKt.showInvoicePdf(it1, context) }
+                invoice.filePath?.let { it1 -> PdfUtilsKt.viewPdf(it1, context) }
             }
         }
     }

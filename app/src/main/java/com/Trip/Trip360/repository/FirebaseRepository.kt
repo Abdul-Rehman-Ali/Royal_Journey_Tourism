@@ -3,6 +3,7 @@ package com.Trip.Trip360.repository
 import android.util.Log
 import com.Trip.Trip360.data.Invoice
 import com.Trip.Trip360.data.BookingDao
+import com.Trip.Trip360.data.FirebaseModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
@@ -44,14 +45,44 @@ class FirebaseRepository(private val bookingDao: BookingDao) {
     }
 
 
-    suspend fun syncNewRecord(booking: Invoice, webName: String) {
+    suspend fun syncRecord(invoice: Invoice, webName: String) {
         try {
-            firestore.collection(webName).add(booking).await()
-            val updateRecord = booking.copy(firebaseSync = true)
+
+            val querySnapshot = firestore.collection(webName)
+                .whereEqualTo("invoiceId", invoice.invoiceId)
+                .get()
+                .await()
+
+            if (querySnapshot.documents.isNotEmpty()) {
+                val documentId = querySnapshot.documents.first().id
+                firestore.collection(webName)
+                    .document(documentId)
+                    .set(invoice.toFirebaseModel())
+                    .await()
+                Log.d("FirebaseSync", "Record updated successfully for invoiceId: ${invoice.invoiceId}")
+            } else {
+                firestore.collection(webName)
+                    .add(invoice.toFirebaseModel())
+                    .await()
+                Log.d("FirebaseSync", "New record inserted successfully for invoiceId: ${invoice.invoiceId}")
+            }
+
+            val updateRecord = invoice.copy(firebaseSync = true)
             bookingDao.updateInvoice(updateRecord)
-            Log.d("FirebaseSync", "New record synced successfully to collection: $webName.")
+
         } catch (e: Exception) {
-            Log.e("FirebaseSync", "New record sync failed: ${e.message}")
+            Log.e("FirebaseSync", "Record sync failed for invoiceId: ${invoice.invoiceId}: ${e.message}")
         }
     }
+
+    private fun Invoice.toFirebaseModel(): FirebaseModel {
+        return FirebaseModel(
+            name = this.name,
+            packageName = this.packageName ?: "",
+            totalPrice = this.totalPrice,
+            currentDate = this.currentDate,
+            invoiceId = this.invoiceId
+        )
+    }
+
 }

@@ -65,11 +65,15 @@ class MainActivity : AppCompatActivity() {
         // Handle navigation item selection
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.about_us -> {
+                R.id.menuHome -> {
+                    openFragment(HomeFragment())
+                }
+
+                R.id.menuAboutUs -> {
                     openFragment(AboutUsFragment())
                 }
 
-                R.id.invoiceHistory -> {
+                R.id.menuInvoiceHistory -> {
                     openFragment(InvoiceHistoryFragment())
                 }
             }
@@ -89,21 +93,22 @@ class MainActivity : AppCompatActivity() {
             ContextCompat.getColor(
                 this,
                 R.color.primaryColor
-            ) // Fallback to a default color resource
+            )
         }
 
         // Apply the color to the toolbar, status bar, and navigation drawer
         binding.toolbar.setBackgroundColor(primaryColor)
-        window.statusBarColor = primaryColor // Status bar color
+//        window.statusBarColor = primaryColor // Status bar color
 
-        // Update the navigation view header or other UI elements as needed
         val headerView = binding.navigationView.getHeaderView(0)
         headerView.setBackgroundColor(primaryColor)
     }
 
     private fun openFragment(fragment: Fragment) {
-        val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.content_frame, fragment)
-        fragmentTransaction.commit()
+            supportFragmentManager.beginTransaction().apply {
+            replace(R.id.content_frame, fragment)
+            addToBackStack(null)
+            commit()
+        }
     }
 }

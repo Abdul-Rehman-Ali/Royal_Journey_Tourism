@@ -4,5 +4,6 @@ data class FirebaseModel(
     val name: String,
     val packageName: String,
     val totalPrice: Double,
-    val currentDate: String
+    val currentDate: String,
+    val invoiceId: String
 )

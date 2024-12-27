@@ -2,6 +2,8 @@ package com.Trip.Trip360
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,10 +12,12 @@ import androidx.lifecycle.lifecycleScope
 import com.Trip.Trip360.data.Invoice
 import com.Trip.Trip360.data.LocalDatabase
 import com.Trip.Trip360.databinding.ActivityInvoiceDetailsBinding
+import com.Trip.Trip360.utils.CustomDialog.showConfirmationDialog
 import com.Trip.Trip360.utils.IntentActionUtils.INTENT_ACTION_EDIT
 import com.Trip.Trip360.utils.PdfUtils
 import com.Trip.Trip360.utils.PdfUtilsKt
 import kotlinx.coroutines.launch
+import java.io.File
 
 class InvoiceDetailsActivity : AppCompatActivity() {
     private val binding by lazy { ActivityInvoiceDetailsBinding.inflate(layoutInflater) }
@@ -30,16 +34,19 @@ class InvoiceDetailsActivity : AppCompatActivity() {
             insets
         }
 
-
         val invoiceId = intent.getLongExtra("invoiceId", -1)
+        Log.d("fjskjfs", "Invoice id: $invoiceId")
 
         if (invoiceId.toInt() != -1) {
+            Log.d("fjskjfs", "Inside fetch block")
             lifecycleScope.launch {
                 invoice = bookingDao.getInvoiceById(invoiceId)
-
-                invoice?.let {
-                    setData()
-                    enableActions()
+                Log.d("fjskjfs", "Data $invoice")
+                runOnUiThread{
+                    invoice?.let {
+                        setData()
+                        setActions()
+                    }
                 }
             }
         }
@@ -52,24 +59,41 @@ class InvoiceDetailsActivity : AppCompatActivity() {
         // set invoice data on detail screen here
     }
 
-    private fun enableActions() {
 
-        // view pdf
+    // actions;
+    // pdf view
+    // edit
+    // delete
+    // share
+
+    private fun setActions() {
+
         binding.btnViewPdf.setOnClickListener {
-            invoice?.filePath?.let { it1 -> PdfUtilsKt.showInvoicePdf(it1, this) }
+            invoice?.filePath?.let { it1 -> PdfUtilsKt.viewPdf(it1, this) }
         }
 
         binding.btnEditInvoice.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java).apply {
+            val intent = Intent(this, InvoiceActivity::class.java).apply {
                 action = INTENT_ACTION_EDIT
+                invoice?.let { it1 -> putExtra("invoiceId", it1.id) }
             }
             startActivity(intent)
         }
 
         binding.btnDeleteInvoice.setOnClickListener {
-           lifecycleScope.launch {
-               invoice?.let { it1 -> bookingDao.deleteInvoice(it1) }
-           }
+            showConfirmationDialog(message = "Invoice record will be permanently deleted from device", title = "Delete Invoice", this, onProceed = {
+                lifecycleScope.launch {
+                    invoice?.filePath?.let { path ->
+                        File(path+".pdf").takeIf { it.exists() }?.delete()
+                    }
+                    invoice?.let { it1 -> bookingDao.deleteInvoice(it1) }
+                }
+                finish()
+            })
+        }
+
+        binding.btnShareInvoice.setOnClickListener{
+            invoice?.filePath?.let { it1 -> PdfUtilsKt.shareInvoice(it1, this) } ?: Toast.makeText(this, "Invoice null", Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.Trip.Trip360.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -20,11 +21,14 @@ interface BookingDao {
     @Delete
     suspend fun deleteInvoice(invoice: Invoice)
 
-    @Query("select  * from Invoice where invoiceId =:invoiceId")
+    @Query("select  * from Invoice where id =:invoiceId")
     suspend fun getInvoiceById(invoiceId: Long): Invoice?
 
     @Query("select  * from Invoice")
-    suspend fun getAll(): List<Invoice>
+    fun getAll(): LiveData<List<Invoice>>
+
+    @Query("SELECT * FROM Invoice WHERE LOWER(name) LIKE :query OR LOWER(packageName) LIKE :query")
+    fun searchByNameOrPackage(query: String): List<Invoice>
 
     @Query("delete from Invoice where firebaseSync = 1 and webName = :currentWebName")
     suspend fun deleteAllSyncedRecordsForWebName(currentWebName: String)

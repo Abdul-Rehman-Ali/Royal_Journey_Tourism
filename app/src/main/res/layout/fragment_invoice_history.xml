@@ -7,10 +7,11 @@
     tools:context=".InvoiceHistoryFragment">
 
 
-    <com.google.android.material.search.SearchBar
-        android:id="@+id/searchBar"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchBarInvoiceHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:iconifiedByDefault="false"
         android:hint="Search by customer name \ package name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -25,6 +26,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBar" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBarInvoiceHistory" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvNoInvoiceRecordFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Invoice record"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

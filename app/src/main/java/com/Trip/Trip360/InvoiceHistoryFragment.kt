@@ -36,12 +36,43 @@ class InvoiceHistoryFragment : Fragment() {
 
         // fetch invoices from db
 
-        lifecycleScope.launch(Dispatchers.Main) {
-            adapter.updateData(bookingDao.getAll())
+        bookingDao.getAll().observe(viewLifecycleOwner) { data ->
+            adapter.updateData(data)
+            binding.tvNoInvoiceRecordFound.visibility = if (data.isEmpty()) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
         }
 
         binding.rvInvoices.adapter = adapter
         binding.rvInvoices.layoutManager = LinearLayoutManager(requireContext())
+
+
+        binding.searchBarInvoiceHistory.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let { searchInvoices(it) }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { searchInvoices(it) }
+                return true
+            }
+        })
+
+    }
+
+    private fun searchInvoices(query: String) {
+        val searchQuery = "%${query.lowercase()}%"
+        lifecycleScope.launch(Dispatchers.IO) {
+            val filteredInvoices = bookingDao.searchByNameOrPackage(searchQuery)
+            launch(Dispatchers.Main) {
+                adapter.updateData(filteredInvoices)
+                binding.tvNoInvoiceRecordFound.visibility =
+                    if (filteredInvoices.isEmpty()) View.VISIBLE else View.GONE
+            }
+        }
     }
 
     override fun onDestroyView() {

@@ -20,7 +20,6 @@ public class PdfUtils {
 
     public static void generateInvoicePdf(int selectedTemplate, Invoice booking, Context context, PdfGenerationCallback callback) {
         try {
-
             String paymentStatus = "N/A";
 
             LayoutInflater inflater = LayoutInflater.from(context);
@@ -49,17 +48,16 @@ public class PdfUtils {
 
             ((TextView) view.findViewById(R.id.tvPaymentStatus)).setText(paymentStatus);
 
-            File documentsDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "RoyalInvoices");
-            if (!documentsDir.exists()) {
-                if (!documentsDir.mkdirs()) {
-                    Log.e("PdfUtils", "Failed to create directory: " + documentsDir.getAbsolutePath());
-                }
-            }
+//            File documentsDir = new File(context.getExternalFilesDir(null), "RoyalInvoices");
+//            if (!documentsDir.exists()) {
+//                if (!documentsDir.mkdirs()) {
+//                    Log.e("PdfUtils", "Failed to create directory: " + documentsDir.getAbsolutePath());
+//                }
+//            }
             String fileName = booking.getName() + "_" + booking.getPickupDate();
-            fileName = fileName.replaceAll("[^a-zA-Z0-9_\\-.]", "_");
+            fileName = fileName.replaceAll("[^a-zA-Z0-9_\\-.]", "-");
 
-            File pdfFile = new File(documentsDir, fileName + ".pdf");
-
+            File pdfFile = new File(context.getExternalFilesDir(null), fileName);
 
             // Generate the PDF
             PdfGenerator.getBuilder()

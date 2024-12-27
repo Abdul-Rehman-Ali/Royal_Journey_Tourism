@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InvoiceActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbarInvoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Generate Invoice" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbarInvoice">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/primaryColor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/primaryColor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phoneTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone No."
+                    android:inputType="phone"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/primaryColor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/packageNameTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_packageName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Package Name"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/primaryColor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addonDescriptionTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_addonDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:gravity="top|start"
+                    android:hint="Enter Additional Addon"
+                    android:inputType="textMultiLine"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/primaryColor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/AdultsTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_adults"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="No. of Adults"
+                    android:inputType="number"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/packagePriceTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_packagePrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Package Price Per Adult"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/kidsTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_kids"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="No. of Kids"
+                    android:inputType="number"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/packagePriceKidsTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_packagePriceKids"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Package Price Per Child"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/pickupLocationInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_pickupLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Pickup Location"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Date Picker input field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dateTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:drawableEnd="@drawable/ic_calendar"
+                    android:hint="Select Booking Date/Time"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Time Picker input field (added below the date) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/timeTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:drawableEnd="@drawable/ic_time"
+                    android:hint="Select Pickup Time"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Payment Status Text -->
+            <TextView
+                android:id="@+id/payment_status_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="Payment Status"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <!-- Payment Status Section with Radio Buttons -->
+            <RadioGroup
+                android:id="@+id/radio_group_payment_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="start|center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Paid Radio Button -->
+                <RadioButton
+                    android:id="@+id/radio_paid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Paid"
+                    android:textColor="@color/black" />
+
+                <!-- Pay on Arrival Radio Button -->
+                <RadioButton
+                    android:id="@+id/radio_pay_on_arrival"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Pay on Arrival"
+                    android:textColor="@color/black" />
+            </RadioGroup>
+
+            <!-- Generate Invoice Button -->
+            <Button
+                android:id="@+id/btn_generate_invoice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="20dp"
+                android:text="Generate Invoice"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

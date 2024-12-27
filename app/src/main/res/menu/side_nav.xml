@@ -4,18 +4,21 @@
     tools:showIn="navigation_view">
 
     <group
-        android:checkableBehavior="single"
-        >
-        <item
-            android:id="@+id/invoiceHistory"
-            android:icon="@drawable/ic_paper"
-            android:title="Invoice History"
-            />
+        android:checkableBehavior="single">
 
         <item
-            android:id="@+id/about_us"
+            android:id="@+id/menuHome"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/menuInvoiceHistory"
+            android:icon="@drawable/ic_paper"
+            android:title="Invoice History" />
+
+        <item
+            android:id="@+id/menuAboutUs"
             android:icon="@drawable/logo"
-            android:title="About Us"
-            />
+            android:title="About Us" />
     </group>
 </menu>
