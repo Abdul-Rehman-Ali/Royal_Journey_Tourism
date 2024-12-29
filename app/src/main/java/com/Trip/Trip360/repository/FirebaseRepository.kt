@@ -29,19 +29,19 @@ class FirebaseRepository(private val bookingDao: BookingDao) {
         }
     }
 
-    suspend fun syncRecord(invoice: Invoice, webName: String) {
+    suspend fun syncRecord(invoice: Invoice, collection: String) {
         try {
             val existingDocRef = invoice.firestoreDocRef
 
             Log.d("FirebaseSync", "Firebase doc ref: $existingDocRef")
 
             if (existingDocRef != null) {
-                firestore.collection(webName)
+                firestore.collection(collection)
                     .document(existingDocRef)
                     .set(invoice.toFirebaseModel())
                     .await()
             } else {
-                val newDocumentRef = firestore.collection(webName)
+                val newDocumentRef = firestore.collection(collection)
                     .add(invoice.toFirebaseModel())
                     .await()
 
