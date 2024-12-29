@@ -170,7 +170,7 @@ class InvoiceActivity : AppCompatActivity() {
                 invoice.filePath = filePath
                 lifecycleScope.launch(Dispatchers.IO) {
                     bookingDao.insertInvoice(invoice)
-                    firebaseRepository.syncRecord(invoice, invoice.webName)
+                    firebaseRepository.syncRecord(invoice, COLLECTION)
                 }
                 showMessageDialog("Invoice successfully created!", "Success", this@InvoiceActivity)
             }
@@ -193,7 +193,7 @@ class InvoiceActivity : AppCompatActivity() {
                     updatedInvoice.id = existingInvoice!!.id
                     updatedInvoice.firestoreDocRef = existingInvoice!!.firestoreDocRef
                     bookingDao.updateInvoice(updatedInvoice)
-                    firebaseRepository.syncRecord(updatedInvoice, updatedInvoice.webName)
+                    firebaseRepository.syncRecord(updatedInvoice, COLLECTION)
                 }
                 showMessageDialog("Invoice successfully updated!", "Success", this@InvoiceActivity)
             }
@@ -226,7 +226,7 @@ class InvoiceActivity : AppCompatActivity() {
             pickupTime = binding.etTime.text.toString(),
             pickupLocation = binding.etPickupLocation.text.toString(),
             paymentStatus = binding.radioGroupPaymentStatus.checkedRadioButtonId == R.id.radio_paid,
-            webName = "default_collection", // Replace with actual logic
+            webName = COLLECTION, 
             currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
             totalPrice = 0.0 // Replace with calculation logic
         )
@@ -277,5 +277,9 @@ class InvoiceActivity : AppCompatActivity() {
             dialog.dismiss()
         }
         dialog.show()
+    }
+
+    companion object {
+        private const val COLLECTION = SharedPrefUtils.getValue(this, KEY_WEB_NAME, "default_collection")
     }
 }
