@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.Trip.Trip360.databinding.ActivitySplashBinding
+import com.Trip.Trip360.utils.SharedPrefUtils
+import com.Trip.Trip360.utils.SharedPrefUtils.USER_LOGGED_IN
 
 
 class SplashActivity : AppCompatActivity() {
@@ -32,10 +34,12 @@ class SplashActivity : AppCompatActivity() {
 
         // Splash screen delay logic
         Handler(Looper.getMainLooper()).postDelayed({
-            // Intent to navigate to MainActivity after 3 seconds
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish() // Close SplashActivity
-        }, 3000) // Delay in milliseconds (3000ms = 3 seconds)
+            if(SharedPrefUtils.getValue(this, USER_LOGGED_IN, false)) {
+                startActivity(Intent(this, MainActivity::class.java))
+            } else {
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
+            finish()
+        }, 3000)
     }
 }

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.Trip.Trip360.databinding.ActivityLoginBinding
+import com.Trip.Trip360.utils.SharedPrefUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -86,9 +87,9 @@ class LoginActivity : AppCompatActivity() {
                         val webURL = document.getString("webURL")
 
                         // Store in SharedPreferences
-                        storeUserDataLocally(
-                            color, email, logoURL, password, phoneNo,
-                            userId, username, webName, webURL
+                        SharedPrefUtils.storeClientData(this,
+                            color = color, email = email, logoURL = logoURL, password =  password, phoneNo = phoneNo,
+                            userId = userId, username = username, webName = webName, webURL = webURL, userLoggedIn = true
                         )
 
                         // Navigate to MainActivity
@@ -110,22 +111,22 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun storeUserDataLocally(
-        color: String?, email: String?, logoURL: String?, password: String?,
-        phoneNo: String?, userId: String, username: String?, webName: String?, webURL: String?
-    ) {
-        val sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-
-        editor.putString("color", color)
-        editor.putString("email", email)
-        editor.putString("logoURL", logoURL)
-        editor.putString("password", password)
-        editor.putString("phoneNo", phoneNo)
-        editor.putString("userId", userId)
-        editor.putString("username", username)
-        editor.putString("webName", webName)
-        editor.putString("webURL", webURL)
-        editor.apply()
-    }
+//    private fun storeUserDataLocally(
+//        color: String?, email: String?, logoURL: String?, password: String?,
+//        phoneNo: String?, userId: String, username: String?, webName: String?, webURL: String?
+//    ) {
+//        val sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
+//        val editor = sharedPreferences.edit()
+//
+//        editor.putString("color", color)
+//        editor.putString("email", email)
+//        editor.putString("logoURL", logoURL)
+//        editor.putString("password", password)
+//        editor.putString("phoneNo", phoneNo)
+//        editor.putString("userId", userId)
+//        editor.putString("username", username)
+//        editor.putString("webName", webName)
+//        editor.putString("webURL", webURL)
+//        editor.apply()
+//    }
 }

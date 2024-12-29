@@ -5,8 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Invoice(
-    @PrimaryKey(autoGenerate = true) var id: Long,
-    var invoiceId: String, // Unique identifier for each invoice
+    @PrimaryKey var id: Long = System.currentTimeMillis(),
     val name: String,
     val email: String? = null,
     val phone: String? = null,
@@ -24,6 +23,7 @@ data class Invoice(
     val webName: String,
     val currentDate: String,
     val totalPrice: Double = 0.0,
-    var filePath: String? = null
+    var filePath: String? = null,
+    var firestoreDocRef: String? = null
 )
 

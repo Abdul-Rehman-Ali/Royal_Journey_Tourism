@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,10 @@ import androidx.lifecycle.lifecycleScope
 import com.Trip.Trip360.data.LocalDatabase
 import com.Trip.Trip360.databinding.ActivityMainBinding
 import com.Trip.Trip360.repository.FirebaseRepository
+import com.Trip.Trip360.utils.NetworkUtils
+import com.Trip.Trip360.utils.SharedPrefUtils
+import com.Trip.Trip360.utils.SharedPrefUtils.KEY_COLOR
+import com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_NAME
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -27,21 +32,28 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
+
         // Initialize SharedPreferences
-        val sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
+//        val sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
 
         // Fetch webName and primaryColor from SharedPreferences
-        val webName = sharedPreferences.getString("webName", "Default WebName") ?: "Default WebName"
-        val colorHex = sharedPreferences.getString("primaryColor", "#FF5733") ?: "#FF5733"
+        val webName = SharedPrefUtils.getValue(this, KEY_WEB_NAME,"Default WebName")
+        val colorHex = SharedPrefUtils.getValue(this, KEY_COLOR,"#FF5733")
+
+        Log.d("testingBaseApplication", "Webname: $webName, color: $colorHex")
 
         // Firebase sync
-//        val bookingDao = LocalDatabase.getDatabase(this).bookingDao()
 
-//        lifecycleScope.launch(Dispatchers.IO) {
-//            firebaseRepo = FirebaseRepository(bookingDao)
-//            firebaseRepo.syncMissedRecords(webName)
-//            bookingDao.deleteAllSyncedRecordsForWebName(webName) // Ensure scoped deletion
-//        }
+        if (NetworkUtils.isInternetAvailable(this)) {
+            val bookingDao = LocalDatabase.getDatabase(this).bookingDao()
+
+            lifecycleScope.launch(Dispatchers.IO) {
+                firebaseRepo = FirebaseRepository(bookingDao)
+                firebaseRepo.syncMissedRecords(webName)
+            }
+        }
 
         // Set up the layout and toolbar
         binding = ActivityMainBinding.inflate(layoutInflater)

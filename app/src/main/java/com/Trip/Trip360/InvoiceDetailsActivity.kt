@@ -38,10 +38,8 @@ class InvoiceDetailsActivity : AppCompatActivity() {
         Log.d("fjskjfs", "Invoice id: $invoiceId")
 
         if (invoiceId.toInt() != -1) {
-            Log.d("fjskjfs", "Inside fetch block")
             lifecycleScope.launch {
                 invoice = bookingDao.getInvoiceById(invoiceId)
-                Log.d("fjskjfs", "Data $invoice")
                 runOnUiThread{
                     invoice?.let {
                         setData()

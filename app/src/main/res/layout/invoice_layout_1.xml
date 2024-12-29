@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/materialDivider"
+        android:id="@+id/materialDivider1"
         android:layout_width="950px"
         android:layout_height="5px"
         android:layout_marginTop="12dp"
@@ -314,6 +314,7 @@
 
         <!-- Table Row 1: Header Row -->
         <TableRow
+            android:id="@+id/tableHeader"
             android:background="@color/primaryColor"
             android:paddingVertical="8px">
 
@@ -436,7 +437,7 @@
 
 
     <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/materialDivider11"
+        android:id="@+id/materialDivider2"
         android:layout_width="950px"
         android:layout_height="4px"
         app:dividerColor="@color/primaryColor"
@@ -505,6 +506,7 @@
 
 
         <TextView
+            android:id="@+id/tvPhoneFooter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
@@ -517,6 +519,7 @@
 
 
         <TextView
+            android:id="@+id/tvWebNameFooter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
@@ -527,6 +530,7 @@
             android:textSize="20px" />
 
         <TextView
+            android:id="@+id/tvWebUrlFooter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"

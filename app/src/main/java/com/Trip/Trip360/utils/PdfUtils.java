@@ -1,10 +1,18 @@
 package com.Trip.Trip360.utils;
 
+import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_COLOR;
+import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_PHONE_NO;
+import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_NAME;
+import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_URL;
+
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import androidx.activity.ComponentActivity;
 
@@ -47,6 +55,21 @@ public class PdfUtils {
             }
 
             ((TextView) view.findViewById(R.id.tvPaymentStatus)).setText(paymentStatus);
+
+            // set dynamic values
+            ((TextView) view.findViewById(R.id.tvPhoneFooter)).setText(SharedPrefUtils.INSTANCE.getValue(context, KEY_PHONE_NO, ""));
+            ((TextView) view.findViewById(R.id.tvWebNameFooter)).setText(SharedPrefUtils.INSTANCE.getValue(context, KEY_WEB_NAME, ""));
+            ((TextView) view.findViewById(R.id.tvWebUrlFooter)).setText(SharedPrefUtils.INSTANCE.getValue(context, KEY_WEB_URL, ""));
+
+            String colorHex = SharedPrefUtils.INSTANCE.getValue(context, KEY_COLOR, "#FF5733");
+            int color = Color.parseColor(colorHex);
+
+            view.findViewById(R.id.tableHeader).setBackgroundColor(color);
+            view.findViewById(R.id.linearLayout000).setBackgroundColor(color);
+            ((TextView) view.findViewById(R.id.textView)).setTextColor(color);
+            view.findViewById(R.id.materialDivider1).setBackgroundColor(color);
+            view.findViewById(R.id.materialDivider2).setBackgroundColor(color);
+
 
 //            File documentsDir = new File(context.getExternalFilesDir(null), "RoyalInvoices");
 //            if (!documentsDir.exists()) {

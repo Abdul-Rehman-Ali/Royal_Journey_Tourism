@@ -112,25 +112,6 @@ class InvoiceActivity : AppCompatActivity() {
         }
     }
 
-//    private fun setupDatePicker() {
-//        binding.etDate.setOnClickListener {
-//            val calendar = Calendar.getInstance()
-//            val year = calendar.get(Calendar.YEAR)
-//            val month = calendar.get(Calendar.MONTH)
-//            val day = calendar.get(Calendar.DAY_OF_MONTH)
-//
-//            val datePickerDialog = DatePickerDialog(
-//                this,
-//                { _, selectedYear, selectedMonth, selectedDay ->
-//                    val date = "$selectedDay/${selectedMonth + 1}/$selectedYear"
-//                    binding.etDate.setText(date)
-//                },
-//                year, month, day
-//            )
-//            datePickerDialog.show()
-//        }
-//    }
-
     private fun setupDateTimePicker() {
         binding.etDate.setOnClickListener {
             hideKeyboard(binding.etDate)
@@ -183,7 +164,6 @@ class InvoiceActivity : AppCompatActivity() {
         }
     }
 
-
     private fun setupTimePicker() {
         binding.etTime.setOnClickListener {
             hideKeyboard(binding.etTime)
@@ -214,10 +194,10 @@ class InvoiceActivity : AppCompatActivity() {
 
     private fun createInvoice(bookingDao: BookingDao, firebaseRepository: FirebaseRepository) {
         val invoice = collectInvoiceData()
-        if (invoice == null) {
-            showMessageDialog("Invalid data. Please check your inputs.", "Error", this)
-            return
-        }
+//        if (invoice == null) {
+//            showMessageDialog("Invalid data. Please check your inputs.", "Error", this)
+//            return
+//        }
 
         PdfUtils.generateInvoicePdf(selectedTemplate, invoice, this, object : PdfGenerationCallback {
             override fun onPdfGenerated(filePath: String?) {
@@ -258,6 +238,8 @@ class InvoiceActivity : AppCompatActivity() {
                     lifecycleScope.launch(Dispatchers.IO) {
 
                         updatedInvoice.id = existingInvoice!!.id
+                        updatedInvoice.firestoreDocRef = existingInvoice!!.firestoreDocRef
+
                         bookingDao.updateInvoice(updatedInvoice)
                         firebaseRepository.syncRecord(updatedInvoice, updatedInvoice.webName)
                     }
@@ -303,10 +285,7 @@ class InvoiceActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
         val webName = sharedPreferences.getString("webName", "default_collection") ?: "default_collection"
 
-
         val invoice = Invoice(
-            id = 0,
-            invoiceId = UUID.randomUUID().toString(), // Unique ID for each invoice
             name = name,
             email = email.ifBlank { null },
             phone = phone.ifBlank { null },
@@ -372,8 +351,6 @@ class InvoiceActivity : AppCompatActivity() {
         val kidsTotal = (noOfKids ?: 0) * (pkgPricePerKid ?: 0.0)
         return adultsTotal + kidsTotal
     }
-
-
 
     fun hideKeyboard(view: View) {
         val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

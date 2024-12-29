@@ -7,9 +7,9 @@
 
     <style name="Theme.RoyalJourneyTourism" parent="Base.Theme.RoyalJourneyTourism" />
 
-    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/primaryColor</item>
-    </style>
+<!--    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+<!--        <item name="colorPrimary">@color/primaryColor</item>-->
+<!--    </style>-->
 
 
     <!--    <style name="CustomTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->

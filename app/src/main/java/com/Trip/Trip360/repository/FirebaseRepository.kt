@@ -16,26 +16,11 @@ class FirebaseRepository(private val bookingDao: BookingDao) {
         if (missedRecords.isEmpty()) return
 
         Log.d("FirebaseSync", "Starting sync for missed records: $missedRecords")
-
         try {
             for (record in missedRecords) {
-                // Check if the record already exists in Firestore
-                val existingDocument = firestore.collection(webName)
-                    .whereEqualTo("invoiceId", record.invoiceId)
-                    .get()
-                    .await()
-
-                if (existingDocument.isEmpty) {
-                    // Only upload if the record doesn't already exist in Firestore
-                    val docRef = firestore.collection(webName).document()
-                    docRef.set(record).await()
-
-                    // Mark the record as synced in Room
-                    val updatedRecord = record.copy(firebaseSync = true)
-                    bookingDao.updateInvoice(updatedRecord)
-                } else {
-                    Log.d("FirebaseSync", "Invoice already exists in Firestore: ${record.invoiceId}")
-                }
+                val docRef = firestore.collection(webName).add(record.toFirebaseModel()).await()
+                val updatedRecord = record.copy(firebaseSync = true, firestoreDocRef = docRef.id)
+                bookingDao.updateInvoice(updatedRecord)
             }
 
             Log.d("FirebaseSync", "All records synced successfully to collection: $webName.")
@@ -44,44 +29,38 @@ class FirebaseRepository(private val bookingDao: BookingDao) {
         }
     }
 
-
     suspend fun syncRecord(invoice: Invoice, webName: String) {
         try {
+            val existingDocRef = invoice.firestoreDocRef
 
-            val querySnapshot = firestore.collection(webName)
-                .whereEqualTo("invoiceId", invoice.invoiceId)
-                .get()
-                .await()
+            Log.d("FirebaseSync", "Firebase doc ref: $existingDocRef")
 
-            if (querySnapshot.documents.isNotEmpty()) {
-                val documentId = querySnapshot.documents.first().id
+            if (existingDocRef != null) {
                 firestore.collection(webName)
-                    .document(documentId)
+                    .document(existingDocRef)
                     .set(invoice.toFirebaseModel())
                     .await()
-                Log.d("FirebaseSync", "Record updated successfully for invoiceId: ${invoice.invoiceId}")
             } else {
-                firestore.collection(webName)
+                val newDocumentRef = firestore.collection(webName)
                     .add(invoice.toFirebaseModel())
                     .await()
-                Log.d("FirebaseSync", "New record inserted successfully for invoiceId: ${invoice.invoiceId}")
+
+                val updateRecord = invoice.copy(firebaseSync = true, firestoreDocRef = newDocumentRef.id)
+                Log.d("FirebaseSync", "Updated local record: $updateRecord")
+                bookingDao.updateInvoice(updateRecord)
             }
-
-            val updateRecord = invoice.copy(firebaseSync = true)
-            bookingDao.updateInvoice(updateRecord)
-
         } catch (e: Exception) {
-            Log.e("FirebaseSync", "Record sync failed for invoiceId: ${invoice.invoiceId}: ${e.message}")
+            Log.e("FirebaseSync", "Record sync failed for invoiceId: ${invoice}: ${e.message}")
         }
     }
+
 
     private fun Invoice.toFirebaseModel(): FirebaseModel {
         return FirebaseModel(
             name = this.name,
             packageName = this.packageName ?: "",
             totalPrice = this.totalPrice,
-            currentDate = this.currentDate,
-            invoiceId = this.invoiceId
+            timeStamp = this.currentDate,
         )
     }
 
