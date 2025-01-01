@@ -66,11 +66,11 @@ class InvoiceDetailsActivity : AppCompatActivity() {
 
     private fun setActions() {
 
-        binding.btnViewPdf.setOnClickListener {
+        binding.cardViewPdf.setOnClickListener {
             invoice?.filePath?.let { it1 -> PdfUtilsKt.viewPdf(it1, this) }
         }
 
-        binding.btnEditInvoice.setOnClickListener {
+        binding.cardEditInvoice.setOnClickListener {
             val intent = Intent(this, InvoiceActivity::class.java).apply {
                 action = INTENT_ACTION_EDIT
                 invoice?.let { it1 -> putExtra("invoiceId", it1.id) }
@@ -78,7 +78,7 @@ class InvoiceDetailsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnDeleteInvoice.setOnClickListener {
+        binding.cardDeleteInvoice.setOnClickListener {
             showConfirmationDialog(message = "Invoice record will be permanently deleted from device", title = "Delete Invoice", this, onProceed = {
                 lifecycleScope.launch {
                     invoice?.filePath?.let { path ->
@@ -90,7 +90,7 @@ class InvoiceDetailsActivity : AppCompatActivity() {
             })
         }
 
-        binding.btnShareInvoice.setOnClickListener{
+        binding.cardShareInvoice.setOnClickListener{
             invoice?.filePath?.let { it1 -> PdfUtilsKt.shareInvoice(it1, this) } ?: Toast.makeText(this, "Invoice null", Toast.LENGTH_SHORT).show()
         }
     }
