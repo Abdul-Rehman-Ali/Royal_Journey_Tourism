@@ -233,7 +233,7 @@
                     android:clickable="true"
                     android:focusable="false"
                     android:drawableEnd="@drawable/ic_calendar"
-                    android:hint="Select Booking Date/Time"
+                    android:hint="Select Booking Date"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
