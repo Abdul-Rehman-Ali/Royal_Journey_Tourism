@@ -20,5 +20,10 @@
             android:id="@+id/menuAboutUs"
             android:icon="@drawable/logo"
             android:title="About Us" />
+
+        <item
+            android:id="@+id/menuLogout"
+            android:icon="@drawable/baseline_logout_24"
+            android:title="Log Out" />
     </group>
 </menu>
