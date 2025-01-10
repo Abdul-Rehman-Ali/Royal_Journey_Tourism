@@ -10,7 +10,7 @@ object SharedPrefUtils {
     // Keys for SharedPreferences
     const val KEY_COLOR = "color"
     private const val KEY_EMAIL = "email"
-    private const val KEY_LOGO_URL = "logoURL"
+    const val KEY_LOGO_URL = "logoURL"
     private const val KEY_PASSWORD = "password"
     const val KEY_PHONE_NO = "phoneNo"
     private const val KEY_USER_ID = "userId"

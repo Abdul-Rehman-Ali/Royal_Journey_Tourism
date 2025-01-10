@@ -1,39 +1,27 @@
 package com.Trip.Trip360
 
-import android.app.DatePickerDialog
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import com.Trip.Trip360.data.Invoice
-import com.Trip.Trip360.data.LocalDatabase
 import com.Trip.Trip360.databinding.FragmentHomeBinding
-import com.Trip.Trip360.repository.FirebaseRepository
-import com.Trip.Trip360.utils.CustomDialog.showMessageDialog
-import com.Trip.Trip360.utils.PdfGenerationCallback
-import com.Trip.Trip360.utils.PdfUtils
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.timepicker.MaterialTimePicker
-import com.google.android.material.timepicker.TimeFormat
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Date
-import java.util.Locale
-import java.util.UUID
+import com.Trip.Trip360.utils.SharedPrefUtils
+import com.Trip.Trip360.utils.SharedPrefUtils.KEY_LOGO_URL
+import com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_NAME
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestOptions
 
 class HomeFragment : Fragment() {
+
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var etDate: EditText
-    private lateinit var etTime: EditText
+    private lateinit var webName: String
+    private lateinit var imageUrl: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,210 +34,55 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-            binding.btnHomeGenerateInvoice.setOnClickListener { startActivity(Intent(requireContext(), InvoiceActivity::class.java)) }
-    }
+        // Initialize webName and imageUrl here where the context is available
+        webName = SharedPrefUtils.getValue(requireContext(), KEY_WEB_NAME, "Default WebName")
+        imageUrl = SharedPrefUtils.getValue(requireContext(), KEY_LOGO_URL, "")
 
-//        val db = LocalDatabase.getDatabase(requireContext())
-//
-//        binding.btnGenerateInvoice.setOnClickListener {
-//            showTemplateDialog { selectedTemplate ->
-//                val templateLayout = getTemplateLayout(selectedTemplate)
-//                templateLayout?.let { layout ->
-//                    collectData(layout)
-//                }
-//            }
-//        }
-//
-//        etDate = binding.etDate
-//        etTime = binding.etTime
-//
-//        // Set up the Date Picker
-//        etDate.setOnClickListener {
-//            val calendar = Calendar.getInstance()
-//            val year = calendar.get(Calendar.YEAR)
-//            val month = calendar.get(Calendar.MONTH)
-//            val day = calendar.get(Calendar.DAY_OF_MONTH)
-//
-//            val datePickerDialog = DatePickerDialog(
-//                requireContext(),
-//                { _, selectedYear, selectedMonth, selectedDay ->
-//                    val date = "$selectedDay/${selectedMonth + 1}/$selectedYear"
-//                    etDate.setText(date)
-//
-//                    val timePickerDialog = MaterialTimePicker.Builder()
-//                        .setTimeFormat(TimeFormat.CLOCK_24H)
-//                        .setHour(calendar.get(Calendar.HOUR_OF_DAY))
-//                        .setMinute(calendar.get(Calendar.MINUTE))
-//                        .setTitleText("Select Time")
-//                        .build()
-//
-//                    timePickerDialog.addOnPositiveButtonClickListener {
-//                        val selectedHour = timePickerDialog.hour
-//                        val selectedMinute = timePickerDialog.minute
-//                        val time = String.format("%02d:%02d", selectedHour, selectedMinute)
-//                        etDate.append(" $time")
-//                    }
-//
-//                    timePickerDialog.show(childFragmentManager, "TimePicker")
-//                },
-//                year, month, day
-//            )
-//
-//            datePickerDialog.show()
-//        }
-//
-//        // Set up the Time Picker
-//        etTime.setOnClickListener {
-//            val timePicker = MaterialTimePicker.Builder()
-//                .setHour(12)
-//                .setTitleText("Select Time")
-//                .build()
-//
-//            timePicker.show(parentFragmentManager, "MaterialTimePicker")
-//
-//            timePicker.addOnPositiveButtonClickListener {
-//                val selectedHour = timePicker.hour
-//                val selectedMinute = timePicker.minute
-//                val amPm = if (selectedHour < 12) "AM" else "PM"
-//                val hourIn12HourFormat = if (selectedHour > 12) {
-//                    selectedHour - 12
-//                } else if (selectedHour == 0) {
-//                    12
-//                } else {
-//                    selectedHour
-//                }
-//
-//                val formattedTime = String.format("%02d:%02d %s", hourIn12HourFormat, selectedMinute, amPm)
-//                etTime.setText(formattedTime)
-//            }
-//        }
-//    }
-//
-//    private fun getTemplateLayout(selectedTemplate: String): Int? {
-//        return when (selectedTemplate) {
-//            "Template 1" -> R.layout.invoice_layout_1
-//            "Template 2" -> R.layout.invoice_layout_2
-//            "Template 3" -> R.layout.invoice_layout_3
-//            else -> null
-//        }
-//    }
-//
-//    private fun collectData(selectedTemplate: Int) {
-//        val bookingDao = LocalDatabase.getDatabase(requireContext()).bookingDao()
-//        val firebaseRepository = FirebaseRepository(bookingDao)
-//
-//        val name = binding.etUsername.text.toString()
-//        val email = binding.etEmail.text.toString()
-//        val phone = binding.etPhone.text.toString()
-//        val packageName = binding.etPackageName.text.toString()
-//        val additionalAddon = binding.etAddonDescription.text.toString()
-//        val noOfAdults = binding.etAdults.text.toString().toIntOrNull()
-//        val pkgPricePerAdult = binding.etPackagePrice.text.toString().toDoubleOrNull()
-//        val noOfKids = binding.etKids.text.toString().toIntOrNull()
-//        val pkgPricePerKid = binding.etPackagePriceKids.text.toString().toDoubleOrNull()
-//        val pickupDate = binding.etDate.text.toString()
-//        val pickupTime = binding.etTime.text.toString()
-//        val pickupLocation = binding.etPickupLocation.text.toString()
-//        val paymentStatus = when (binding.radioGroupPaymentStatus.checkedRadioButtonId) {
-//            R.id.radio_paid -> true
-//            R.id.radio_pay_on_arrival -> false
-//            else -> false
-//        }
-//
-//        val totalPrice = calculateTotalPrice(noOfAdults, pkgPricePerAdult, noOfKids, pkgPricePerKid)
-//
-//        val currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
-//
-//        // Retrieve webName from SharedPreferences
-//        val sharedPreferences = requireContext().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
-//        val webName = sharedPreferences.getString("webName", "default_collection") ?: "default_collection"
-//
-//        val booking = Invoice(
-//            id = 0,
-//            invoiceId = UUID.randomUUID().toString(), // Unique ID for each invoice
-//            name = name,
-//            email = email.ifBlank { null },
-//            phone = phone.ifBlank { null },
-//            packageName = packageName.ifBlank { null },
-//            additionalAddon = additionalAddon.ifBlank { null },
-//            noOfAdults = noOfAdults,
-//            pkgPricePerAdult = pkgPricePerAdult,
-//            noOfKids = noOfKids,
-//            pkgPricePerKid = pkgPricePerKid,
-//            pickupDate = pickupDate.ifBlank { null },
-//            pickupTime = pickupTime.ifBlank { null },
-//            pickupLocation = pickupLocation.ifBlank { null },
-//            paymentStatus = paymentStatus,
-//            webName = webName,
-//            currentDate = currentDate,
-//            totalPrice = totalPrice
-//        )
-//
-//
-//        showMessageDialog("Generating Pdf, please wait...", "Action", requireContext())
-//
-//                PdfUtils.generateInvoicePdf(selectedTemplate, booking, requireContext(), object : PdfGenerationCallback {
-//                    override fun onPdfGenerated(filePath: String?) {
-//                        booking.filePath = filePath
-//
-//                        lifecycleScope.launch(Dispatchers.IO) {
-//                            bookingDao.insertInvoice(booking)
-//                            firebaseRepository.syncNewRecord(booking, webName)
-//                        }
-//
-//                        showMessageDialog(
-//                            "Invoice successfully Created",
-//                            "Success",
-//                            requireContext()
-//                        )
-//                    }
-//
-//                    override fun onFailure(errorMessage: String?) {
-//                        showMessageDialog(
-//                            "Failed to generate PDF: $errorMessage",
-//                            "Failure",
-//                            requireContext()
-//                        )
-//                    }
-//
-//                })
-//            }
-//
-//    private fun calculateTotalPrice(
-//        noOfAdults: Int?, pkgPricePerAdult: Double?,
-//        noOfKids: Int?, pkgPricePerKid: Double?
-//    ): Double {
-//        val adultsTotal = (noOfAdults ?: 0) * (pkgPricePerAdult ?: 0.0)
-//        val kidsTotal = (noOfKids ?: 0) * (pkgPricePerKid ?: 0.0)
-//        return adultsTotal + kidsTotal
-//    }
-//
-//    fun showTemplateDialog(onTemplateSelected: (String) -> Unit) {
-//        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_template_list, null)
-//
-//        val dialog = MaterialAlertDialogBuilder(requireContext())
-//            .setTitle("Select a Template")
-//            .setView(dialogView)
-//            .setCancelable(true)
-//            .create()
-//
-//        dialogView.findViewById<View>(R.id.item1).setOnClickListener {
-//            onTemplateSelected("Template 1")
-//            dialog.dismiss()
-//        }
-//
-//        dialogView.findViewById<View>(R.id.item2).setOnClickListener {
-//            onTemplateSelected("Template 2")
-//            dialog.dismiss()
-//        }
-//
-//        dialogView.findViewById<View>(R.id.item3).setOnClickListener {
-//            onTemplateSelected("Template 3")
-//            dialog.dismiss()
-//        }
-//
-//        dialog.show()
-//    }
+        Log.d("HomeFragment", "WebName: $webName")
+        Log.d("HomeFragment", "Logo URL: $imageUrl")
+
+        // Set the header text to webName
+        binding.tvHeaderText.text = "Welcome to $webName dashboard"
+
+        // Load the image from the URL into the ImageView
+        if (imageUrl.isNotEmpty()) {
+            Glide.with(this)
+                .load(imageUrl)
+                .apply(RequestOptions.placeholderOf(R.drawable.logo).error(R.drawable.logo))
+                .listener(object : com.bumptech.glide.request.RequestListener<android.graphics.drawable.Drawable> {
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        Log.e("HomeFragment", "Image Load Failed: ${e?.message}")
+                        return false
+                    }
+
+                    override fun onResourceReady(
+                        resource: android.graphics.drawable.Drawable?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable>?,
+                        dataSource: com.bumptech.glide.load.DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        Log.d("HomeFragment", "Image Load Successful")
+                        return false
+                    }
+                })
+                .into(binding.imgHeader)
+        } else {
+            // Set a default placeholder if no URL is found
+            binding.imgHeader.setImageResource(R.drawable.logo)
+            Log.d("HomeFragment", "Logo URL is empty, using default placeholder")
+        }
+
+        // Handle button click
+        binding.btnHomeGenerateInvoice.setOnClickListener {
+            startActivity(Intent(requireContext(), InvoiceActivity::class.java))
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

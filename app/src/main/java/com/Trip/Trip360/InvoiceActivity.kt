@@ -25,6 +25,7 @@ import com.Trip.Trip360.utils.PdfGenerationCallback
 import com.Trip.Trip360.utils.PdfUtils
 import com.Trip.Trip360.utils.SharedPrefUtils
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_COLOR
+import com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_NAME
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -36,7 +37,6 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
-import java.util.UUID
 
 class InvoiceActivity : AppCompatActivity() {
 
@@ -212,7 +212,7 @@ class InvoiceActivity : AppCompatActivity() {
             showMessageDialog("Name, email, and phone cannot be empty", "Error", this)
             return null
         }
-        val invoice = Invoice(
+        return Invoice(
             name = name,
             email = email,
             phone = phone,
@@ -226,14 +226,13 @@ class InvoiceActivity : AppCompatActivity() {
             pickupTime = binding.etTime.text.toString(),
             pickupLocation = binding.etPickupLocation.text.toString(),
             paymentStatus = binding.radioGroupPaymentStatus.checkedRadioButtonId == R.id.radio_paid,
-            webName = COLLECTION, 
+            webName = COLLECTION,
             currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
             totalPrice = 0.0 // Replace with calculation logic
         )
-        return invoice
     }
 
-    fun hideKeyboard(view: View) {
+    private fun hideKeyboard(view: View) {
         val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
@@ -280,6 +279,6 @@ class InvoiceActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val COLLECTION = SharedPrefUtils.getValue(this, KEY_WEB_NAME, "default_collection")
+        private const val COLLECTION = "default_collection"
     }
 }

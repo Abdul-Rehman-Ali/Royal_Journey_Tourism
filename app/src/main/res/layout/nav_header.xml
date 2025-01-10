@@ -11,8 +11,8 @@
     android:layout_height="@dimen/nav_header_height">
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:src="@drawable/logo"
         android:layout_gravity="center"
         app:tint="@color/white"/>
@@ -20,17 +20,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_gravity="center"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Discover Dubai’s Best Desert Safaris, Cruises and Adventures We’ve selected the best Dubai tours for you!"
+        android:text="Trip 360: Streamline tour invoicing with ease! Generate, manage, and send invoices seamlessly."
         android:textSize="14sp"
         android:textColor="@color/white"
         android:gravity="center"

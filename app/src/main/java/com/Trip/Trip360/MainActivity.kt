@@ -31,18 +31,14 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
-
         // Initialize SharedPreferences
 //        val sharedPreferences = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
 
         // Fetch webName and primaryColor from SharedPreferences
         val webName = SharedPrefUtils.getValue(this, KEY_WEB_NAME,"Default WebName")
-        val colorHex = SharedPrefUtils.getValue(this, KEY_COLOR,"#FF5733")
+//        val colorHex = SharedPrefUtils.getValue(this, KEY_COLOR,"#FF5733")
 
-        Log.d("testingBaseApplication", "Webname: $webName, color: $colorHex")
+//        Log.d("testingBaseApplication", "Webname: $webName, color: $colorHex")
 
         // Firebase sync
 
@@ -64,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = webName // Set the toolbar title to webName
 
         // Apply the primary color across the app
-        applyPrimaryColor(colorHex)
+//        applyPrimaryColor(colorHex)
 
         // Navigation drawer setup
         toggle = ActionBarDrawerToggle(
