@@ -1,10 +1,12 @@
 package com.Trip.Trip360
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +21,7 @@ import com.Trip.Trip360.utils.NetworkUtils
 import com.Trip.Trip360.utils.SharedPrefUtils
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_COLOR
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_NAME
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -84,6 +87,27 @@ class MainActivity : AppCompatActivity() {
                 R.id.menuInvoiceHistory -> {
                     openFragment(InvoiceHistoryFragment())
                 }
+                R.id.menuLogout -> {
+                    // Firebase sign-out
+                    FirebaseAuth.getInstance().signOut()
+
+                    // Clear SharedPreferences
+                    val sharedPreferences = getSharedPreferences("ClientDataPref", Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.clear() // Clears all stored data in SharedPreferences
+                    editor.apply()
+
+                    // Redirect to the login screen
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+
+                    // Optionally show a message to the user (e.g., Toast)
+                    Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+
+                    true
+                }
+
             }
             binding.drawerLayout.closeDrawers()
             true
