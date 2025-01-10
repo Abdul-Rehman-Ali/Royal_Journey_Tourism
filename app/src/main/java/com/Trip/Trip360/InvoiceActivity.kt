@@ -84,7 +84,7 @@ class InvoiceActivity : AppCompatActivity() {
         // Setup UI
         setupDateTimePicker()
         setupTimePicker()
-        applyPrimaryColor(SharedPrefUtils.getValue(this, KEY_COLOR, "#FF5733"))
+//        applyPrimaryColor(SharedPrefUtils.getValue(this, KEY_COLOR, "#FF5733"))
 
         binding.btnGenerateInvoice.text = if (isEditMode) "Update Invoice" else "Generate Invoice"
 
