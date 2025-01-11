@@ -44,7 +44,7 @@ class InvoiceActivity : AppCompatActivity() {
     private var isEditMode: Boolean = false
     private var invoiceId: Long? = null
     private var existingInvoice: Invoice? = null
-    private var selectedTemplate: Int = R.layout.invoice_layout_1
+    private var selectedTemplate: Int = R.layout.invoice_layout_2
     private lateinit var bookingDao: BookingDao
     private lateinit var firebaseRepository: FirebaseRepository
 
@@ -54,9 +54,13 @@ class InvoiceActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
+        setSupportActionBar(binding.materialToolbarInvoice)
+        val statusBarColor = ContextCompat.getColor(this, R.color.primaryColor)
+
         // Apply insets to adjust for system bars
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            window.statusBarColor = statusBarColor
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }

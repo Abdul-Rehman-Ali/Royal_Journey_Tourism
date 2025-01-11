@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity() {
 
         // Apply the color to the toolbar, status bar, and navigation drawer
         binding.toolbar.setBackgroundColor(primaryColor)
-//        window.statusBarColor = primaryColor // Status bar color
+        window.statusBarColor = primaryColor // Status bar color
 
         val headerView = binding.navigationView.getHeaderView(0)
         headerView.setBackgroundColor(primaryColor)

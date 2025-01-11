@@ -61,14 +61,14 @@ public class PdfUtils {
             ((TextView) view.findViewById(R.id.tvWebNameFooter)).setText(SharedPrefUtils.INSTANCE.getValue(context, KEY_WEB_NAME, ""));
             ((TextView) view.findViewById(R.id.tvWebUrlFooter)).setText(SharedPrefUtils.INSTANCE.getValue(context, KEY_WEB_URL, ""));
 
-            String colorHex = SharedPrefUtils.INSTANCE.getValue(context, KEY_COLOR, "#FF5733");
-            int color = Color.parseColor(colorHex);
+//            String colorHex = SharedPrefUtils.INSTANCE.getValue(context, KEY_COLOR, "#FF5733");
+//            int color = Color.parseColor(colorHex);
 
-            view.findViewById(R.id.tableHeader).setBackgroundColor(color);
-            view.findViewById(R.id.linearLayout000).setBackgroundColor(color);
-            ((TextView) view.findViewById(R.id.textView)).setTextColor(color);
-            view.findViewById(R.id.materialDivider1).setBackgroundColor(color);
-            view.findViewById(R.id.materialDivider2).setBackgroundColor(color);
+//            view.findViewById(R.id.tableHeader).setBackgroundColor(color);
+//            view.findViewById(R.id.linearLayout000).setBackgroundColor(color);
+//            ((TextView) view.findViewById(R.id.textView)).setTextColor(color);
+//            view.findViewById(R.id.materialDivider1).setBackgroundColor(color);
+//            view.findViewById(R.id.materialDivider2).setBackgroundColor(color);
 
 
 //            File documentsDir = new File(context.getExternalFilesDir(null), "RoyalInvoices");

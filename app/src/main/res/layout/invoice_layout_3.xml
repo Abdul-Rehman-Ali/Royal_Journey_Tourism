@@ -187,7 +187,6 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
-
             <TextView
                 android:id="@+id/tvPaymentStatus"
                 android:layout_width="wrap_content"
@@ -198,13 +197,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
-
-
         </LinearLayout>
-
-
     </LinearLayout>
-
 
     <!--    <LinearLayout-->
     <!--        android:id="@+id/linearLayout"-->
@@ -547,15 +541,8 @@
                     android:textColor="@color/white"
                     android:textSize="10sp"
                     app:drawableStartCompat="@drawable/ic_email" />
-
             </LinearLayout>
-
-
         </LinearLayout>
-
-
     </LinearLayout>
-
-
 
 </LinearLayout>
