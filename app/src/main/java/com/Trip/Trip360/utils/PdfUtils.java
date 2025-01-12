@@ -120,7 +120,7 @@ public class PdfUtils {
         }
     }
 
-    private static double calculateTotalPrice(Invoice booking) {
+    public static double calculateTotalPrice(Invoice booking) {
         return calculateTotalPriceForAdults(booking) + calculateTotalPriceForKids(booking);
     }
 

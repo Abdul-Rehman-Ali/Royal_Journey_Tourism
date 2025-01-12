@@ -1,10 +1,8 @@
 package com.Trip.Trip360
 
-import android.app.DatePickerDialog
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -23,9 +21,6 @@ import com.Trip.Trip360.utils.CustomDialog.showMessageDialog
 import com.Trip.Trip360.utils.IntentActionUtils.INTENT_ACTION_EDIT
 import com.Trip.Trip360.utils.PdfGenerationCallback
 import com.Trip.Trip360.utils.PdfUtils
-import com.Trip.Trip360.utils.SharedPrefUtils
-import com.Trip.Trip360.utils.SharedPrefUtils.KEY_COLOR
-import com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_NAME
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -44,7 +39,7 @@ class InvoiceActivity : AppCompatActivity() {
     private var isEditMode: Boolean = false
     private var invoiceId: Long? = null
     private var existingInvoice: Invoice? = null
-    private var selectedTemplate: Int = R.layout.invoice_layout_2
+    private var selectedTemplate: Int = R.layout.invoice_layout_1
     private lateinit var bookingDao: BookingDao
     private lateinit var firebaseRepository: FirebaseRepository
 
@@ -167,14 +162,34 @@ class InvoiceActivity : AppCompatActivity() {
         }
     }
 
+//    private fun createInvoice() {
+//        val invoice = collectInvoiceData() ?: return
+//        PdfUtils.generateInvoicePdf(selectedTemplate, invoice, this, object : PdfGenerationCallback {
+//            override fun onPdfGenerated(filePath: String?) {
+//                invoice.filePath = filePath
+//                lifecycleScope.launch(Dispatchers.IO) {
+//                    bookingDao.insertInvoice(invoice)
+//                    firebaseRepository.syncRecord(invoice, COLLECTION)
+//                }
+//                showMessageDialog("Invoice successfully created!", "Success", this@InvoiceActivity)
+//            }
+//
+//            override fun onFailure(errorMessage: String?) {
+//                showMessageDialog("Failed to generate PDF: $errorMessage", "Error", this@InvoiceActivity)
+//            }
+//        })
+//    }
+
     private fun createInvoice() {
         val invoice = collectInvoiceData() ?: return
+        val collectionName = getCollectionName(this) // Fetch the dynamic collection name
+
         PdfUtils.generateInvoicePdf(selectedTemplate, invoice, this, object : PdfGenerationCallback {
             override fun onPdfGenerated(filePath: String?) {
                 invoice.filePath = filePath
                 lifecycleScope.launch(Dispatchers.IO) {
                     bookingDao.insertInvoice(invoice)
-                    firebaseRepository.syncRecord(invoice, COLLECTION)
+                    firebaseRepository.syncRecord(invoice, collectionName) // Use dynamic collection name
                 }
                 showMessageDialog("Invoice successfully created!", "Success", this@InvoiceActivity)
             }
@@ -185,8 +200,35 @@ class InvoiceActivity : AppCompatActivity() {
         })
     }
 
+
+
+//    private fun updateInvoice() {
+//        val updatedInvoice = collectInvoiceData() ?: return
+//        existingInvoice?.filePath?.let { path ->
+//            File("$path.pdf").takeIf { it.exists() }?.delete()
+//        }
+//        PdfUtils.generateInvoicePdf(selectedTemplate, updatedInvoice, this, object : PdfGenerationCallback {
+//            override fun onPdfGenerated(filePath: String?) {
+//                updatedInvoice.filePath = filePath
+//                lifecycleScope.launch(Dispatchers.IO) {
+//                    updatedInvoice.id = existingInvoice!!.id
+//                    updatedInvoice.firestoreDocRef = existingInvoice!!.firestoreDocRef
+//                    bookingDao.updateInvoice(updatedInvoice)
+//                    firebaseRepository.syncRecord(updatedInvoice, COLLECTION)
+//                }
+//                showMessageDialog("Invoice successfully updated!", "Success", this@InvoiceActivity)
+//            }
+//
+//            override fun onFailure(errorMessage: String?) {
+//                showMessageDialog("Failed to generate PDF: $errorMessage", "Error", this@InvoiceActivity)
+//            }
+//        })
+//    }
+
     private fun updateInvoice() {
         val updatedInvoice = collectInvoiceData() ?: return
+        val collectionName = getCollectionName(this) // Fetch the dynamic collection name
+
         existingInvoice?.filePath?.let { path ->
             File("$path.pdf").takeIf { it.exists() }?.delete()
         }
@@ -197,7 +239,7 @@ class InvoiceActivity : AppCompatActivity() {
                     updatedInvoice.id = existingInvoice!!.id
                     updatedInvoice.firestoreDocRef = existingInvoice!!.firestoreDocRef
                     bookingDao.updateInvoice(updatedInvoice)
-                    firebaseRepository.syncRecord(updatedInvoice, COLLECTION)
+                    firebaseRepository.syncRecord(updatedInvoice, collectionName) // Use the dynamic collection name
                 }
                 showMessageDialog("Invoice successfully updated!", "Success", this@InvoiceActivity)
             }
@@ -208,15 +250,85 @@ class InvoiceActivity : AppCompatActivity() {
         })
     }
 
+
+//    private fun collectInvoiceData(): Invoice? {
+//        val name = binding.etUsername.text.toString()
+//        val email = binding.etEmail.text.toString()
+//        val phone = binding.etPhone.text.toString()
+//        if (name.isBlank() || email.isBlank() || phone.isBlank()) {
+//            showMessageDialog("Name, email, and phone cannot be empty", "Error", this)
+//            return null
+//        }
+//        return Invoice(
+//            name = name,
+//            email = email,
+//            phone = phone,
+//            packageName = binding.etPackageName.text.toString(),
+//            additionalAddon = binding.etAddonDescription.text.toString(),
+//            noOfAdults = binding.etAdults.text.toString().toIntOrNull(),
+//            pkgPricePerAdult = binding.etPackagePrice.text.toString().toDoubleOrNull(),
+//            noOfKids = binding.etKids.text.toString().toIntOrNull(),
+//            pkgPricePerKid = binding.etPackagePriceKids.text.toString().toDoubleOrNull(),
+//            pickupDate = binding.etDate.text.toString(),
+//            pickupTime = binding.etTime.text.toString(),
+//            pickupLocation = binding.etPickupLocation.text.toString(),
+//            paymentStatus = binding.radioGroupPaymentStatus.checkedRadioButtonId == R.id.radio_paid,
+//            webName = COLLECTION,
+//            currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
+//            totalPrice = 0.0 // Replace with calculation logic
+//        )
+//    }
+
+//    private fun collectInvoiceData(): Invoice? {
+//        val name = binding.etUsername.text.toString()
+//        val email = binding.etEmail.text.toString()
+//        val phone = binding.etPhone.text.toString()
+//
+//        if (name.isBlank() || email.isBlank() || phone.isBlank()) {
+//            showMessageDialog("Name, email, and phone cannot be empty", "Error", this)
+//            return null
+//        }
+//
+//        // Dynamically fetch webName from SharedPreferences
+//        val sharedPreferences = getSharedPreferences("YourPreferenceName", Context.MODE_PRIVATE)
+//        val webName = sharedPreferences.getString("webName", "default_collection") ?: "default_collection"
+//
+//        return Invoice(
+//            name = name,
+//            email = email,
+//            phone = phone,
+//            packageName = binding.etPackageName.text.toString(),
+//            additionalAddon = binding.etAddonDescription.text.toString(),
+//            noOfAdults = binding.etAdults.text.toString().toIntOrNull(),
+//            pkgPricePerAdult = binding.etPackagePrice.text.toString().toDoubleOrNull(),
+//            noOfKids = binding.etKids.text.toString().toIntOrNull(),
+//            pkgPricePerKid = binding.etPackagePriceKids.text.toString().toDoubleOrNull(),
+//            pickupDate = binding.etDate.text.toString(),
+//            pickupTime = binding.etTime.text.toString(),
+//            pickupLocation = binding.etPickupLocation.text.toString(),
+//            paymentStatus = binding.radioGroupPaymentStatus.checkedRadioButtonId == R.id.radio_paid,
+//            webName = webName, // Set the dynamically fetched webName here
+//            currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
+//            totalPrice = 0.0 // Replace with calculation logic if needed
+//        )
+//    }
+
+
     private fun collectInvoiceData(): Invoice? {
         val name = binding.etUsername.text.toString()
         val email = binding.etEmail.text.toString()
         val phone = binding.etPhone.text.toString()
+
         if (name.isBlank() || email.isBlank() || phone.isBlank()) {
             showMessageDialog("Name, email, and phone cannot be empty", "Error", this)
             return null
         }
-        return Invoice(
+
+        // Dynamically fetch webName from SharedPreferences
+        val sharedPreferences = getSharedPreferences("YourPreferenceName", Context.MODE_PRIVATE)
+        val webName = sharedPreferences.getString("webName", "default_collection") ?: "default_collection"
+
+        val invoice = Invoice(
             name = name,
             email = email,
             phone = phone,
@@ -230,11 +342,18 @@ class InvoiceActivity : AppCompatActivity() {
             pickupTime = binding.etTime.text.toString(),
             pickupLocation = binding.etPickupLocation.text.toString(),
             paymentStatus = binding.radioGroupPaymentStatus.checkedRadioButtonId == R.id.radio_paid,
-            webName = COLLECTION,
+            webName = webName, // Set the dynamically fetched webName here
             currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
-            totalPrice = 0.0 // Replace with calculation logic
+            totalPrice = 0.0 // Placeholder, we'll calculate below
         )
+
+        // Calculate the total price and set it in the Invoice object
+        invoice.totalPrice = PdfUtils.calculateTotalPrice(invoice)
+
+        return invoice
     }
+
+
 
     private fun hideKeyboard(view: View) {
         val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -283,6 +402,15 @@ class InvoiceActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val COLLECTION = "default_collection"
+        fun getCollectionName(context: Context): String {
+            val sharedPreferences = context.getSharedPreferences("ClientDataPref", Context.MODE_PRIVATE)
+            return sharedPreferences.getString("webName", "default_collection") ?: "default_collection"
+        }
     }
+
+
+
+//    companion object {
+//        private const val COLLECTION = "default_collection"
+//    }
 }

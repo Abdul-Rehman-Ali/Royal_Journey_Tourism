@@ -22,7 +22,7 @@ data class Invoice(
     val firebaseSync: Boolean = false,
     val webName: String,
     val currentDate: String,
-    val totalPrice: Double = 0.0,
+    var totalPrice: Double = 0.0,
     var filePath: String? = null,
     var firestoreDocRef: String? = null
 )
