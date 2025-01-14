@@ -465,7 +465,6 @@ class InvoiceActivity : AppCompatActivity() {
     }
 
 
-
 //    companion object {
 //        private const val COLLECTION = "default_collection"
 //    }
