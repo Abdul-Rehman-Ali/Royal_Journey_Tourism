@@ -1,5 +1,6 @@
 package com.Trip.Trip360.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 
@@ -11,6 +12,7 @@ object SharedPrefUtils {
     const val KEY_COLOR = "color"
     private const val KEY_EMAIL = "email"
     const val KEY_LOGO_URL = "logoURL"
+    const val KEY_LOGO_LOCAL_FILE_PATH = "logoLocalFilePath"
     private const val KEY_PASSWORD = "password"
     const val KEY_PHONE_NO = "phoneNo"
     private const val KEY_USER_ID = "userId"
@@ -34,8 +36,6 @@ object SharedPrefUtils {
             else -> throw IllegalArgumentException("Unsupported data type")
         }
     }
-
-
 
     fun storeClientData(
         context: Context,
@@ -63,6 +63,10 @@ object SharedPrefUtils {
         editor.putString(KEY_WEB_URL, webURL)
         editor.putBoolean(USER_LOGGED_IN, userLoggedIn)
         editor.apply()
+    }
+
+    fun storeLogoFileRef(path: String, context: Context) {
+        getSharedPreferences(context).edit().putString(KEY_LOGO_LOCAL_FILE_PATH, path).apply()
     }
 
 }

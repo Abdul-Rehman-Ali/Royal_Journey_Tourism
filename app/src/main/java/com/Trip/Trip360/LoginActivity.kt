@@ -2,8 +2,11 @@ package com.Trip.Trip360
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +16,9 @@ import com.Trip.Trip360.databinding.ActivityLoginBinding
 import com.Trip.Trip360.utils.SharedPrefUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import java.io.File
 
 class LoginActivity : AppCompatActivity() {
 
@@ -92,6 +98,10 @@ class LoginActivity : AppCompatActivity() {
                             userId = userId, username = username, webName = webName, webURL = webURL, userLoggedIn = true
                         )
 
+                        logoURL?.let {
+                            saveLogoLocally(it)
+                        }
+
                         // Navigate to MainActivity
                         Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MainActivity::class.java)
@@ -108,6 +118,28 @@ class LoginActivity : AppCompatActivity() {
         } else {
             binding.progressLoader.visibility = View.GONE // Hide loader if userId is null
             Toast.makeText(this, "User ID is null", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun saveLogoLocally(url: String) {
+        // Get reference to Firebase Storage using the image URL
+        val storageReference: StorageReference = FirebaseStorage.getInstance().getReferenceFromUrl(url)
+
+        // Define the local file path where the image will be saved
+        val localLogoFile = File(filesDir, "businessLogo") // Internal storage
+
+        // Download the image to the local file
+        storageReference.getFile(localLogoFile).addOnSuccessListener {
+            Log.d("FirebaseImageDownloader", "Image downloaded successfully")
+
+            // Optionally, load the image into an ImageView after downloading
+            try {
+                SharedPrefUtils.storeLogoFileRef(localLogoFile.absolutePath, this)
+            } catch (e: Exception) {
+                Log.e("FirebaseImageDownloader", "Error loading image: ${e.message}")
+            }
+        }.addOnFailureListener { exception ->
+            Log.e("FirebaseImageDownloader", "Failed to download image", exception)
         }
     }
 

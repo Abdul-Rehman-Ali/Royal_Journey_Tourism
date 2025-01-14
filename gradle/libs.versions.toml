@@ -1,6 +1,7 @@
 [versions]
 agp = "8.5.2"
 androidXmlToPdfGenerator = "2.6.8"
+firebaseStorage = "21.0.1"
 kotlin = "1.9.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -20,6 +21,7 @@ gridlayout = "1.0.0"
 [libraries]
 android-xml-to-pdf-generator = { module = "com.github.Gkemon:Android-XML-to-PDF-Generator", version.ref = "androidXmlToPdfGenerator" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+firebase-storage = { module = "com.google.firebase:firebase-storage", version.ref = "firebaseStorage" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

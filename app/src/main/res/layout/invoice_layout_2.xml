@@ -515,6 +515,7 @@
 
 
             <TextView
+                android:id="@+id/tvPhoneFooter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
@@ -527,6 +528,7 @@
 
 
             <TextView
+                android:id="@+id/tvWebNameFooter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
@@ -538,6 +540,7 @@
                 app:drawableStartCompat="@drawable/ic_web" />
 
             <TextView
+                android:id="@+id/tvWebUrlFooter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"

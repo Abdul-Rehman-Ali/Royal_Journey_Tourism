@@ -1,6 +1,7 @@
 package com.Trip.Trip360
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,11 +10,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.Trip.Trip360.databinding.FragmentHomeBinding
 import com.Trip.Trip360.utils.SharedPrefUtils
+import com.Trip.Trip360.utils.SharedPrefUtils.KEY_LOGO_LOCAL_FILE_PATH
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_LOGO_URL
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_NAME
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestOptions
+import com.Trip.Trip360.utils.SharedPrefUtils.getValue
 
 class HomeFragment : Fragment() {
 
@@ -45,38 +45,43 @@ class HomeFragment : Fragment() {
         binding.tvHeaderText.text = "Welcome to $webName dashboard"
 
         // Load the image from the URL into the ImageView
-        if (imageUrl.isNotEmpty()) {
-            Glide.with(this)
-                .load(imageUrl)
-                .apply(RequestOptions.placeholderOf(R.drawable.logo).error(R.drawable.logo))
-                .listener(object : com.bumptech.glide.request.RequestListener<android.graphics.drawable.Drawable> {
-                    override fun onLoadFailed(
-                        e: GlideException?,
-                        model: Any?,
-                        target: com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable>?,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        Log.e("HomeFragment", "Image Load Failed: ${e?.message}")
-                        return false
-                    }
-
-                    override fun onResourceReady(
-                        resource: android.graphics.drawable.Drawable?,
-                        model: Any?,
-                        target: com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable>?,
-                        dataSource: com.bumptech.glide.load.DataSource?,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        Log.d("HomeFragment", "Image Load Successful")
-                        return false
-                    }
-                })
-                .into(binding.imgHeader)
-        } else {
-            // Set a default placeholder if no URL is found
-            binding.imgHeader.setImageResource(R.drawable.logo)
-            Log.d("HomeFragment", "Logo URL is empty, using default placeholder")
-        }
+        val logoLocalPath = getValue(requireContext(), KEY_LOGO_LOCAL_FILE_PATH, "")
+        binding.imgHeader.setImageDrawable(Drawable.createFromPath(logoLocalPath))
+//
+//        if (imageUrl.isNotEmpty()) {
+//
+//
+////            Glide.with(this)
+////                .load(imageUrl)
+////                .apply(RequestOptions.placeholderOf(R.drawable.logo).error(R.drawable.logo))
+////                .listener(object : com.bumptech.glide.request.RequestListener<android.graphics.drawable.Drawable> {
+////                    override fun onLoadFailed(
+////                        e: GlideException?,
+////                        model: Any?,
+////                        target: com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable>?,
+////                        isFirstResource: Boolean
+////                    ): Boolean {
+////                        Log.e("HomeFragment", "Image Load Failed: ${e?.message}")
+////                        return false
+////                    }
+////
+////                    override fun onResourceReady(
+////                        resource: android.graphics.drawable.Drawable?,
+////                        model: Any?,
+////                        target: com.bumptech.glide.request.target.Target<android.graphics.drawable.Drawable>?,
+////                        dataSource: com.bumptech.glide.load.DataSource?,
+////                        isFirstResource: Boolean
+////                    ): Boolean {
+////                        Log.d("HomeFragment", "Image Load Successful")
+////                        return false
+////                    }
+////                })
+////                .into(binding.imgHeader)
+//        } else {
+//            // Set a default placeholder if no URL is found
+//            binding.imgHeader.setImageResource(R.drawable.logo)
+//            Log.d("HomeFragment", "Logo URL is empty, using default placeholder")
+//        }
 
         // Handle button click
         binding.btnHomeGenerateInvoice.setOnClickListener {

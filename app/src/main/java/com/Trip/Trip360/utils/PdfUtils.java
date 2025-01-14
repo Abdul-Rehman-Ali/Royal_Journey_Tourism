@@ -1,23 +1,33 @@
 package com.Trip.Trip360.utils;
 
 import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_COLOR;
+import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_LOGO_LOCAL_FILE_PATH;
+import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_LOGO_URL;
 import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_PHONE_NO;
 import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_NAME;
 import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_URL;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import androidx.activity.ComponentActivity;
+import androidx.annotation.Nullable;
 
 import com.Trip.Trip360.R;
 import com.Trip.Trip360.data.Invoice;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.gkemon.XMLtoPDF.PdfGenerator;
 import com.gkemon.XMLtoPDF.PdfGeneratorListener;
 import com.gkemon.XMLtoPDF.model.FailureResponse;
@@ -60,6 +70,15 @@ public class PdfUtils {
             ((TextView) view.findViewById(R.id.tvPhoneFooter)).setText(SharedPrefUtils.INSTANCE.getValue(context, KEY_PHONE_NO, ""));
             ((TextView) view.findViewById(R.id.tvWebNameFooter)).setText(SharedPrefUtils.INSTANCE.getValue(context, KEY_WEB_NAME, ""));
             ((TextView) view.findViewById(R.id.tvWebUrlFooter)).setText(SharedPrefUtils.INSTANCE.getValue(context, KEY_WEB_URL, ""));
+
+
+//            String logoUrl = SharedPrefUtils.INSTANCE.getValue(context, KEY_LOGO_URL, "emptyUrl");
+
+            ImageView logoImageView = view.findViewById(R.id.imageView); // Assuming you have an ImageView with id 'ivLogo'
+
+            Drawable drawable = Drawable.createFromPath(SharedPrefUtils.INSTANCE.getValue(context, KEY_LOGO_LOCAL_FILE_PATH,""));
+            logoImageView.setImageDrawable(drawable);
+
 
 //            String colorHex = SharedPrefUtils.INSTANCE.getValue(context, KEY_COLOR, "#FF5733");
 //            int color = Color.parseColor(colorHex);
