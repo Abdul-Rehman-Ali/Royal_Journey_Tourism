@@ -24,6 +24,7 @@ data class Invoice(
     val currentDate: String,
     var totalPrice: Double = 0.0,
     var filePath: String? = null,
-    var firestoreDocRef: String? = null
+    var firestoreDocRef: String? = null,
+    val logoUrl: String? = null
 )
 

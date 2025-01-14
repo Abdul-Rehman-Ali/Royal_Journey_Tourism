@@ -1,23 +1,19 @@
 package com.Trip.Trip360.utils;
 
-import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_COLOR;
 import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_PHONE_NO;
 import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_NAME;
 import static com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_URL;
-
 import android.content.Context;
-import android.graphics.Color;
-import android.os.Environment;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TableRow;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.activity.ComponentActivity;
-
 import com.Trip.Trip360.R;
 import com.Trip.Trip360.data.Invoice;
+import com.bumptech.glide.Glide;
 import com.gkemon.XMLtoPDF.PdfGenerator;
 import com.gkemon.XMLtoPDF.PdfGeneratorListener;
 import com.gkemon.XMLtoPDF.model.FailureResponse;
@@ -46,6 +42,33 @@ public class PdfUtils {
             ((TextView) view.findViewById(R.id.tvPricePerAdult)).setText(booking.getPkgPricePerAdult() != null ? String.valueOf(booking.getPkgPricePerAdult()) : "0.00");
             ((TextView) view.findViewById(R.id.tvTotalOnAdults)).setText(String.valueOf(calculateTotalPriceForAdults(booking)));
             ((TextView) view.findViewById(R.id.tvTotalOnKids)).setText(String.valueOf(calculateTotalPriceForKids(booking)));
+
+            // Load the logo URL into the ImageView
+            String logoUrl = booking.getLogoUrl(); // Assuming 'getLogoURL' returns a URL string
+            Log.d("PdfUtils", "Logo URL: " + logoUrl);  // Log the URL for debugging
+
+            ImageView logoImageView = view.findViewById(R.id.logoUrl);
+
+            // Check if the URL is not null or empty
+            if (logoUrl != null && !logoUrl.isEmpty()) {
+                try {
+                    // Load the image synchronously
+                    Bitmap logoBitmap = Glide.with(context)
+                            .asBitmap()
+                            .load(logoUrl)
+                            .submit()
+                            .get(); // This forces Glide to load the image synchronously
+
+                    // Set the loaded bitmap to the ImageView
+                    logoImageView.setImageBitmap(logoBitmap);
+                } catch (Exception e) {
+                    Log.e("PdfUtils", "Failed to load image: " + e.getMessage());
+                    logoImageView.setImageResource(R.drawable.logo); // Default logo on error
+                }
+            } else {
+                // If the URL is empty, use the default logo
+                logoImageView.setImageResource(R.drawable.logo);
+            }
 
             // payment status
             if (booking.getPaymentStatus()) {

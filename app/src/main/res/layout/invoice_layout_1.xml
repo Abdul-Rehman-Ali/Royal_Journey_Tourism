@@ -9,7 +9,7 @@
     android:padding="16px">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logoUrl"
         android:layout_width="180px"
         android:layout_height="180px"
         android:layout_marginTop="8dp"

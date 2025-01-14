@@ -3,9 +3,11 @@ package com.Trip.Trip360
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -21,6 +23,7 @@ import com.Trip.Trip360.utils.CustomDialog.showMessageDialog
 import com.Trip.Trip360.utils.IntentActionUtils.INTENT_ACTION_EDIT
 import com.Trip.Trip360.utils.PdfGenerationCallback
 import com.Trip.Trip360.utils.PdfUtils
+import com.bumptech.glide.Glide
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -119,6 +122,55 @@ class InvoiceActivity : AppCompatActivity() {
             )
         }
     }
+
+//    private fun populateFields(invoice: Invoice) {
+//        runOnUiThread {
+//            binding.etUsername.setText(invoice.name)
+//            binding.etEmail.setText(invoice.email)
+//            binding.etPhone.setText(invoice.phone)
+//            binding.etPackageName.setText(invoice.packageName)
+//            binding.etAddonDescription.setText(invoice.additionalAddon)
+//            binding.etAdults.setText(invoice.noOfAdults?.toString())
+//            binding.etPackagePrice.setText(invoice.pkgPricePerAdult?.toString())
+//            binding.etKids.setText(invoice.noOfKids?.toString())
+//            binding.etPackagePriceKids.setText(invoice.pkgPricePerKid?.toString())
+//            binding.etDate.setText(invoice.pickupDate)
+//            binding.etTime.setText(invoice.pickupTime)
+//            binding.etPickupLocation.setText(invoice.pickupLocation)
+//            binding.radioGroupPaymentStatus.check(
+//                if (invoice.paymentStatus) R.id.radio_paid else R.id.radio_pay_on_arrival
+//            )
+//
+//            // Fetch the logo URL from SharedPreferences
+//            val sharedPreferences = getSharedPreferences("ClientDataPref", Context.MODE_PRIVATE)
+//            val savedLogoUrl = sharedPreferences.getString("logoURL", "") ?: ""
+//
+//            // Use either the logo URL from the Invoice object or the one from SharedPreferences
+//            val logoUrl = invoice.logoUrl ?: savedLogoUrl
+//
+//            // Log URLs for debugging
+//            Log.d("populateFields", "Saved Logo URL: $savedLogoUrl")
+//            Log.d("populateFields", "Final Logo URL: $logoUrl")
+//
+//            // Use findViewById to bind the ImageView
+//            val logoImageView = findViewById<ImageView>(R.id.logoUrl)
+//
+//            // Populate the logo image
+//            if (logoUrl.isNotEmpty()) {
+//                Glide.with(this)
+//                    .load(logoUrl)
+//                    .placeholder(R.drawable.logo) // Set a default logo while loading
+//                    .error(R.drawable.logo) // Set a fallback logo if the URL fails
+//                    .into(logoImageView)
+//            } else {
+//                // If the URL is null or empty, set the default logo
+//                logoImageView.setImageResource(R.drawable.logo)
+//            }
+//        }
+//    }
+
+
+
 
     private fun setupDateTimePicker() {
         binding.etDate.setOnClickListener {
@@ -325,8 +377,11 @@ class InvoiceActivity : AppCompatActivity() {
         }
 
         // Dynamically fetch webName from SharedPreferences
-        val sharedPreferences = getSharedPreferences("YourPreferenceName", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("ClientDataPref", Context.MODE_PRIVATE)
         val webName = sharedPreferences.getString("webName", "default_collection") ?: "default_collection"
+        val logoUrl = sharedPreferences.getString("logoURL", "") ?: ""
+        Log.d("InvoiceData", "My Fetched logoURL: $logoUrl")
+
 
         val invoice = Invoice(
             name = name,
@@ -344,7 +399,8 @@ class InvoiceActivity : AppCompatActivity() {
             paymentStatus = binding.radioGroupPaymentStatus.checkedRadioButtonId == R.id.radio_paid,
             webName = webName, // Set the dynamically fetched webName here
             currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
-            totalPrice = 0.0 // Placeholder, we'll calculate below
+            totalPrice = 0.0, // Placeholder, we'll calculate below
+            logoUrl = logoUrl
         )
 
         // Calculate the total price and set it in the Invoice object
