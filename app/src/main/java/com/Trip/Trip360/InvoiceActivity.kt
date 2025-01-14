@@ -3,6 +3,7 @@ package com.Trip.Trip360
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -19,6 +20,7 @@ import com.Trip.Trip360.databinding.ActivityInvoiceBinding
 import com.Trip.Trip360.repository.FirebaseRepository
 import com.Trip.Trip360.utils.CustomDialog.showMessageDialog
 import com.Trip.Trip360.utils.IntentActionUtils.INTENT_ACTION_EDIT
+import com.Trip.Trip360.utils.IssueTrackLog.showLog
 import com.Trip.Trip360.utils.PdfGenerationCallback
 import com.Trip.Trip360.utils.PdfUtils
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -183,6 +185,8 @@ class InvoiceActivity : AppCompatActivity() {
     private fun createInvoice() {
         val invoice = collectInvoiceData() ?: return
         val collectionName = getCollectionName(this) // Fetch the dynamic collection name
+
+        showLog("invoice data $invoice, webname: $collectionName, selected Template: $selectedTemplate")
 
         PdfUtils.generateInvoicePdf(selectedTemplate, invoice, this, object : PdfGenerationCallback {
             override fun onPdfGenerated(filePath: String?) {
