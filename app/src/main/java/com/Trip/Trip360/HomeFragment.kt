@@ -87,6 +87,13 @@ class HomeFragment : Fragment() {
         binding.btnHomeGenerateInvoice.setOnClickListener {
             startActivity(Intent(requireContext(), InvoiceActivity::class.java))
         }
+
+        binding.btnHomeSeeInvoiceHistory.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.content_frame, InvoiceHistoryFragment()) // Replace with your container ID
+                .addToBackStack(null) // Allows back navigation
+                .commit()
+        }
     }
 
     override fun onDestroyView() {
