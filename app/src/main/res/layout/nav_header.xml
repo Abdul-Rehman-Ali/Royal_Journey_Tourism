@@ -20,8 +20,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Trip 360: Streamline tour invoicing with ease! Generate, manage, and send invoices seamlessly."
-        android:textSize="14sp"
+        android:text="Streamline tour invoicing with ease! Generate, manage, and send invoices seamlessly."
+        android:textSize="13sp"
         android:textColor="@color/white"
         android:gravity="center"
         android:layout_gravity="center"
