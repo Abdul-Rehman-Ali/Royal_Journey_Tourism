@@ -14,6 +14,7 @@ import com.Trip.Trip360.utils.SharedPrefUtils.KEY_LOGO_LOCAL_FILE_PATH
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_LOGO_URL
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_NAME
 import com.Trip.Trip360.utils.SharedPrefUtils.getValue
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class HomeFragment : Fragment() {
 
@@ -94,6 +95,36 @@ class HomeFragment : Fragment() {
                 .addToBackStack(null) // Allows back navigation
                 .commit()
         }
+
+        binding.btnHomeSeeTemplates.setOnClickListener {
+            showTemplateDialog { template ->
+                Log.d("HomeFragment", "Selected template: $template")
+            }
+        }
+    }
+
+
+    private fun showTemplateDialog(onTemplateSelected: (String) -> Unit) {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_template_list, null)
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Select a Template")
+            .setView(dialogView)
+            .setCancelable(true)
+            .create()
+
+        dialogView.findViewById<View>(R.id.item1).setOnClickListener {
+            onTemplateSelected("Template 1")
+            dialog.dismiss()
+        }
+        dialogView.findViewById<View>(R.id.item2).setOnClickListener {
+            onTemplateSelected("Template 2")
+            dialog.dismiss()
+        }
+        dialogView.findViewById<View>(R.id.item3).setOnClickListener {
+            onTemplateSelected("Template 3")
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 
     override fun onDestroyView() {
