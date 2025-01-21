@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
@@ -16,6 +17,8 @@ import com.Trip.Trip360.utils.CustomDialog.showConfirmationDialog
 import com.Trip.Trip360.utils.IntentActionUtils.INTENT_ACTION_EDIT
 import com.Trip.Trip360.utils.PdfUtils
 import com.Trip.Trip360.utils.PdfUtilsKt
+import com.Trip.Trip360.utils.SharedPrefUtils
+import com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_NAME
 import kotlinx.coroutines.launch
 import java.io.File
 
@@ -28,11 +31,17 @@ class InvoiceDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.primaryColor)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val webName = SharedPrefUtils.getValue(this, KEY_WEB_NAME,"Default WebName")
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.title = webName
 
         val invoiceId = intent.getLongExtra("invoiceId", -1)
         Log.d("fjskjfs", "Invoice id: $invoiceId")

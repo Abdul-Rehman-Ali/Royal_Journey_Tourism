@@ -9,6 +9,21 @@
     android:background="@drawable/back01"
     tools:context=".InvoiceDetailsActivity">
 
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primaryColor"
+        android:elevation="4dp"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="match_parent"
@@ -40,8 +55,8 @@
 
                 <ImageView
                     android:id="@+id/imageEditInvoice"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/baseline_edit_document_24" />
 
@@ -50,8 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Edit Invoice"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:paddingBottom="10dp"
                     android:layout_marginTop="8dp" />
             </LinearLayout>
@@ -76,8 +90,8 @@
 
                 <ImageView
                     android:id="@+id/imageDeleteInvoice"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/baseline_delete_24" />
 
@@ -86,8 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Delete Invoice"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:paddingBottom="10dp"
                     android:layout_marginTop="8dp" />
             </LinearLayout>
@@ -112,8 +125,8 @@
 
                 <ImageView
                     android:id="@+id/imageViewPdf"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/ic_pdf" />
 
@@ -122,9 +135,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="View PDF"
-                    android:textStyle="bold"
                     android:paddingBottom="10dp"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:layout_marginTop="8dp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -148,8 +160,8 @@
 
                 <ImageView
                     android:id="@+id/imageShareInvoice"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/ic_share" />
 
@@ -158,8 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Share Invoice"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:paddingBottom="10dp"
                     android:layout_marginTop="8dp" />
             </LinearLayout>
