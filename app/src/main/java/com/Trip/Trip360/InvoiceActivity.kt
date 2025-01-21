@@ -162,23 +162,6 @@ class InvoiceActivity : AppCompatActivity() {
         }
     }
 
-//    private fun createInvoice() {
-//        val invoice = collectInvoiceData() ?: return
-//        PdfUtils.generateInvoicePdf(selectedTemplate, invoice, this, object : PdfGenerationCallback {
-//            override fun onPdfGenerated(filePath: String?) {
-//                invoice.filePath = filePath
-//                lifecycleScope.launch(Dispatchers.IO) {
-//                    bookingDao.insertInvoice(invoice)
-//                    firebaseRepository.syncRecord(invoice, COLLECTION)
-//                }
-//                showMessageDialog("Invoice successfully created!", "Success", this@InvoiceActivity)
-//            }
-//
-//            override fun onFailure(errorMessage: String?) {
-//                showMessageDialog("Failed to generate PDF: $errorMessage", "Error", this@InvoiceActivity)
-//            }
-//        })
-//    }
 
     private fun createInvoice() {
         val invoice = collectInvoiceData() ?: return
@@ -200,30 +183,6 @@ class InvoiceActivity : AppCompatActivity() {
         })
     }
 
-
-
-//    private fun updateInvoice() {
-//        val updatedInvoice = collectInvoiceData() ?: return
-//        existingInvoice?.filePath?.let { path ->
-//            File("$path.pdf").takeIf { it.exists() }?.delete()
-//        }
-//        PdfUtils.generateInvoicePdf(selectedTemplate, updatedInvoice, this, object : PdfGenerationCallback {
-//            override fun onPdfGenerated(filePath: String?) {
-//                updatedInvoice.filePath = filePath
-//                lifecycleScope.launch(Dispatchers.IO) {
-//                    updatedInvoice.id = existingInvoice!!.id
-//                    updatedInvoice.firestoreDocRef = existingInvoice!!.firestoreDocRef
-//                    bookingDao.updateInvoice(updatedInvoice)
-//                    firebaseRepository.syncRecord(updatedInvoice, COLLECTION)
-//                }
-//                showMessageDialog("Invoice successfully updated!", "Success", this@InvoiceActivity)
-//            }
-//
-//            override fun onFailure(errorMessage: String?) {
-//                showMessageDialog("Failed to generate PDF: $errorMessage", "Error", this@InvoiceActivity)
-//            }
-//        })
-//    }
 
     private fun updateInvoice() {
         val updatedInvoice = collectInvoiceData() ?: return
@@ -249,70 +208,6 @@ class InvoiceActivity : AppCompatActivity() {
             }
         })
     }
-
-
-//    private fun collectInvoiceData(): Invoice? {
-//        val name = binding.etUsername.text.toString()
-//        val email = binding.etEmail.text.toString()
-//        val phone = binding.etPhone.text.toString()
-//        if (name.isBlank() || email.isBlank() || phone.isBlank()) {
-//            showMessageDialog("Name, email, and phone cannot be empty", "Error", this)
-//            return null
-//        }
-//        return Invoice(
-//            name = name,
-//            email = email,
-//            phone = phone,
-//            packageName = binding.etPackageName.text.toString(),
-//            additionalAddon = binding.etAddonDescription.text.toString(),
-//            noOfAdults = binding.etAdults.text.toString().toIntOrNull(),
-//            pkgPricePerAdult = binding.etPackagePrice.text.toString().toDoubleOrNull(),
-//            noOfKids = binding.etKids.text.toString().toIntOrNull(),
-//            pkgPricePerKid = binding.etPackagePriceKids.text.toString().toDoubleOrNull(),
-//            pickupDate = binding.etDate.text.toString(),
-//            pickupTime = binding.etTime.text.toString(),
-//            pickupLocation = binding.etPickupLocation.text.toString(),
-//            paymentStatus = binding.radioGroupPaymentStatus.checkedRadioButtonId == R.id.radio_paid,
-//            webName = COLLECTION,
-//            currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
-//            totalPrice = 0.0 // Replace with calculation logic
-//        )
-//    }
-
-//    private fun collectInvoiceData(): Invoice? {
-//        val name = binding.etUsername.text.toString()
-//        val email = binding.etEmail.text.toString()
-//        val phone = binding.etPhone.text.toString()
-//
-//        if (name.isBlank() || email.isBlank() || phone.isBlank()) {
-//            showMessageDialog("Name, email, and phone cannot be empty", "Error", this)
-//            return null
-//        }
-//
-//        // Dynamically fetch webName from SharedPreferences
-//        val sharedPreferences = getSharedPreferences("YourPreferenceName", Context.MODE_PRIVATE)
-//        val webName = sharedPreferences.getString("webName", "default_collection") ?: "default_collection"
-//
-//        return Invoice(
-//            name = name,
-//            email = email,
-//            phone = phone,
-//            packageName = binding.etPackageName.text.toString(),
-//            additionalAddon = binding.etAddonDescription.text.toString(),
-//            noOfAdults = binding.etAdults.text.toString().toIntOrNull(),
-//            pkgPricePerAdult = binding.etPackagePrice.text.toString().toDoubleOrNull(),
-//            noOfKids = binding.etKids.text.toString().toIntOrNull(),
-//            pkgPricePerKid = binding.etPackagePriceKids.text.toString().toDoubleOrNull(),
-//            pickupDate = binding.etDate.text.toString(),
-//            pickupTime = binding.etTime.text.toString(),
-//            pickupLocation = binding.etPickupLocation.text.toString(),
-//            paymentStatus = binding.radioGroupPaymentStatus.checkedRadioButtonId == R.id.radio_paid,
-//            webName = webName, // Set the dynamically fetched webName here
-//            currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
-//            totalPrice = 0.0 // Replace with calculation logic if needed
-//        )
-//    }
-
 
     private fun collectInvoiceData(): Invoice? {
         val name = binding.etUsername.text.toString()
@@ -407,10 +302,4 @@ class InvoiceActivity : AppCompatActivity() {
             return sharedPreferences.getString("webName", "default_collection") ?: "default_collection"
         }
     }
-
-
-
-//    companion object {
-//        private const val COLLECTION = "default_collection"
-//    }
 }
