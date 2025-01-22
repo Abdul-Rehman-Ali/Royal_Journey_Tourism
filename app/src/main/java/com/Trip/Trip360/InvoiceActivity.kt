@@ -329,6 +329,7 @@ package com.Trip.Trip360
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -337,6 +338,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import com.Trip.Trip360.data.BookingDao
 import com.Trip.Trip360.data.Invoice
@@ -488,25 +490,66 @@ class InvoiceActivity : AppCompatActivity() {
         }
     }
 
+//    private fun createInvoice() {
+//        val invoice = collectInvoiceData() ?: return
+//        val collectionName = getCollectionName(this)
+//
+//        PdfUtils.generateInvoicePdf(selectedTemplate, invoice, this, object : PdfGenerationCallback {
+//            override fun onPdfGenerated(filePath: String?) {
+//                invoice.filePath = filePath
+//                lifecycleScope.launch(Dispatchers.IO) {
+//                    bookingDao.insertInvoice(invoice)
+//                    firebaseRepository.syncRecord(invoice, collectionName)
+//                }
+//                showMessageDialog("Invoice successfully created.", "Success", this@InvoiceActivity)
+//            }
+//
+//            override fun onFailure(errorMessage: String?) {
+//                showMessageDialog("Failed to generate PDF: $errorMessage", "Error", this@InvoiceActivity)
+//            }
+//        })
+//    }
+
     private fun createInvoice() {
         val invoice = collectInvoiceData() ?: return
         val collectionName = getCollectionName(this)
 
+        if (selectedTemplate == 0) {
+            showMessageDialog("Invalid template selected.", "Error", this@InvoiceActivity)
+            return
+        }
+
+        if (this.isFinishing || this.isDestroyed) {
+            Log.e("InvoiceActivity", "Cannot generate PDF, activity is finishing or destroyed.")
+            return
+        }
+
         PdfUtils.generateInvoicePdf(selectedTemplate, invoice, this, object : PdfGenerationCallback {
             override fun onPdfGenerated(filePath: String?) {
+                if (filePath.isNullOrEmpty()) {
+                    showMessageDialog("File path is empty. Please try again.", "Error", this@InvoiceActivity)
+                    return
+                }
+
                 invoice.filePath = filePath
-                lifecycleScope.launch(Dispatchers.IO) {
-                    bookingDao.insertInvoice(invoice)
-                    firebaseRepository.syncRecord(invoice, collectionName)
+                if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                    lifecycleScope.launch(Dispatchers.IO) {
+                        bookingDao.insertInvoice(invoice)
+                        firebaseRepository.syncRecord(invoice, collectionName)
+                    }
+                } else {
+                    Log.e("InvoiceActivity", "Cannot perform operations, activity is not in a valid state.")
                 }
                 showMessageDialog("Invoice successfully created.", "Success", this@InvoiceActivity)
             }
 
             override fun onFailure(errorMessage: String?) {
+                Log.e("PdfUtils", "Failed to generate PDF: $errorMessage")
                 showMessageDialog("Failed to generate PDF: $errorMessage", "Error", this@InvoiceActivity)
             }
         })
     }
+
 
     private fun updateInvoice() {
         val updatedInvoice = collectInvoiceData() ?: return

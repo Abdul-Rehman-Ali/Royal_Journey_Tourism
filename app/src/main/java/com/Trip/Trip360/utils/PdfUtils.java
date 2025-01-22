@@ -513,9 +513,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleObserver;
-import androidx.lifecycle.OnLifecycleEvent;
+import androidx.lifecycle.DefaultLifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
 
 import com.Trip.Trip360.R;
 import com.Trip.Trip360.data.Invoice;
@@ -693,15 +692,15 @@ public class PdfUtils {
     /**
      * Lifecycle observer for cleaning up the view when the activity is destroyed.
      */
-    public static class PdfLifecycleObserver implements LifecycleObserver {
+    public static class PdfLifecycleObserver implements DefaultLifecycleObserver {
         private final WeakReference<View> viewReference;
 
         public PdfLifecycleObserver(View view) {
             this.viewReference = new WeakReference<>(view);
         }
 
-        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-        public void onDestroy() {
+        @Override
+        public void onDestroy(LifecycleOwner owner) {
             View view = viewReference.get();
             if (view != null) {
                 cleanupView(view);
@@ -709,3 +708,4 @@ public class PdfUtils {
         }
     }
 }
+
