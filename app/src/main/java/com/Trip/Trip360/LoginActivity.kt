@@ -122,17 +122,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun saveLogoLocally(url: String) {
-        // Get reference to Firebase Storage using the image URL
+
         val storageReference: StorageReference = FirebaseStorage.getInstance().getReferenceFromUrl(url)
+        val localLogoFile = File(filesDir, "businessLogo")
 
-        // Define the local file path where the image will be saved
-        val localLogoFile = File(filesDir, "businessLogo") // Internal storage
-
-        // Download the image to the local file
         storageReference.getFile(localLogoFile).addOnSuccessListener {
             Log.d("FirebaseImageDownloader", "Image downloaded successfully")
-
-            // Optionally, load the image into an ImageView after downloading
             try {
                 SharedPrefUtils.storeLogoFileRef(localLogoFile.absolutePath, this)
             } catch (e: Exception) {
