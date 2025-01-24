@@ -327,7 +327,6 @@
 package com.Trip.Trip360
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -345,10 +344,10 @@ import com.Trip.Trip360.data.Invoice
 import com.Trip.Trip360.data.LocalDatabase
 import com.Trip.Trip360.databinding.ActivityInvoiceBinding
 import com.Trip.Trip360.repository.FirebaseRepository
+import com.Trip.Trip360.testPdf.NativeApi
 import com.Trip.Trip360.utils.CustomDialog.showMessageDialog
 import com.Trip.Trip360.utils.IntentActionUtils.INTENT_ACTION_EDIT
-import com.Trip.Trip360.utils.PdfGenerationCallback
-import com.Trip.Trip360.utils.PdfUtils
+import com.Trip.Trip360.utils.PdfGenCallback
 import com.gkemon.XMLtoPDF.PdfGenerator
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -371,7 +370,7 @@ class InvoiceActivity : AppCompatActivity() {
     private var selectedTemplate: Int = R.layout.invoice_layout_1
     private lateinit var bookingDao: BookingDao
     private lateinit var firebaseRepository: FirebaseRepository
-    private lateinit var xmlToPDFLifecycleObserver: PdfGenerator.XmlToPDFLifecycleObserver
+//    private lateinit var xmlToPDFLifecycleObserver: PdfGenerator.XmlToPDFLifecycleObserver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -383,8 +382,8 @@ class InvoiceActivity : AppCompatActivity() {
         val statusBarColor = ContextCompat.getColor(this, R.color.primaryColor)
 
         // Initialize XmlToPDFLifecycleObserver
-        xmlToPDFLifecycleObserver = PdfGenerator.XmlToPDFLifecycleObserver(this)
-        lifecycle.addObserver(xmlToPDFLifecycleObserver)
+//        xmlToPDFLifecycleObserver = PdfGenerator.XmlToPDFLifecycleObserver(this)
+//        lifecycle.addObserver(xmlToPDFLifecycleObserver)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -524,7 +523,7 @@ class InvoiceActivity : AppCompatActivity() {
             return
         }
 
-        PdfUtils.generateInvoicePdf(selectedTemplate, invoice, this, object : PdfGenerationCallback {
+        NativeApi.generateInvoicePdf(selectedTemplate = selectedTemplate, booking =  invoice, context = this, callback =  object : PdfGenCallback {
             override fun onPdfGenerated(filePath: String?) {
                 if (filePath.isNullOrEmpty()) {
                     showMessageDialog("File path is empty. Please try again.", "Error", this@InvoiceActivity)
@@ -558,7 +557,7 @@ class InvoiceActivity : AppCompatActivity() {
         existingInvoice?.filePath?.let { path ->
             File("$path.pdf").takeIf { it.exists() }?.delete()
         }
-        PdfUtils.generateInvoicePdf(selectedTemplate, updatedInvoice, this, object : PdfGenerationCallback {
+        NativeApi.generateInvoicePdf(selectedTemplate = selectedTemplate, booking = updatedInvoice, context =  this, callback = object : PdfGenCallback {
             override fun onPdfGenerated(filePath: String?) {
                 updatedInvoice.filePath = filePath
                 lifecycleScope.launch(Dispatchers.IO) {
@@ -608,7 +607,7 @@ class InvoiceActivity : AppCompatActivity() {
             totalPrice = 0.0
         )
 
-        invoice.totalPrice = PdfUtils.calculateTotalPrice(invoice)
+        invoice.totalPrice = NativeApi.calculateTotalPrice(invoice)
 
         return invoice
     }

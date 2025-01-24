@@ -17,6 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import com.Trip.Trip360.data.LocalDatabase
 import com.Trip.Trip360.databinding.ActivityMainBinding
 import com.Trip.Trip360.repository.FirebaseRepository
+import com.Trip.Trip360.testPdf.NativeApi
 import com.Trip.Trip360.utils.NetworkUtils
 import com.Trip.Trip360.utils.SharedPrefUtils
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_COLOR
@@ -44,6 +45,9 @@ class MainActivity : AppCompatActivity() {
 //        Log.d("testingBaseApplication", "Webname: $webName, color: $colorHex")
 
         // Firebase sync
+
+
+//        NativeApi.generateInvoicePdf(layoutInflater)
 
         if (NetworkUtils.isInternetAvailable(this)) {
             val bookingDao = LocalDatabase.getDatabase(this).bookingDao()

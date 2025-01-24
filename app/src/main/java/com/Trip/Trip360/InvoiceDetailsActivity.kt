@@ -15,7 +15,6 @@ import com.Trip.Trip360.data.LocalDatabase
 import com.Trip.Trip360.databinding.ActivityInvoiceDetailsBinding
 import com.Trip.Trip360.utils.CustomDialog.showConfirmationDialog
 import com.Trip.Trip360.utils.IntentActionUtils.INTENT_ACTION_EDIT
-import com.Trip.Trip360.utils.PdfUtils
 import com.Trip.Trip360.utils.PdfUtilsKt
 import com.Trip.Trip360.utils.SharedPrefUtils
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_NAME

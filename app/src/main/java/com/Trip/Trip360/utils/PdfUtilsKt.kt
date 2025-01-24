@@ -34,7 +34,7 @@ object PdfUtilsKt {
 
         inspectAppExternalDir(context)
 
-        val file = File(filePath+".pdf") // Convert filePath to a File object
+        val file = File(filePath) // Convert filePath to a File object
         if (!file.exists()) {
             Toast.makeText(context, "File does not exist at: $filePath", Toast.LENGTH_SHORT).show()
             return
@@ -89,7 +89,7 @@ object PdfUtilsKt {
 
 
     fun shareInvoice(filePath: String, context: Context) {
-        val file = File(filePath + ".pdf") // Convert filePath to a File object
+        val file = File(filePath) // Convert filePath to a File object
         if (!file.exists()) {
             Toast.makeText(context, "File does not exist at: $filePath", Toast.LENGTH_SHORT).show()
             return
