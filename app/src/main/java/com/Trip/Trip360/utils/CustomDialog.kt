@@ -1,8 +1,16 @@
 package com.Trip.Trip360.utils
 
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.net.Uri
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.FileProvider
+import com.Trip.Trip360.utils.PdfUtilsKt.inspectAppExternalDir
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.io.File
 
 object CustomDialog {
     private var currentDialog: AlertDialog? = null
@@ -26,6 +34,61 @@ object CustomDialog {
         currentDialog = dialog
         dialog.show()
     }
+
+    fun MessageDialog(
+        message: String?,
+        title: String?,
+        context: Context,
+        pdfFilePath: String?
+    ) {
+        if (currentDialog != null && currentDialog!!.isShowing) {
+            currentDialog!!.dismiss()
+        }
+
+        val dialogBuilder = MaterialAlertDialogBuilder(context)
+            .setTitle(title)
+            .setMessage(message)
+            .setCancelable(false)
+            .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+
+        if (!pdfFilePath.isNullOrEmpty()) {
+            dialogBuilder.setNegativeButton("Open PDF") { dialog, _ ->
+                openPdfWithChooser(context, pdfFilePath)
+                dialog.dismiss()
+            }
+        }
+
+        currentDialog = dialogBuilder.create()
+        currentDialog!!.show()
+    }
+
+    private fun openPdfWithChooser(context: Context, pdfFilePath: String) {
+        inspectAppExternalDir(context)
+
+        val file = File(pdfFilePath) // Convert filePath to a File object
+        if (!file.exists()) {
+            Toast.makeText(context, "File does not exist at: $pdfFilePath", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val uri = FileProvider.getUriForFile(
+            context,
+            "${context.packageName}.fileprovider",
+            file
+        )
+
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(uri, "application/pdf")
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // Grant permission to read the file
+        }
+
+        try {
+            context.startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(context, "No application to view PDF", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
     fun showConfirmationDialog(
         message: String,
