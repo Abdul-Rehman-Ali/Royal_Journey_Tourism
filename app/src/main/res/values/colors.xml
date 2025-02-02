@@ -7,4 +7,6 @@
 
     <color name="primaryColor">#016aba</color>
     <color name="secondaryColor">#0195db</color>
+
+    <color name="grey">#E9EAEC</color>
 </resources>
