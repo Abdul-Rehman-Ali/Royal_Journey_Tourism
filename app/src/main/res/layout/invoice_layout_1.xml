@@ -524,7 +524,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:layout_weight=".33"
-            android:text="royaljourneytourism.com"
+            android:text="trip360.com"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20px" />
@@ -535,7 +535,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:layout_weight=".33"
-            android:text="info@royaljourneytourism.com"
+            android:text="info@trip360.com"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20px"
