@@ -17,6 +17,7 @@ legacySupportV4 = "1.0.0"
 recyclerview = "1.3.2"
 firebaseAuthKtx = "23.1.0"
 gridlayout = "1.0.0"
+coreKtxVersion = "1.6.1"
 
 [libraries]
 android-xml-to-pdf-generator = { module = "com.github.Gkemon:Android-XML-to-PDF-Generator", version.ref = "androidXmlToPdfGenerator" }
@@ -34,6 +35,7 @@ androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 androidx-gridlayout = { group = "androidx.gridlayout", name = "gridlayout", version.ref = "gridlayout" }
+core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "coreKtxVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

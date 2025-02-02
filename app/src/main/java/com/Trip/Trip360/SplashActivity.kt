@@ -1,17 +1,23 @@
 package com.Trip.Trip360
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.LayoutInflater
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.test.core.app.ApplicationProvider
 import com.Trip.Trip360.databinding.ActivitySplashBinding
 import com.Trip.Trip360.utils.SharedPrefUtils
 import com.Trip.Trip360.utils.SharedPrefUtils.USER_LOGGED_IN
-
+import java.io.File
+import java.io.FileOutputStream
 
 class SplashActivity : AppCompatActivity() {
 
@@ -41,5 +47,6 @@ class SplashActivity : AppCompatActivity() {
             }
             finish()
         }, 3000)
+
     }
 }
