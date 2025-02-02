@@ -922,9 +922,13 @@ class InvoiceActivity : AppCompatActivity() {
         val name = binding.etUsername.text.toString()
         val email = binding.etEmail.text.toString()
         val phone = binding.etPhone.text.toString()
+        val title = binding.etPackageName.text.toString()
+        val pickupTime = binding.etTime.text.toString()
+        val pickupLocation = binding.etPickupLocation.text.toString()
+        val bookingDate = binding.etDate.text.toString()
 
-        if (name.isBlank() || email.isBlank() || phone.isBlank()) {
-            showMessageDialog("Name, email, and phone cannot be empty", "Error", this)
+        if (name.isBlank() || title.isBlank() || pickupTime.isBlank() || bookingDate.isBlank() || pickupLocation.isBlank() || phone.isBlank()) {
+            showMessageDialog("Please add the required detail", "Error", this)
             return null
         }
 
