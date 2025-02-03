@@ -79,7 +79,6 @@ object NativeApi {
         val textView = view.findViewById<TextView>(R.id.textView)
         textView?.setTextColor(colorInt) // Changes text color instead of background
 
-
         // ✅ Load the logo from SharedPreferences
         val logoLocalPath = getValue(context, KEY_LOGO_LOCAL_FILE_PATH, "")
         Log.d("InvoiceActivity", "Retrieved logo path: $KEY_LOGO_LOCAL_FILE_PATH")
