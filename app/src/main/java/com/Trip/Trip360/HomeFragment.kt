@@ -309,7 +309,7 @@ class HomeFragment : Fragment() {
                 Log.d("HomeFragment", "Final Invoice Count: $totalInvoiceCount, Revenue: $totalRevenue")
 
                 // Update UI with fetched results
-                binding.totalInvoiceCount.text = "Total Invoices: $totalInvoiceCount"
+                binding.totalInvoiceCount.text = "$totalInvoiceCount"
                 binding.totalRevenueCount.text = "AED: ${String.format("%.2f", totalRevenue)}"
             }
             .addOnFailureListener { exception ->
