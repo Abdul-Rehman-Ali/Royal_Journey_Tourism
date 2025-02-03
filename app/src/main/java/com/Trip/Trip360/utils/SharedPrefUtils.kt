@@ -1,6 +1,5 @@
 package com.Trip.Trip360.utils
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 

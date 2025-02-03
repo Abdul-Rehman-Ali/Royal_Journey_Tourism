@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [Invoice::class], version = 5, exportSchema = false) // Updated to version 5
+@Database(entities = [Invoice::class], version = 6, exportSchema = false) // ✅ Updated to version 6
 abstract class LocalDatabase : RoomDatabase() {
 
     abstract fun bookingDao(): BookingDao
@@ -30,6 +30,13 @@ abstract class LocalDatabase : RoomDatabase() {
 //            }
 //        }
 
+        // ✅ Migration from version 5 to 6: Adds the color column to Invoice table
+        private val MIGRATION_5_6 = object : Migration(5, 6) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE Invoice ADD COLUMN color TEXT NOT NULL DEFAULT '#FFFFFF'")
+            }
+        }
+
         fun getDatabase(context: Context): LocalDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
@@ -37,7 +44,7 @@ abstract class LocalDatabase : RoomDatabase() {
                     LocalDatabase::class.java,
                     "local_database"
                 )
-                    .addMigrations() // Add all migrations
+                    .addMigrations(MIGRATION_5_6) // ✅ Added migration to handle schema changes
                     .build()
                 INSTANCE = instance
                 instance

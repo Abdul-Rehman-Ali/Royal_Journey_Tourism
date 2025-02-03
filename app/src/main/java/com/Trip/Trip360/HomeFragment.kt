@@ -151,12 +151,10 @@ import com.Trip.Trip360.utils.SharedPrefUtils.KEY_LOGO_URL
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_NAME
 import com.Trip.Trip360.utils.SharedPrefUtils.getValue
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 

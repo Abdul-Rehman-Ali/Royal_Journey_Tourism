@@ -48,7 +48,6 @@ class InvoiceHistoryFragment : Fragment() {
         binding.rvInvoices.adapter = adapter
         binding.rvInvoices.layoutManager = LinearLayoutManager(requireContext())
 
-
         binding.searchBarInvoiceHistory.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let { searchInvoices(it) }

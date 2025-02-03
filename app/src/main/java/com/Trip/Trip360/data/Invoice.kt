@@ -21,6 +21,7 @@ data class Invoice(
     val paymentStatus: Boolean = false,
     val firebaseSync: Boolean = false,
     val webName: String,
+    val color: String,
     val currentDate: String,
     var totalPrice: Double = 0.0,
     var filePath: String? = null,

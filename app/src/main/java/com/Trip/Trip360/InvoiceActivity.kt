@@ -932,8 +932,9 @@ class InvoiceActivity : AppCompatActivity() {
             return null
         }
 
-        val sharedPreferences = getSharedPreferences("YourPreferenceName", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("ClientDataPref", Context.MODE_PRIVATE)
         val webName = sharedPreferences.getString("webName", "default_collection") ?: "default_collection"
+        val color = sharedPreferences.getString("KEY_COLOR", "#FFFFFF") ?: "#FFFFFF"
 
         val invoice = Invoice(
             name = name,
@@ -951,7 +952,8 @@ class InvoiceActivity : AppCompatActivity() {
             paymentStatus = binding.radioGroupPaymentStatus.checkedRadioButtonId == R.id.radio_paid,
             webName = webName,
             currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
-            totalPrice = 0.0
+            totalPrice = 0.0,
+            color = color
         )
 
         invoice.totalPrice = NativeApi.calculateTotalPrice(invoice)
