@@ -1,8 +1,5 @@
 package com.Trip.Trip360.testPdf
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.graphics.pdf.PdfDocument
 import android.os.Environment
@@ -18,7 +15,9 @@ import com.Trip.Trip360.data.Invoice
 import com.Trip.Trip360.utils.PdfGenCallback
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_COLOR
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_LOGO_LOCAL_FILE_PATH
-import com.Trip.Trip360.utils.SharedPrefUtils.KEY_LOGO_URL
+import com.Trip.Trip360.utils.SharedPrefUtils.KEY_EMAIL
+import com.Trip.Trip360.utils.SharedPrefUtils.KEY_PHONE_NO
+import com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_URL
 import com.Trip.Trip360.utils.SharedPrefUtils.getValue
 import java.io.File
 import java.io.FileOutputStream
@@ -48,6 +47,18 @@ object NativeApi {
         (view.findViewById<TextView>(R.id.tvTotalOnAdults)).text = calculateTotalPriceForAdults(booking).toString()
         (view.findViewById<TextView>(R.id.tvTotalOnKids)).text = calculateTotalPriceForKids(booking).toString()
         (view.findViewById<TextView>(R.id.tvPaymentStatus)).text = if (booking.paymentStatus) "Paid" else "Payment on Arrival"
+
+        val phoneNo = getValue(context, KEY_PHONE_NO, "")
+        val phone = view.findViewById<TextView>(R.id.tvPhoneFooter)
+        phone.text = phoneNo
+
+        val webName = getValue(context, KEY_WEB_URL, "")
+        val web = view.findViewById<TextView>(R.id.tvWebNameFooter)
+        web.text = webName
+
+        val email = getValue(context, KEY_EMAIL, "")
+        val Email = view.findViewById<TextView>(R.id.tvWebUrlFooter)
+        Email.text = email
 
         val dynamicColor = getValue(context, KEY_COLOR, "#FFFFFF") // Default to white
         val colorInt = android.graphics.Color.parseColor(dynamicColor) // Convert hex to color int
@@ -153,7 +164,6 @@ object NativeApi {
         return 0.00
     }
 }
-
 
 
 //    fun generateInvoicePdf(context: InvoiceActivity, selectedTemplate: Int, booking: Invoice, callback: PdfGenCallback) {
