@@ -16,6 +16,7 @@ import com.Trip.Trip360.InvoiceActivity
 import com.Trip.Trip360.R
 import com.Trip.Trip360.data.Invoice
 import com.Trip.Trip360.utils.PdfGenCallback
+import com.Trip.Trip360.utils.SharedPrefUtils.KEY_COLOR
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_LOGO_LOCAL_FILE_PATH
 import com.Trip.Trip360.utils.SharedPrefUtils.KEY_LOGO_URL
 import com.Trip.Trip360.utils.SharedPrefUtils.getValue
@@ -47,6 +48,26 @@ object NativeApi {
         (view.findViewById<TextView>(R.id.tvTotalOnAdults)).text = calculateTotalPriceForAdults(booking).toString()
         (view.findViewById<TextView>(R.id.tvTotalOnKids)).text = calculateTotalPriceForKids(booking).toString()
         (view.findViewById<TextView>(R.id.tvPaymentStatus)).text = if (booking.paymentStatus) "Paid" else "Payment on Arrival"
+
+        val dynamicColor = getValue(context, KEY_COLOR, "#FFFFFF") // Default to white
+        val colorInt = android.graphics.Color.parseColor(dynamicColor) // Convert hex to color int
+
+        // ✅ Set color for the Table Header
+        val tableHeader = view.findViewById<View>(R.id.tableHeader)
+        tableHeader?.setBackgroundColor(colorInt)
+        // ✅ Set color for the Material Dividers
+        val materialDivider1 = view.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDivider1)
+        val materialDivider2 = view.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDivider2)
+        materialDivider1?.dividerColor = colorInt
+        materialDivider2?.dividerColor = colorInt
+
+        // ✅ Set color for LinearLayout
+        val linearLayout000 = view.findViewById<View>(R.id.linearLayout000)
+        linearLayout000?.setBackgroundColor(colorInt)
+        // ✅ Set color for TextView (Foreground Color)
+        val textView = view.findViewById<TextView>(R.id.textView)
+        textView?.setTextColor(colorInt) // Changes text color instead of background
+
 
         // ✅ Load the logo from SharedPreferences
         val logoLocalPath = getValue(context, KEY_LOGO_LOCAL_FILE_PATH, "")
