@@ -498,6 +498,7 @@
         android:background="@color/primaryColor"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:layout_marginTop="60dp"
         android:paddingVertical="8px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

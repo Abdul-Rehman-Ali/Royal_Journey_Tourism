@@ -63,23 +63,23 @@ object NativeApi {
         val dynamicColor = getValue(context, KEY_COLOR, "#FFFFFF") // Default to white
         val colorInt = android.graphics.Color.parseColor(dynamicColor) // Convert hex to color int
 
-        // ✅ Set color for the Table Header
+        //  Set color for the Table Header
         val tableHeader = view.findViewById<View>(R.id.tableHeader)
         tableHeader?.setBackgroundColor(colorInt)
-        // ✅ Set color for the Material Dividers
+        //  Set color for the Material Dividers
         val materialDivider1 = view.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDivider1)
         val materialDivider2 = view.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDivider2)
         materialDivider1?.dividerColor = colorInt
         materialDivider2?.dividerColor = colorInt
 
-        // ✅ Set color for LinearLayout
+        //  Set color for LinearLayout
         val linearLayout000 = view.findViewById<View>(R.id.linearLayout000)
         linearLayout000?.setBackgroundColor(colorInt)
-        // ✅ Set color for TextView (Foreground Color)
+        //  Set color for TextView (Foreground Color)
         val textView = view.findViewById<TextView>(R.id.textView)
         textView?.setTextColor(colorInt) // Changes text color instead of background
 
-        // ✅ Load the logo from SharedPreferences
+        //  Load the logo from SharedPreferences
         val logoLocalPath = getValue(context, KEY_LOGO_LOCAL_FILE_PATH, "")
         Log.d("InvoiceActivity", "Retrieved logo path: $KEY_LOGO_LOCAL_FILE_PATH")
 
@@ -96,11 +96,11 @@ object NativeApi {
             Log.e("InvoiceActivity", "Logo path is empty or invalid.")
         }
 
-        // ✅ Define page size
+        //  Define page size
         val pageWidth = 1000
         val pageHeight = 1300
 
-        // ✅ Measure & layout the view
+        //  Measure & layout the view
         view.measure(
             MeasureSpec.makeMeasureSpec(pageWidth, MeasureSpec.EXACTLY),
             MeasureSpec.makeMeasureSpec(pageHeight, MeasureSpec.EXACTLY)
@@ -112,12 +112,12 @@ object NativeApi {
         val page = pdfDocument.startPage(pageInfo)
         val canvas = page.canvas
 
-        // ✅ Draw the full layout
+        //  Draw the full layout
         view.draw(canvas)
 
         pdfDocument.finishPage(page)
 
-        // ✅ Define the Trip360 folder in Documents and ensure it exists
+        //  Define the Trip360 folder in Documents and ensure it exists
         val trip360Dir = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
             "Trip360"
@@ -126,7 +126,7 @@ object NativeApi {
             trip360Dir.mkdirs()
         }
 
-        // ✅ Generate filename with Name + Timestamp
+        //  Generate filename with Name + Timestamp
         val timestamp = System.currentTimeMillis()
         val sanitizedFileName = booking.name.replace("[^a-zA-Z0-9]".toRegex(), "_") // Replace invalid characters
         val fileName = "${sanitizedFileName}_$timestamp.pdf"
