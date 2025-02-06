@@ -73,6 +73,7 @@ class MainActivity : AppCompatActivity() {
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
+
         // Handle navigation item selection
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -113,9 +114,25 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        binding.bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.menuHome -> {
+                    openFragment(HomeFragment())
+                }
+                R.id.menuInvoiceHistory -> {
+                    openFragment(InvoiceHistoryFragment())
+                }
+                R.id.menuProfile -> {
+                    openFragment(ProfileFragment())
+                }
+            }
+            true
+        }
+
         // Open HomeFragment by default
         openFragment(HomeFragment())
     }
+
 
     private fun applyPrimaryColor(colorHex: String?) {
         // Parse the color or use a fallback default
