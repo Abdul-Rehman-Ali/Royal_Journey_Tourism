@@ -119,8 +119,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.menuHome -> {
                     openFragment(HomeFragment())
                 }
-                R.id.menuInvoiceHistory -> {
-                    openFragment(InvoiceHistoryFragment())
+                R.id.menuAboutUs -> {
+                    openFragment(AboutUsFragment())
                 }
                 R.id.menuProfile -> {
                     openFragment(ProfileFragment())
