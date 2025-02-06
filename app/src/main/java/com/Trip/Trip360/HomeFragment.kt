@@ -185,19 +185,19 @@ class HomeFragment : Fragment() {
         Log.d("HomeFragment", "Logo URL: $imageUrl")
 
         // Set the header text to webName
-        binding.tvHeaderText.text = "Welcome to $webName dashboard"
+//        binding.tvHeaderText.text = "Welcome to $webName dashboard"
 
         // Load the image from the local path
         val logoLocalPath = getValue(requireContext(), KEY_LOGO_LOCAL_FILE_PATH, "")
-        binding.imgHeader.setImageDrawable(Drawable.createFromPath(logoLocalPath))
+//        binding.imgHeader.setImageDrawable(Drawable.createFromPath(logoLocalPath))
 
         // Initial fetch without filters
         fetchInvoiceData(null, null)
 
         // Show Date Range Picker when clicking on calendarIcon
-        binding.calendarIcon.setOnClickListener {
-            showDateRangePicker()
-        }
+//        binding.calendarIcon.setOnClickListener {
+//            showDateRangePicker()
+//        }
 
         // Handle button clicks
         binding.btnHomeGenerateInvoice.setOnClickListener {

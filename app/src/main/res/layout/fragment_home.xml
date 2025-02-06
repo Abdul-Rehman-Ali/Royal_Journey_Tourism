@@ -10,166 +10,207 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Circular Image in CardView -->
+        <!-- Total Revenue Card -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewHeader"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="75dp"
-            app:cardElevation="4dp"
-            android:clipChildren="true"
-            android:clipToPadding="true">
-
-            <ImageView
-                android:id="@+id/imgHeader"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/logo" />
-        </androidx.cardview.widget.CardView>
-
-        <!-- Header Text -->
-        <TextView
-            android:id="@+id/tvHeaderText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Your Header Text Here"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:gravity="center" />
-
-        <!-- Constraint Layout for Two CardViews and Calendar -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:background="@color/grey"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="6dp">
 
-            <!-- Total Invoice Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Revenue"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/totalRevenueCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="****"
+                    android:textStyle="bold"
+                    android:textSize="35sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Total Invoices Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primaryColor"
+                android:padding="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Invoices"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"/>
+
+                <TextView
+                    android:id="@+id/totalInvoiceCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="***"
+                    android:textStyle="bold"
+                    android:textSize="35sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- New Horizontal Card Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="2">
+
+            <!-- First Card -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/totalInvoiceCard"
+                android:id="@+id/btnHomeGenerateInvoice"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/totalRevenueCard"
-                app:layout_constraintTop_toTopOf="parent"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/grey"
-                android:padding="16dp">
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="16dp"
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <TextView
-                        android:id="@+id/totalInvoiceTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Total Invoice"
-                        android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:gravity="center"
-                        android:paddingTop="10dp" />
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/generate_invoice"
+                        android:contentDescription="Icon 1"/>
 
                     <TextView
-                        android:id="@+id/totalInvoiceCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="**"
+                        android:text="Generate invoice"
                         android:textSize="16sp"
-                        android:gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:paddingBottom="10dp" />
+                        android:layout_marginTop="8dp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Total Revenue Card -->
+            <!-- Second Card -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/totalRevenueCard"
+                android:id="@+id/btnHomeSeeInvoiceHistory"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/totalInvoiceCard"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                android:layout_marginStart="8dp"
-                android:backgroundTint="@color/grey"
-                android:padding="16dp">
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_paper"
+                        android:contentDescription="Icon 2"/>
 
                     <TextView
-                        android:id="@+id/totalRevenueTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Total Revenue"
+                        android:text="Invoice History"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:paddingTop="10dp" />
-
-                    <TextView
-                        android:id="@+id/totalRevenueCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:text="***"
-                        android:textSize="16sp"
-                        android:paddingBottom="10dp" />
+                        android:layout_marginTop="8dp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Calendar Icon Below Cards -->
-            <ImageView
-                android:id="@+id/calendarIcon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/baseline_calendar_month_24"
-                app:layout_constraintTop_toBottomOf="@id/totalInvoiceCard"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="16dp" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
-        <!-- Buttons -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnHomeGenerateInvoice"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Generate Invoice" />
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="2">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnHomeSeeInvoiceHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="See Invoice History" />
+            <!-- First Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnHomeSeeTemplates"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnHomeSeeTemplates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Invoice Templates" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/invoice_template"
+                        android:contentDescription="Icon 1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Invoice Template"
+                        android:textSize="16sp"
+
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Second Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp">
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
     </LinearLayout>
-
 </FrameLayout>
