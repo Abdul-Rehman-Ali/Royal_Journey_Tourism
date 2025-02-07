@@ -32,13 +32,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Total Revenue"
-                    android:textSize="24sp" />
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/totalRevenueCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="****"
+                    android:fontFamily="@font/poppins_regular"
                     android:textStyle="bold"
                     android:textSize="35sp"/>
             </LinearLayout>
@@ -64,13 +66,15 @@
                     android:layout_height="wrap_content"
                     android:text="Total Invoices"
                     android:textColor="@color/white"
-                    android:textSize="24sp"/>
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:id="@+id/totalInvoiceCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_regular"
                     android:text="***"
                     android:textStyle="bold"
                     android:textSize="35sp"/>
@@ -116,7 +120,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Generate invoice"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_regular"
                         android:layout_marginTop="8dp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -148,7 +153,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Invoice History"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_regular"
                         android:layout_marginTop="8dp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -193,8 +199,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Invoice Template"
-                        android:textSize="16sp"
-
+                        android:textSize="14sp"
+                        android:fontFamily="@font/poppins_regular"
                         android:layout_marginTop="8dp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
