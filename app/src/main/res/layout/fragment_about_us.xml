@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back01"
     tools:context=".AboutUsFragment">
 
     <LinearLayout
@@ -18,6 +17,7 @@
             android:layout_height="wrap_content"
             android:text="About Us"
             android:textStyle="bold"
+            android:fontFamily="@font/poppins_regular"
             android:textSize="24sp"
             android:textColor="@color/primaryColor"
             android:layout_marginBottom="16dp" />
@@ -26,6 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
             android:text="Welcome to Trip 360\n\nYour Simple Invoice Management Solution\n\nTrip 360 is a streamlined app designed to make managing your invoices easy and efficient. Whether you need to create, view, edit, search, or delete invoices, our user-friendly interface ensures you can handle your tasks effortlessly.\n\nWith Trip 360, you have everything you need for basic invoice management without any unnecessary features. Our goal is to provide you with a clean, efficient, and reliable tool to meet your business needs. Explore the simplicity of managing invoices with Trip 360 today.\n\nWhy Choose Trip 360?\n\n- User-Friendly Interface: Designed to ensure a seamless experience for all users.\n- Efficiency at Your Fingertips: Perform essential invoice tasks quickly and accurately.\n- Secure Data Handling: Your data is stored securely, giving you peace of mind.\n- Lightweight and Fast: Minimal design and quick operations ensure no delays in your work.\n\nOur Mission\n\nAt Trip 360, we are committed to empowering businesses and individuals with tools that simplify everyday tasks. By focusing on essential features, we eliminate complexity and help you concentrate on what truly matters—your business.\n\nThank you for choosing Trip 360. Simplify your invoice management today and discover the difference!"
             android:textSize="16sp"
             android:lineSpacingExtra="6dp" />

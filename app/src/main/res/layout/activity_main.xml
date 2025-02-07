@@ -25,7 +25,21 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Custom TextView for the Toolbar Title -->
+            <TextView
+                android:id="@+id/toolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Custom Title"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"/>
+        </com.google.android.material.appbar.MaterialToolbar>
+
+
+
 
         <!-- Content Area (Fragment Container) -->
         <FrameLayout
@@ -42,9 +56,9 @@
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/nav_background"
-            app:itemIconTint="@color/white"
-            app:itemTextColor="@color/white"
+            android:background="@android:color/transparent"
+            app:itemIconTint="@color/primaryColor"
+            app:itemTextColor="@color/primaryColor"
             app:menu="@menu/bottom_nav"
             app:labelVisibilityMode="unlabeled"
             app:layout_constraintBottom_toBottomOf="parent"/>

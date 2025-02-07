@@ -59,8 +59,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Set up toolbar
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.title = webName // Set the toolbar title to webName
+//        setSupportActionBar(binding.toolbar)
+//        supportActionBar?.title = webName // Set the toolbar title to webName
+
+        binding.toolbarTitle.text = webName
 
         // Apply the primary color across the app
 //        applyPrimaryColor(colorHex)
