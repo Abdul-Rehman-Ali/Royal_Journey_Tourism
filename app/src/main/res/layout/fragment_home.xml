@@ -25,7 +25,7 @@
                 android:id="@+id/tvSearchByDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Search by Date"
+                android:text="Invoices Search by Date"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppins_regular"
