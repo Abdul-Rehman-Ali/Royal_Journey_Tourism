@@ -269,7 +269,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Generate Invoice"
+                        android:text="Invoice Template"
                         android:textSize="14sp"
                         android:fontFamily="@font/poppins_regular"
                         android:layout_marginTop="8dp"/>
