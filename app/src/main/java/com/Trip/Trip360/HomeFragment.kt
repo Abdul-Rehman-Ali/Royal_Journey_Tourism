@@ -195,9 +195,9 @@ class HomeFragment : Fragment() {
         fetchInvoiceData(null, null)
 
         // Show Date Range Picker when clicking on calendarIcon
-//        binding.calendarIcon.setOnClickListener {
-//            showDateRangePicker()
-//        }
+        binding.calendarIcon.setOnClickListener {
+            showDateRangePicker()
+        }
 
         // Handle button clicks
         binding.btnHomeGenerateInvoice.setOnClickListener {
