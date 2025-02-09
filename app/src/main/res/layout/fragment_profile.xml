@@ -153,26 +153,27 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Buttons -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnHomeGenerateInvoice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Generate Invoice" />
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/btnHomeGenerateInvoice"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Generate Invoice" />-->
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnHomeSeeInvoiceHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="See Invoice History" />
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/btnHomeSeeInvoiceHistory"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="See Invoice History" />-->
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnHomeSeeTemplates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Invoice Templates" />
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/btnHomeSeeTemplates"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Invoice Templates" />-->
+
     </LinearLayout>
 
 </FrameLayout>

@@ -65,22 +65,22 @@ class ProfileFragment : Fragment() {
         }
 
         // Handle button clicks
-        binding.btnHomeGenerateInvoice.setOnClickListener {
-            startActivity(Intent(requireContext(), InvoiceActivity::class.java))
-        }
+//        binding.btnHomeGenerateInvoice.setOnClickListener {
+//            startActivity(Intent(requireContext(), InvoiceActivity::class.java))
+//        }
 
-        binding.btnHomeSeeInvoiceHistory.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.content_frame, InvoiceHistoryFragment())
-                .addToBackStack(null)
-                .commit()
-        }
+//        binding.btnHomeSeeInvoiceHistory.setOnClickListener {
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .replace(R.id.content_frame, InvoiceHistoryFragment())
+//                .addToBackStack(null)
+//                .commit()
+//        }
 
-        binding.btnHomeSeeTemplates.setOnClickListener {
-            showTemplateDialog { template ->
-                Log.d("HomeFragment", "Selected template: $template")
-            }
-        }
+//        binding.btnHomeSeeTemplates.setOnClickListener {
+//            showTemplateDialog { template ->
+//                Log.d("HomeFragment", "Selected template: $template")
+//            }
+//        }
     }
 
     /**
