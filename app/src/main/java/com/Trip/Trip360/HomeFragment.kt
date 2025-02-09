@@ -143,6 +143,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.Trip.Trip360.databinding.FragmentHomeBinding
 import com.Trip.Trip360.utils.SharedPrefUtils
@@ -216,7 +217,15 @@ class HomeFragment : Fragment() {
                 Log.d("HomeFragment", "Selected template: $template")
             }
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Close the app when back is pressed on HomeFragment
+                requireActivity().finish()
+            }
+        })
     }
+
 
     /**
      * Show Date Range Picker when clicking the calendar icon.
@@ -263,6 +272,7 @@ class HomeFragment : Fragment() {
         startDatePicker.show()
     }
 
+
     /**
      * Fetch invoices from Firestore based on the optional date range filter.
      */
@@ -284,6 +294,8 @@ class HomeFragment : Fragment() {
                 return
             }
         }
+
+
 
         query.get()
             .addOnSuccessListener { documents ->
@@ -313,11 +325,8 @@ class HomeFragment : Fragment() {
             .addOnFailureListener { exception ->
                 Log.e("HomeFragment", "Error fetching invoices", exception)
             }
+
     }
-
-
-
-
 
     /**
      * Show a template selection dialog.
@@ -345,8 +354,10 @@ class HomeFragment : Fragment() {
         dialog.show()
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }
