@@ -30,6 +30,9 @@ interface BookingDao {
     @Query("SELECT * FROM Invoice WHERE LOWER(name) LIKE :query OR LOWER(packageName) LIKE :query")
     fun searchByNameOrPackage(query: String): List<Invoice>
 
+    @Query("SELECT * FROM Invoice WHERE currentDate BETWEEN :startDate AND :endDate")
+    suspend fun getInvoicesByDateRange(startDate: String, endDate: String): List<Invoice>
+
     @Query("delete from Invoice where firebaseSync = 1 and webName = :currentWebName")
     suspend fun deleteAllSyncedRecordsForWebName(currentWebName: String)
 

@@ -124,9 +124,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.menuAboutUs -> {
                     openFragment(AboutUsFragment())
                 }
-                R.id.menuProfile -> {
-                    openFragment(ProfileFragment())
-                }
+//                R.id.menuProfile -> {
+//                    openFragment(ProfileFragment())
+//                }
             }
             true
         }

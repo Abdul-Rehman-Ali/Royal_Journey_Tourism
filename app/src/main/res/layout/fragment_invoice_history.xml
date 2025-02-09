@@ -6,28 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".InvoiceHistoryFragment">
 
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchBarInvoiceHistory"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/searchContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:iconifiedByDefault="false"
-        android:hint="Search by customer name \ package name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/ivcalender"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_calendar_month_24"
+            android:contentDescription="Search Icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="8dp"/>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchBarInvoiceHistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:iconifiedByDefault="false"
+            android:hint="Search by customer name \ package name"
+            app:layout_constraintStart_toEndOf="@id/ivcalender"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvInvoices"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/searchContainer"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBarInvoiceHistory" />
-
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvNoInvoiceRecordFound"
