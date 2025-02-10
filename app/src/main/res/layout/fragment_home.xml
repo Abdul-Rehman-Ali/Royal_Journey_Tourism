@@ -144,23 +144,13 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <!-- Inner Circular Card -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        app:cardCornerRadius="50dp"
-                        app:cardElevation="4dp"
-                        android:background="@drawable/nav_background"
-                        app:cardBackgroundColor="@android:color/transparent"
-                        android:gravity="center">
-
                         <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:src="@drawable/generate_invoice"
                             android:contentDescription="Generate Invoice Icon"
                             android:layout_gravity="center"/>
-                    </androidx.cardview.widget.CardView>
+
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -191,22 +181,15 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <!-- Inner Circular Card -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        app:cardCornerRadius="50dp"
-                        app:cardElevation="4dp"
-                        app:cardBackgroundColor="@android:color/transparent"
-                        android:gravity="center">
+
 
                         <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_paper"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/invoice_history"
                             android:contentDescription="Invoice History Icon"
                             android:layout_gravity="center"/>
-                    </androidx.cardview.widget.CardView>
+
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -250,22 +233,14 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <!-- Inner Circular Card -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        app:cardCornerRadius="50dp"
-                        app:cardElevation="4dp"
-                        app:cardBackgroundColor="@android:color/transparent"
-                        android:gravity="center">
 
                         <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/invoice_template"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/template"
                             android:contentDescription="Generate Invoice Icon"
                             android:layout_gravity="center"/>
-                    </androidx.cardview.widget.CardView>
+
 
                     <TextView
                         android:layout_width="wrap_content"
