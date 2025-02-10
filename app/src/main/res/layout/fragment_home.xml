@@ -7,142 +7,147 @@
     android:background="#f7f7f7"
     tools:context=".HomeFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_margin="5dp"
-            android:padding="8dp">
-
-            <TextView
-                android:id="@+id/tvSearchByDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Invoices Search by Date"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@android:color/black"
-                android:layout_weight="1"/>
-
-            <ImageView
-                android:id="@+id/calendarIcon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/baseline_calendar_month_24"
-                android:contentDescription="Search Icon"/>
-        </LinearLayout>
-
-
-        <!-- Total Revenue Card -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/grey"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="6dp">
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Total Revenue"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/totalRevenueCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="****"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textStyle="bold"
-                    android:textSize="35sp"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Total Invoices Card -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="6dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/primaryColor"
-                android:padding="16dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Total Invoices"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textSize="20sp"/>
-
-                <TextView
-                    android:id="@+id/totalInvoiceCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="***"
-                    android:textStyle="bold"
-                    android:textSize="35sp"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- New Horizontal Card Section -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:weightSum="2">
-
-            <!-- First Circular Card -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/btnHomeGenerateInvoice"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:layout_margin="5dp"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tvSearchByDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Invoices Search by Date"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@android:color/black"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:id="@+id/calendarIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/baseline_calendar_month_24"
+                    android:contentDescription="Search Icon"/>
+            </LinearLayout>
+
+            <!-- Total Revenue Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/grey"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="6dp"
-                app:cardBackgroundColor="@color/white"
-                android:layout_gravity="center">
+                app:cardElevation="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Revenue"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/totalRevenueCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="****"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textStyle="bold"
+                        android:textSize="35sp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Total Invoices Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primaryColor"
+                    android:padding="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Invoices"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:id="@+id/totalInvoiceCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="***"
+                        android:textStyle="bold"
+                        android:textSize="35sp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Horizontal Card Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="2">
+
+                <!-- Generate Invoice -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnHomeGenerateInvoice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:orientation="vertical"
+                        android:gravity="center">
 
                         <ImageView
                             android:layout_width="70dp"
@@ -151,37 +156,33 @@
                             android:contentDescription="Generate Invoice Icon"
                             android:layout_gravity="center"/>
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Generate Invoice"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_marginTop="8dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Generate Invoice"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:layout_marginTop="8dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Second Circular Card -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/btnHomeSeeInvoiceHistory"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="6dp"
-                app:cardBackgroundColor="@color/white"
-                android:layout_gravity="center">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <!-- Invoice History -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnHomeSeeInvoiceHistory"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="@color/white">
 
-
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:orientation="vertical"
+                        android:gravity="center">
 
                         <ImageView
                             android:layout_width="70dp"
@@ -190,49 +191,46 @@
                             android:contentDescription="Invoice History Icon"
                             android:layout_gravity="center"/>
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Invoice History"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_marginTop="8dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Invoice History"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:layout_marginTop="8dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:weightSum="2">
-
-            <!-- First Circular Card -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/btnHomeSeeTemplates"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="6dp"
-                app:cardBackgroundColor="@color/white"
-                android:layout_gravity="center">
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="2">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <!-- Generate Invoice -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnHomeSeeTemplates"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="@color/white">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:orientation="vertical"
+                        android:gravity="center">
 
                         <ImageView
                             android:layout_width="70dp"
@@ -241,29 +239,28 @@
                             android:contentDescription="Generate Invoice Icon"
                             android:layout_gravity="center"/>
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Invoice Template"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_marginTop="8dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Invoice Template"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:layout_marginTop="8dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Second Circular Card -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="6dp"
-                app:cardBackgroundColor="@color/white"
-                android:layout_gravity="center">
-            </androidx.cardview.widget.CardView>
+                <!-- Invoice History -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="@color/white">
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
         </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
 </FrameLayout>
