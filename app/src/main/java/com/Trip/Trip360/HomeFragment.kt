@@ -26,7 +26,6 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
     private lateinit var webName: String
     private lateinit var imageUrl: String
     private val firestore = FirebaseFirestore.getInstance()
