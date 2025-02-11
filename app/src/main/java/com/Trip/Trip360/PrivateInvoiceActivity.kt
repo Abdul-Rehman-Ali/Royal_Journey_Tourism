@@ -17,6 +17,7 @@ import com.Trip.Trip360.data.BookingDao
 import com.Trip.Trip360.data.Invoice
 import com.Trip.Trip360.data.LocalDatabase
 import com.Trip.Trip360.databinding.ActivityInvoiceBinding
+import com.Trip.Trip360.databinding.ActivityPrivateInvoiceBinding
 import com.Trip.Trip360.repository.FirebaseRepository
 import com.Trip.Trip360.testPdf.NativeApi
 import com.Trip.Trip360.utils.CustomDialog.MessageDialog
@@ -37,7 +38,7 @@ import java.util.Locale
 
 class PrivateInvoiceActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityInvoiceBinding
+    private lateinit var binding: ActivityPrivateInvoiceBinding
     private var isEditMode: Boolean = false
     private var invoiceId: Long? = null
     private var existingInvoice: Invoice? = null
@@ -48,7 +49,7 @@ class PrivateInvoiceActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityInvoiceBinding.inflate(layoutInflater)
+        binding = ActivityPrivateInvoiceBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
 

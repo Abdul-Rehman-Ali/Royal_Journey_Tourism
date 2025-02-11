@@ -142,7 +142,7 @@
                     android:id="@+id/et_adults"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="No. of Adults"
+                    android:hint="No. Of Private Cars"
                     android:inputType="number"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -159,7 +159,7 @@
                     android:id="@+id/et_packagePrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Package Price Per Adult"
+                    android:hint="Price Per Private Car"
                     android:inputType="numberDecimal"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -176,7 +176,7 @@
                     android:id="@+id/et_kids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="No. of Kids"
+                    android:hint="No. of People in Private Cars"
                     android:inputType="number"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -195,7 +195,7 @@
                     android:id="@+id/et_packagePriceKids"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Package Price Per Child"
+                    android:hint="Price Per No. of Family"
                     android:inputType="numberDecimal"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -212,9 +212,28 @@
                     android:id="@+id/et_pickupLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Pickup Location"
+                    android:hint="Private Pickup Location"
                     android:inputType="text"
                     android:textColor="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dropoffLocationInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_dropoffLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Private Drop-off Location"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Date Picker input field -->
