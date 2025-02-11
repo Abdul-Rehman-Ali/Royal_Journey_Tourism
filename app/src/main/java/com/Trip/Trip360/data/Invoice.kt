@@ -18,6 +18,7 @@ data class Invoice(
     val pickupDate: String? = null,
     val pickupTime: String? = null,
     val pickupLocation: String? = null,
+    val dropLocation: String? = null,
     val paymentStatus: Boolean = false,
     val firebaseSync: Boolean = false,
     val webName: String,

@@ -116,6 +116,7 @@ class PrivateInvoiceActivity : AppCompatActivity() {
             binding.etDate.setText(invoice.pickupDate)
             binding.etTime.setText(invoice.pickupTime)
             binding.etPickupLocation.setText(invoice.pickupLocation)
+            binding.etDropoffLocation.setText(invoice.dropLocation)
             binding.radioGroupPaymentStatus.check(
                 if (invoice.paymentStatus) R.id.radio_paid else R.id.radio_pay_on_arrival
             )
@@ -258,14 +259,12 @@ class PrivateInvoiceActivity : AppCompatActivity() {
 
     private fun collectInvoiceData(): Invoice? {
         val name = binding.etUsername.text.toString()
-        val email = binding.etEmail.text.toString()
         val phone = binding.etPhone.text.toString()
         val title = binding.etPackageName.text.toString()
         val pickupTime = binding.etTime.text.toString()
-        val pickupLocation = binding.etPickupLocation.text.toString()
         val bookingDate = binding.etDate.text.toString()
 
-        if (name.isBlank() || title.isBlank() || pickupTime.isBlank() || bookingDate.isBlank() || pickupLocation.isBlank() || phone.isBlank()) {
+        if (name.isBlank() || title.isBlank() || pickupTime.isBlank() || bookingDate.isBlank() ||  phone.isBlank()) {
             showMessageDialog("Please add the required detail", "Error", this)
             return null
         }
@@ -276,7 +275,6 @@ class PrivateInvoiceActivity : AppCompatActivity() {
 
         val invoice = Invoice(
             name = name,
-            email = email,
             phone = phone,
             packageName = binding.etPackageName.text.toString(),
             additionalAddon = binding.etAddonDescription.text.toString(),
@@ -287,6 +285,7 @@ class PrivateInvoiceActivity : AppCompatActivity() {
             pickupDate = binding.etDate.text.toString(),
             pickupTime = binding.etTime.text.toString(),
             pickupLocation = binding.etPickupLocation.text.toString(),
+            dropLocation = binding.etDropoffLocation.text.toString(),
             paymentStatus = binding.radioGroupPaymentStatus.checkedRadioButtonId == R.id.radio_paid,
             webName = webName,
             currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
@@ -306,9 +305,9 @@ class PrivateInvoiceActivity : AppCompatActivity() {
 
     private fun getTemplateLayout(template: String): Int? {
         return when (template) {
-            "Template 1" -> R.layout.invoice_layout_1
-            "Template 2" -> R.layout.invoice_layout_2
-            "Template 3" -> R.layout.invoice_layout_3
+            "Template 1" -> R.layout.invoice_layout_4
+            "Template 2" -> R.layout.invoice_layout_5
+            "Template 3" -> R.layout.invoice_layout_6
             else -> null
         }
     }
