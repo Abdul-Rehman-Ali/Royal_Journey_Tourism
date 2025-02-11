@@ -130,6 +130,17 @@
 
 
             <TextView
+                android:layout_width="240px"
+                android:layout_height="wrap_content"
+                android:text="No. of People in Car:"
+                android:textSize="20px"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
+
+
+
+            <TextView
                 android:layout_width="180px"
                 android:layout_height="wrap_content"
                 android:text="Payment Status:"
@@ -206,6 +217,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Drop-off Loc"
+                android:textSize="20px"
+                app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/tvNoOfPeople"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="No. Of People"
                 android:textSize="20px"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -321,43 +343,43 @@
                 android:textSize="20px" />
         </TableRow>
 
-        <TableRow android:paddingVertical="4dp">
+<!--        <TableRow android:paddingVertical="4dp">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8px"
-                android:layout_weight="1"
-                android:text="No. of People in Private Cars"
-                android:textSize="20px" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="8px"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="No. of People in Private Cars"-->
+<!--                android:textSize="20px" />-->
 
-            <TextView
-                android:id="@+id/tvKidsCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8px"
-                android:text="3"
-                android:textAlignment="center"
-                android:textSize="20px" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvKidsCount"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="8px"-->
+<!--                android:text="3"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textSize="20px" />-->
 
-            <TextView
-                android:id="@+id/tvPricePerKid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8px"
-                android:text="43"
-                android:textAlignment="center"
-                android:textSize="20px" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvPricePerKid"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="8px"-->
+<!--                android:text="43"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textSize="20px" />-->
 
-            <TextView
-                android:id="@+id/tvTotalOnKids"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8px"
-                android:text="100"
-                android:textAlignment="center"
-                android:textSize="20px" />
-        </TableRow>
+<!--            <TextView-->
+<!--                android:id="@+id/tvTotalOnKids"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="8px"-->
+<!--                android:text="100"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textSize="20px" />-->
+<!--        </TableRow>-->
 
     </TableLayout>
 
