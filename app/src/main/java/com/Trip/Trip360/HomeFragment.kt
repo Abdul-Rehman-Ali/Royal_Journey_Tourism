@@ -69,6 +69,10 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), InvoiceActivity::class.java))
         }
 
+        binding.btnHomePrivateInvoice.setOnClickListener {
+            startActivity(Intent(requireContext(), PrivateInvoiceActivity::class.java))
+        }
+
         binding.btnHomeSeeInvoiceHistory.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.content_frame, InvoiceHistoryFragment())
