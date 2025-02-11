@@ -75,7 +75,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="150px"
+                android:layout_width="180px"
                 android:layout_height="wrap_content"
                 android:text="Booking Date:"
                 android:textSize="20px"
@@ -84,7 +84,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
             <TextView
-                android:layout_width="150px"
+                android:layout_width="180px"
                 android:layout_height="wrap_content"
                 android:text="Guest Name:"
                 android:textSize="20px"
@@ -93,7 +93,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
             <TextView
-                android:layout_width="150px"
+                android:layout_width="180px"
                 android:layout_height="wrap_content"
                 android:text="Package Name:"
                 android:textSize="20px"
@@ -102,7 +102,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
             <TextView
-                android:layout_width="150px"
+                android:layout_width="180px"
                 android:layout_height="wrap_content"
                 android:text="Pickup Time:"
                 android:textSize="20px"
@@ -111,9 +111,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
             <TextView
-                android:layout_width="150px"
+                android:layout_width="220px"
                 android:layout_height="wrap_content"
-                android:text="Pickup Location:"
+                android:text="Private Pickup Location:"
+                android:textSize="20px"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
+
+            <TextView
+                android:layout_width="240px"
+                android:layout_height="wrap_content"
+                android:text="Private Drop-Off Location:"
                 android:textSize="20px"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +130,7 @@
 
 
             <TextView
-                android:layout_width="150px"
+                android:layout_width="180px"
                 android:layout_height="wrap_content"
                 android:text="Payment Status:"
                 android:textSize="20px"
@@ -186,6 +195,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Pickup Loc"
+                android:textSize="20px"
+                app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/tvDropOffLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Drop-off Loc"
                 android:textSize="20px"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -270,7 +290,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8px"
                 android:layout_weight="1"
-                android:text="Adult"
+                android:text="No. of Private Cars"
                 android:textSize="20px" />
 
             <TextView
@@ -308,7 +328,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8px"
                 android:layout_weight="1"
-                android:text="Kid"
+                android:text="No. of People in Private Cars"
                 android:textSize="20px" />
 
             <TextView
