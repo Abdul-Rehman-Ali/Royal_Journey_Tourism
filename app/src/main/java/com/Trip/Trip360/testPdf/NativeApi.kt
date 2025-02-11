@@ -164,6 +164,7 @@ object NativeApi {
         (view.findViewById<TextView>(R.id.tvGrandTotal)).text = "AED " + calculateTotalPrice(booking)
         (view.findViewById<TextView>(R.id.tvPackageName)).text = booking.packageName ?: "N/A"
         (view.findViewById<TextView>(R.id.tvPickupLocation)).text = booking.pickupLocation ?: "N/A"
+        (view.findViewById<TextView>(R.id.tvDropOffLocation)).text = booking.dropLocation ?: "N/A"
         (view.findViewById<TextView>(R.id.tvAdultCount)).text = booking.noOfAdults?.toString() ?: "0"
         (view.findViewById<TextView>(R.id.tvKidsCount)).text = booking.noOfKids?.toString() ?: "0"
         (view.findViewById<TextView>(R.id.tvPricePerKid)).text = booking.pkgPricePerKid?.toString() ?: "0.00"
