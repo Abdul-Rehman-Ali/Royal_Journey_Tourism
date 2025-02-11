@@ -159,7 +159,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Generate Invoice"
+                            android:text="General Invoice"
                             android:textSize="14sp"
                             android:fontFamily="@font/poppins_regular"
                             android:layout_marginTop="8dp"/>
@@ -168,7 +168,7 @@
 
                 <!-- Invoice History -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/btnHomeSeeInvoiceHistory"
+                    android:id="@+id/btnHomePrivateInvoice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -187,14 +187,14 @@
                         <ImageView
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:src="@drawable/invoice_history"
+                            android:src="@drawable/generate_invoice"
                             android:contentDescription="Invoice History Icon"
                             android:layout_gravity="center"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Invoice History"
+                            android:text="Private Invoice"
                             android:textSize="14sp"
                             android:fontFamily="@font/poppins_regular"
                             android:layout_marginTop="8dp"/>
@@ -251,6 +251,7 @@
 
                 <!-- Invoice History -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/btnHomeSeeInvoiceHistory"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -258,8 +259,33 @@
                     app:cardCornerRadius="10dp"
                     app:cardElevation="6dp"
                     app:cardBackgroundColor="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/invoice_history"
+                            android:contentDescription="Invoice History Icon"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Invoice History"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_marginTop="8dp"/>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
