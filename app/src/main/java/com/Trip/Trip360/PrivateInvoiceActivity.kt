@@ -112,9 +112,10 @@ class PrivateInvoiceActivity : AppCompatActivity() {
             binding.etAdults.setText(invoice.noOfAdults?.toString())
             binding.etPackagePrice.setText(invoice.pkgPricePerAdult?.toString())
             binding.etKids.setText(invoice.noOfKids?.toString())
-//            binding.etPackagePriceKids.setText(invoice.pkgPricePerKid?.toString())
+            binding.etPackagePriceKids.setText(invoice.pkgPricePerKid?.toString())
             binding.etDate.setText(invoice.pickupDate)
             binding.etTime.setText(invoice.pickupTime)
+            binding.etKids.setText(invoice.noOfPeople?.toString())
             binding.etPickupLocation.setText(invoice.pickupLocation)
             binding.etDropoffLocation.setText(invoice.dropLocation)
             binding.radioGroupPaymentStatus.check(
@@ -281,9 +282,10 @@ class PrivateInvoiceActivity : AppCompatActivity() {
             noOfAdults = binding.etAdults.text.toString().toIntOrNull(),
             pkgPricePerAdult = binding.etPackagePrice.text.toString().toDoubleOrNull(),
             noOfKids = binding.etKids.text.toString().toIntOrNull(),
-//            pkgPricePerKid = binding.etPackagePriceKids.text.toString().toDoubleOrNull(),
+            pkgPricePerKid = binding.etPackagePriceKids.text.toString().toDoubleOrNull(),
             pickupDate = binding.etDate.text.toString(),
             pickupTime = binding.etTime.text.toString(),
+            noOfPeople = binding.etKids.text.toString().toIntOrNull(),
             pickupLocation = binding.etPickupLocation.text.toString(),
             dropLocation = binding.etDropoffLocation.text.toString(),
             paymentStatus = binding.radioGroupPaymentStatus.checkedRadioButtonId == R.id.radio_paid,

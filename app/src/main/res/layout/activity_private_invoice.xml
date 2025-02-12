@@ -181,24 +181,24 @@
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:id="@+id/packagePriceKidsTextInputLayout"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_marginEnd="16dp"-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/packagePriceKidsTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                >
 
-<!--                >-->
-
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:id="@+id/et_packagePriceKids"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:hint="Price Per No. of Family"-->
-<!--                    android:inputType="numberDecimal"-->
-<!--                    android:textColor="@color/black" />-->
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_packagePriceKids"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Price Per No. of Family"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/pickupLocationInputLayout"

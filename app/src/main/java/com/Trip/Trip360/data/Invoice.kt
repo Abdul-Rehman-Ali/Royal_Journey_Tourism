@@ -14,6 +14,7 @@ data class Invoice(
     val noOfAdults: Int? = null,
     val pkgPricePerAdult: Double? = null,
     val noOfKids: Int? = null,
+    val noOfPeople: Int? = null,
     val pkgPricePerKid: Double? = null,
     val pickupDate: String? = null,
     val pickupTime: String? = null,
