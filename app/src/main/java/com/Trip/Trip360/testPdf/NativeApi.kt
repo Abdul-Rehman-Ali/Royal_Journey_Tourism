@@ -47,7 +47,6 @@ object NativeApi {
         (view.findViewById<TextView>(R.id.tvPricePerAdult)).text = booking.pkgPricePerAdult?.toString() ?: "0.00"
         (view.findViewById<TextView>(R.id.tvTotalOnAdults)).text = calculateTotalPriceForAdults(booking).toString()
         (view.findViewById<TextView>(R.id.tvTotalOnKids)).text = calculateTotalPriceForKids(booking).toString()
-        (view.findViewById<TextView>(R.id.tvNoOfPeople)).text = booking.noOfPeople.toString()
         (view.findViewById<TextView>(R.id.tvPaymentStatus)).text = if (booking.paymentStatus) "Paid" else "Payment on Arrival"
 
         val phoneNo = getValue(context, KEY_PHONE_NO, "")
@@ -172,6 +171,7 @@ object NativeApi {
         (view.findViewById<TextView>(R.id.tvPricePerAdult)).text = booking.pkgPricePerAdult?.toString() ?: "0.00"
         (view.findViewById<TextView>(R.id.tvTotalOnAdults)).text = calculateTotalPriceForAdults(booking).toString()
         (view.findViewById<TextView>(R.id.tvTotalOnKids)).text = calculateTotalPriceForKids(booking).toString()
+        (view.findViewById<TextView>(R.id.tvNoOfPeople)).text = booking.noOfPeople.toString()
         (view.findViewById<TextView>(R.id.tvPaymentStatus)).text = if (booking.paymentStatus) "Paid" else "Payment on Arrival"
 
         val phoneNo = getValue(context, KEY_PHONE_NO, "")
