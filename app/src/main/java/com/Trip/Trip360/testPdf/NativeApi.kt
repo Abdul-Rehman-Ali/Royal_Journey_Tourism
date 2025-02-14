@@ -36,6 +36,7 @@ object NativeApi {
         Log.d("TestingPdfCreation", "In Native API")
 
         (view.findViewById<TextView>(R.id.tvGuestName)).text = booking.name
+        (view.findViewById<TextView>(R.id.tvBookingCode)).text = booking.bookingCode
         (view.findViewById<TextView>(R.id.tvPickupTime)).text = booking.pickupTime
         (view.findViewById<TextView>(R.id.tvPhoneNo)).text = booking.phone
         (view.findViewById<TextView>(R.id.tvAddon)).text = booking.additionalAddon
@@ -161,6 +162,7 @@ object NativeApi {
         Log.d("TestingPdfCreation", "In Native API")
 
         (view.findViewById<TextView>(R.id.tvGuestName)).text = booking.name
+        (view.findViewById<TextView>(R.id.tvBookingCode)).text = booking.bookingCode
         (view.findViewById<TextView>(R.id.tvPickupTime)).text = booking.pickupTime
         (view.findViewById<TextView>(R.id.tvBookingDate)).text = booking.pickupDate
         (view.findViewById<TextView>(R.id.tvPhoneNo)).text = booking.phone

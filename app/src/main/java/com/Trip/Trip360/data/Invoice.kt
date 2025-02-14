@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class Invoice(
     @PrimaryKey var id: Long = System.currentTimeMillis(),
+    val bookingCode: String,
     val name: String,
     val email: String? = null,
     val phone: String? = null,

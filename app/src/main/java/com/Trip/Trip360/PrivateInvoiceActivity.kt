@@ -270,6 +270,9 @@ class PrivateInvoiceActivity : AppCompatActivity() {
             return null
         }
 
+        // Generate unique booking code
+        val bookingCode = generateBookingCode()
+
         val sharedPreferences = getSharedPreferences("ClientDataPref", Context.MODE_PRIVATE)
         val webName = sharedPreferences.getString("webName", "default_collection") ?: "default_collection"
         val color = sharedPreferences.getString("KEY_COLOR", "#FFFFFF") ?: "#FFFFFF"
@@ -292,12 +295,38 @@ class PrivateInvoiceActivity : AppCompatActivity() {
             webName = webName,
             currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
             totalPrice = 0.0,
-            color = color
+            color = color,
+            bookingCode = bookingCode
         )
 
         invoice.totalPrice = NativeApi.calculateTotalPrice(invoice)
 
         return invoice
+    }
+
+    private fun generateBookingCode(): String {
+        val sharedPreferences = getSharedPreferences("InvoicePrefs", Context.MODE_PRIVATE)
+        val todayDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Date()) // YYYYMMDD format
+
+        val lastSavedDate = sharedPreferences.getString("LAST_BOOKING_DATE", "")
+        val lastBookingNumber = sharedPreferences.getInt("LAST_BOOKING_NUMBER", 0)
+
+        val newBookingNumber = if (lastSavedDate == todayDate) {
+            lastBookingNumber + 1 // Increment if it's the same day
+        } else {
+            1 // Reset to 1 if it's a new day
+        }
+
+        val bookingCode = "$todayDate-${String.format("%04d", newBookingNumber)}" // Format: YYYYMMDD-XXXX
+
+        // Save new booking number and date
+        sharedPreferences.edit().apply {
+            putString("LAST_BOOKING_DATE", todayDate)
+            putInt("LAST_BOOKING_NUMBER", newBookingNumber)
+            apply()
+        }
+
+        return bookingCode
     }
 
     private fun hideKeyboard(view: View) {

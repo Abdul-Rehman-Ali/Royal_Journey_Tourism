@@ -37,6 +37,12 @@ abstract class LocalDatabase : RoomDatabase() {
             }
         }
 
+        private val MIGRATION_8_9 = object : Migration(8, 9) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE YourTable ADD COLUMN newColumnName TEXT NOT NULL DEFAULT ''") // Change table & column names accordingly
+            }
+        }
+
         fun getDatabase(context: Context): LocalDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
@@ -44,7 +50,7 @@ abstract class LocalDatabase : RoomDatabase() {
                     LocalDatabase::class.java,
                     "local_database"
                 )
-                    .addMigrations(MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8) // ✅ Added migration from v6 to v7
+                    .addMigrations(MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9) // ✅ Added migration from v6 to v7
                     .build()
                 INSTANCE = instance
                 instance
