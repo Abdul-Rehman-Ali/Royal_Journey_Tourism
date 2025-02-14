@@ -84,6 +84,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Booking Code:"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Guest Name:"
                 android:textSize="10sp"
                 android:textStyle="bold"
@@ -178,6 +188,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Booking Date"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/tvBookingCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="001"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -465,7 +486,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="94dp">
+        android:layout_marginTop="74dp">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="160dp"
