@@ -363,7 +363,7 @@ class InvoiceActivity : AppCompatActivity() {
             1 // Reset to 1 if it's a new day
         }
 
-        val bookingCode = "$todayDate-${String.format("%04d", newBookingNumber)}" // Format: YYYYMMDD-XXXX
+        val bookingCode = "$todayDate${String.format("%04d", newBookingNumber)}" // Format: YYYYMMDD-XXXX
 
         // Save new booking number and date
         sharedPreferences.edit().apply {
