@@ -24,6 +24,7 @@ class InvoiceHistoryAdapter(
             binding.tvCustomerName.text = invoice.name
             binding.tvTripPackageName.text = invoice.packageName
             binding.tvDateCreated.text = invoice.pickupDate
+            binding.tvBookingCode.text = invoice.bookingCode
 
             // for going to invoice detail screen
             binding.btnInvoiceDetails.setOnClickListener {
