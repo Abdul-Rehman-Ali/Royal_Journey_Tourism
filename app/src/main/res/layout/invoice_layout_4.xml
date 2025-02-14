@@ -156,6 +156,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
+            <TextView
+                android:layout_width="180px"
+                android:layout_height="wrap_content"
+                android:text="Note (Optional):"
+                android:textSize="20px"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -262,8 +271,20 @@
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
 
+            <TextView
+                android:id="@+id/tvAddon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text=""
+                android:textSize="20px"
+                app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="@+id/textView4" />
+
 
         </LinearLayout>
+
 
 
     </LinearLayout>
@@ -468,7 +489,7 @@
         android:background="@color/primaryColor"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:paddingVertical="8px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
