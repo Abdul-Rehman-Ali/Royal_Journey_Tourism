@@ -30,6 +30,9 @@ interface BookingDao {
     @Query("SELECT * FROM Invoice WHERE LOWER(name) LIKE :query OR LOWER(packageName) LIKE :query")
     fun searchByNameOrPackage(query: String): List<Invoice>
 
+    @Query("SELECT * FROM Invoice WHERE bookingCode LIKE :query OR bookingCode LIKE :query")
+    fun searchByBookingCode(query: String): List<Invoice>
+
     @Query("SELECT * FROM Invoice WHERE currentDate BETWEEN :startDate AND :endDate")
     suspend fun getInvoicesByDateRange(startDate: String, endDate: String): List<Invoice>
 

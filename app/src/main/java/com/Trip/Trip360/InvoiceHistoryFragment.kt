@@ -180,10 +180,16 @@ class InvoiceHistoryFragment : Fragment() {
         val searchQuery = "%${query.lowercase()}%"
         lifecycleScope.launch(Dispatchers.IO) {
             val filteredInvoices = bookingDao.searchByNameOrPackage(searchQuery)
+            val filteredInvoicesByBookingCode = bookingDao.searchByBookingCode(searchQuery)
             launch(Dispatchers.Main) {
                 adapter.updateData(filteredInvoices)
                 binding.tvNoInvoiceRecordFound.visibility =
                     if (filteredInvoices.isEmpty()) View.VISIBLE else View.GONE
+            }
+            launch(Dispatchers.Main) {
+                adapter.updateData(filteredInvoicesByBookingCode)
+                binding.tvNoInvoiceRecordFound.visibility =
+                    if (filteredInvoicesByBookingCode.isEmpty()) View.VISIBLE else View.GONE
             }
         }
     }
