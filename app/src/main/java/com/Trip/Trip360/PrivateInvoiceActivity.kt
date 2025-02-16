@@ -306,22 +306,13 @@ class PrivateInvoiceActivity : AppCompatActivity() {
 
     private fun generateBookingCode(): String {
         val sharedPreferences = getSharedPreferences("InvoicePrefs", Context.MODE_PRIVATE)
-        val todayDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Date()) // YYYYMMDD format
-
-        val lastSavedDate = sharedPreferences.getString("LAST_BOOKING_DATE", "")
         val lastBookingNumber = sharedPreferences.getInt("LAST_BOOKING_NUMBER", 0)
 
-        val newBookingNumber = if (lastSavedDate == todayDate) {
-            lastBookingNumber + 1 // Increment if it's the same day
-        } else {
-            1 // Reset to 1 if it's a new day
-        }
+        val newBookingNumber = lastBookingNumber + 1 // Increment from the last stored number
+        val bookingCode = String.format("%04d", newBookingNumber) // Format as 0001, 0002, 0003, etc.
 
-        val bookingCode = "$todayDate-${String.format("%04d", newBookingNumber)}" // Format: YYYYMMDD-XXXX
-
-        // Save new booking number and date
+        // Save the new booking number
         sharedPreferences.edit().apply {
-            putString("LAST_BOOKING_DATE", todayDate)
             putInt("LAST_BOOKING_NUMBER", newBookingNumber)
             apply()
         }

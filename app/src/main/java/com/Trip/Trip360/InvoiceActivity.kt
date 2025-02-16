@@ -163,26 +163,6 @@ class InvoiceActivity : AppCompatActivity() {
         }
     }
 
-//    private fun createInvoice() {
-//        val invoice = collectInvoiceData() ?: return
-//        val collectionName = getCollectionName(this)
-//
-//        PdfUtils.generateInvoicePdf(selectedTemplate, invoice, this, object : PdfGenerationCallback {
-//            override fun onPdfGenerated(filePath: String?) {
-//                invoice.filePath = filePath
-//                lifecycleScope.launch(Dispatchers.IO) {
-//                    bookingDao.insertInvoice(invoice)
-//                    firebaseRepository.syncRecord(invoice, collectionName)
-//                }
-//                showMessageDialog("Invoice successfully created.", "Success", this@InvoiceActivity)
-//            }
-//
-//            override fun onFailure(errorMessage: String?) {
-//                showMessageDialog("Failed to generate PDF: $errorMessage", "Error", this@InvoiceActivity)
-//            }
-//        })
-//    }
-
     private fun createInvoice() {
         val invoice = collectInvoiceData() ?: return
         val collectionName = getCollectionName(this)
@@ -255,50 +235,6 @@ class InvoiceActivity : AppCompatActivity() {
         })
     }
 
-//    private fun collectInvoiceData(): Invoice? {
-//        val name = binding.etUsername.text.toString()
-//        val email = binding.etEmail.text.toString()
-//        val phone = binding.etPhone.text.toString()
-//        val title = binding.etPackageName.text.toString()
-//        val pickupTime = binding.etTime.text.toString()
-//        val pickupLocation = binding.etPickupLocation.text.toString()
-//        val bookingDate = binding.etDate.text.toString()
-//
-//        if (name.isBlank() || title.isBlank() || pickupTime.isBlank() || bookingDate.isBlank() || pickupLocation.isBlank() || phone.isBlank()) {
-//            showMessageDialog("Please add the required detail", "Error", this)
-//            return null
-//        }
-//
-//
-//
-//        val sharedPreferences = getSharedPreferences("ClientDataPref", Context.MODE_PRIVATE)
-//        val webName = sharedPreferences.getString("webName", "default_collection") ?: "default_collection"
-//        val color = sharedPreferences.getString("KEY_COLOR", "#FFFFFF") ?: "#FFFFFF"
-//
-//        val invoice = Invoice(
-//            name = name,
-//            email = email,
-//            phone = phone,
-//            packageName = binding.etPackageName.text.toString(),
-//            additionalAddon = binding.etAddonDescription.text.toString(),
-//            noOfAdults = binding.etAdults.text.toString().toIntOrNull(),
-//            pkgPricePerAdult = binding.etPackagePrice.text.toString().toDoubleOrNull(),
-//            noOfKids = binding.etKids.text.toString().toIntOrNull(),
-//            pkgPricePerKid = binding.etPackagePriceKids.text.toString().toDoubleOrNull(),
-//            pickupDate = binding.etDate.text.toString(),
-//            pickupTime = binding.etTime.text.toString(),
-//            pickupLocation = binding.etPickupLocation.text.toString(),
-//            paymentStatus = binding.radioGroupPaymentStatus.checkedRadioButtonId == R.id.radio_paid,
-//            webName = webName,
-//            currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
-//            totalPrice = 0.0,
-//            color = color
-//        )
-//
-//        invoice.totalPrice = NativeApi.calculateTotalPrice(invoice)
-//
-//        return invoice
-//    }
 
 
     private fun collectInvoiceData(): Invoice? {
@@ -352,28 +288,20 @@ class InvoiceActivity : AppCompatActivity() {
 
     private fun generateBookingCode(): String {
         val sharedPreferences = getSharedPreferences("InvoicePrefs", Context.MODE_PRIVATE)
-        val todayDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Date()) // YYYYMMDD format
-
-        val lastSavedDate = sharedPreferences.getString("LAST_BOOKING_DATE", "")
         val lastBookingNumber = sharedPreferences.getInt("LAST_BOOKING_NUMBER", 0)
 
-        val newBookingNumber = if (lastSavedDate == todayDate) {
-            lastBookingNumber + 1 // Increment if it's the same day
-        } else {
-            1 // Reset to 1 if it's a new day
-        }
+        val newBookingNumber = lastBookingNumber + 1 // Increment from the last stored number
+        val bookingCode = String.format("%04d", newBookingNumber) // Format as 0001, 0002, 0003, etc.
 
-        val bookingCode = "$todayDate${String.format("%04d", newBookingNumber)}" // Format: YYYYMMDD-XXXX
-
-        // Save new booking number and date
+        // Save the new booking number
         sharedPreferences.edit().apply {
-            putString("LAST_BOOKING_DATE", todayDate)
             putInt("LAST_BOOKING_NUMBER", newBookingNumber)
             apply()
         }
 
         return bookingCode
     }
+
 
 
 
