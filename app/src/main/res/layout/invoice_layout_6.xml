@@ -8,15 +8,33 @@
     android:padding="16px">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/logo"
-        android:layout_gravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <!-- ImageView Centered -->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/logo" />
+
+        <!-- TextView on Rightmost Side -->
+        <TextView
+            android:id="@+id/tvBookingCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:text="Invoice"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:padding="4dp"/>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/textView2"
@@ -76,15 +94,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Booking Date:"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Booking Code:"
                 android:textSize="10sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -193,16 +202,6 @@
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
 
-            <TextView
-                android:id="@+id/tvBookingCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="001"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView4"
-                app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toTopOf="@+id/textView4" />
 
             <TextView
                 android:id="@+id/tvGuestName"
@@ -486,7 +485,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="74dp">
+        android:layout_marginTop="84dp">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="160dp"
