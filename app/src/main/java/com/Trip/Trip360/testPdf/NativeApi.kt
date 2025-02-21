@@ -124,7 +124,7 @@ object NativeApi {
 
         //  Define page size
         val pageWidth = 1000
-        val pageHeight = 1300
+        val pageHeight = 1500
 
         //  Measure & layout the view
         view.measure(

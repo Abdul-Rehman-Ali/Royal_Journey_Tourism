@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date:"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="01/01/2024"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"/>
         </LinearLayout>
@@ -46,8 +46,8 @@
         <!-- ImageView Centered -->
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_centerInParent="true"
             android:src="@drawable/logo" />
 
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/imageView"
-            android:layout_marginStart="150dp"
+            android:layout_marginStart="120dp"
             android:orientation="horizontal">
 
             <!-- Code Label -->
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Code:"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_regular"
@@ -77,7 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="001"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"/>
         </LinearLayout>
@@ -90,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Booking Reservation"
-        android:textSize="25px"
+        android:textSize="30px"
         android:textStyle="bold"
         android:fontFamily="@font/poppins_regular"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,8 +115,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Guest Information"
-        android:textSize="20px"
-        android:layout_marginTop="10dp"
+        android:textSize="25px"
+        android:layout_marginTop="15dp"
         android:textColor="@color/white"
         android:fontFamily="@font/poppins_regular"
         android:background="@drawable/nav_background"
@@ -149,7 +149,7 @@
                 android:layout_width="250px"
                 android:layout_height="wrap_content"
                 android:text="Guest Name:"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/poppins_regular"
@@ -161,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
                 android:text="Email:"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -171,7 +171,7 @@
                 android:layout_width="250px"
                 android:layout_height="wrap_content"
                 android:text="Phone No:"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/poppins_regular"
@@ -193,7 +193,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Guest Name"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:fontFamily="@font/poppins_regular"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -205,7 +205,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Email"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:fontFamily="@font/poppins_regular"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -217,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Phone No."
-                android:textSize="22px"
+                android:textSize="24px"
                 android:fontFamily="@font/poppins_regular"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -244,8 +244,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Booking Details"
-        android:textSize="20px"
-        android:layout_marginTop="10dp"
+        android:textSize="25px"
+        android:layout_marginTop="15dp"
         android:textColor="@color/white"
         android:fontFamily="@font/poppins_regular"
         android:background="@drawable/nav_background"
@@ -277,7 +277,7 @@
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="Package Name:"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
@@ -286,7 +286,7 @@
                 android:layout_width="250px"
                 android:layout_height="wrap_content"
                 android:text="Booking Date:"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/poppins_regular"
@@ -297,7 +297,7 @@
                 android:layout_width="250px"
                 android:layout_height="wrap_content"
                 android:text="Pickup Time:"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/poppins_regular"
@@ -308,7 +308,7 @@
                 android:layout_width="250px"
                 android:layout_height="wrap_content"
                 android:text="Pickup Location:"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/poppins_regular"
@@ -320,7 +320,7 @@
                 android:layout_width="250px"
                 android:layout_height="wrap_content"
                 android:text="Payment Status:"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/poppins_regular"
@@ -341,7 +341,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Package Name"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:fontFamily="@font/poppins_regular"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -353,7 +353,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Booking Date"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:fontFamily="@font/poppins_regular"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -366,7 +366,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Pickup Time"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:fontFamily="@font/poppins_regular"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -378,7 +378,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Pickup Loc"
-                android:textSize="22px"
+                android:textSize="24px"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -389,7 +389,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Paid"
-                android:textSize="22px"
+                android:textSize="24px"
                 android:fontFamily="@font/poppins_regular"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -406,9 +406,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Additional Details"
-        android:textSize="20px"
+        android:textSize="25px"
         android:fontFamily="@font/poppins_regular"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:textColor="@color/white"
         android:background="@drawable/nav_background"
         app:layout_constraintEnd_toEndOf="parent"
@@ -466,7 +466,7 @@
                 android:text="Count"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/white"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -476,7 +476,7 @@
                 android:text="Price/-"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/white"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -486,7 +486,7 @@
                 android:text="Total"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/white"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
         </TableRow>
 
@@ -500,7 +500,7 @@
                 android:layout_weight="1"
                 android:text="Adult"
                 android:fontFamily="@font/poppins_regular"
-                android:textSize="22px" />
+                android:textSize="24px" />
 
             <TextView
                 android:id="@+id/tvAdultCount"
@@ -510,7 +510,7 @@
                 android:text="3"
                 android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textSize="22px" />
+                android:textSize="24px" />
 
             <TextView
                 android:id="@+id/tvPricePerAdult"
@@ -520,7 +520,7 @@
                 android:text="43"
                 android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textSize="22px" />
+                android:textSize="24px" />
 
             <TextView
                 android:id="@+id/tvTotalOnAdults"
@@ -530,7 +530,7 @@
                 android:text="100"
                 android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textSize="22px" />
+                android:textSize="24px" />
         </TableRow>
 
         <TableRow android:paddingVertical="4dp"
@@ -543,7 +543,7 @@
                 android:layout_weight="1"
                 android:text="Kid"
                 android:fontFamily="@font/poppins_regular"
-                android:textSize="22px" />
+                android:textSize="24px" />
 
             <TextView
                 android:id="@+id/tvKidsCount"
@@ -553,7 +553,7 @@
                 android:text="3"
                 android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textSize="22px" />
+                android:textSize="24px" />
 
             <TextView
                 android:id="@+id/tvPricePerKid"
@@ -563,7 +563,7 @@
                 android:text="43"
                 android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textSize="22px" />
+                android:textSize="24px" />
 
             <TextView
                 android:id="@+id/tvTotalOnKids"
@@ -573,7 +573,7 @@
                 android:text="100"
                 android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textSize="22px" />
+                android:textSize="24px" />
         </TableRow>
 
     </TableLayout>
@@ -601,7 +601,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Grand Total"
-            android:textSize="22px"
+            android:textSize="24px"
             android:layout_marginEnd="8dp"
             android:textStyle="bold"
             android:fontFamily="@font/poppins_regular"
@@ -614,7 +614,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Grand Total"
-            android:textSize="22px"
+            android:textSize="24px"
             android:textStyle="bold"
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/poppins_regular"
@@ -638,16 +638,15 @@
 
     <LinearLayout
         android:id="@+id/linearLayout000"
-        android:layout_width="950px"
+        android:layout_width="1000px"
         android:layout_height="wrap_content"
         android:background="@color/primaryColor"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="40dp"
         android:paddingVertical="8px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent">
 
 
@@ -661,7 +660,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="+971552255072"
             android:textColor="@color/white"
-            android:textSize="18px"
+            android:textSize="20px"
             app:drawableStartCompat="@drawable/baseline_call_24" />
 
 
@@ -675,7 +674,7 @@
             android:fontFamily="@font/poppins_regular"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="18px" />
+            android:textSize="20px" />
 
         <TextView
             android:id="@+id/tvWebUrlFooter"
@@ -686,7 +685,7 @@
             android:text="info@trip360.com"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="18px"
+            android:textSize="20px"
             android:fontFamily="@font/poppins_regular"
             app:drawableStartCompat="@drawable/ic_email" />
     </LinearLayout>
