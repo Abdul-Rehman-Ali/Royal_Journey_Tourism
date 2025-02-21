@@ -100,7 +100,7 @@
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider1"
-        android:layout_width="880px"
+        android:layout_width="900px"
         android:layout_height="5px"
         android:layout_marginTop="12dp"
         app:dividerColor="@color/primaryColor"
@@ -131,7 +131,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:orientation="horizontal"
-        android:layout_marginStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -230,7 +229,7 @@
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider2"
-        android:layout_width="880px"
+        android:layout_width="900px"
         android:layout_height="5px"
         android:layout_marginTop="12dp"
         app:dividerColor="@color/primaryColor"
@@ -260,7 +259,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:orientation="horizontal"
-        android:layout_marginStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -444,8 +442,6 @@
         <TableRow
             android:id="@+id/tableHeader"
             android:background="@drawable/nav_background"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:paddingVertical="8px">
 
             <TextView
@@ -491,12 +487,12 @@
         </TableRow>
 
         <!-- Table Row 2: Data Row -->
-        <TableRow android:paddingVertical="4dp"
-            android:paddingHorizontal="40dp">
+        <TableRow android:paddingVertical="4dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8px"
                 android:layout_weight="1"
                 android:text="Adult"
                 android:fontFamily="@font/poppins_regular"
@@ -533,8 +529,7 @@
                 android:textSize="22px" />
         </TableRow>
 
-        <TableRow android:paddingVertical="4dp"
-            android:paddingHorizontal="40dp">
+        <TableRow android:paddingVertical="4dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -581,7 +576,7 @@
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider3"
-        android:layout_width="880px"
+        android:layout_width="900px"
         android:layout_height="4px"
         app:dividerColor="@color/primaryColor"
         app:layout_constraintEnd_toEndOf="parent"
@@ -594,7 +589,6 @@
         android:layout_height="wrap_content"
         android:gravity="end"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="25dp"
         android:orientation="horizontal">
 
         <TextView
@@ -616,7 +610,7 @@
             android:text="Grand Total"
             android:textSize="22px"
             android:textStyle="bold"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/poppins_regular"
             app:layout_constraintEnd_toStartOf="@+id/tvGrandTotal"
             app:layout_constraintTop_toBottomOf="@+id/materialDivider11" />

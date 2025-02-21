@@ -1,6 +1,7 @@
 package com.Trip.Trip360.testPdf
 
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.graphics.pdf.PdfDocument
 import android.os.Environment
 import android.util.Log
@@ -38,6 +39,7 @@ object NativeApi {
         (view.findViewById<TextView>(R.id.tvGuestName)).text = booking.name
         (view.findViewById<TextView>(R.id.tvBookingCode)).text = booking.bookingCode
         (view.findViewById<TextView>(R.id.tvPickupTime)).text = booking.pickupTime
+        (view.findViewById<TextView>(R.id.tvEmail)).text = booking.email
         (view.findViewById<TextView>(R.id.tvPhoneNo)).text = booking.phone
         (view.findViewById<TextView>(R.id.tvAddon)).text = booking.additionalAddon
         (view.findViewById<TextView>(R.id.tvBookingDate)).text = booking.pickupDate
@@ -64,17 +66,37 @@ object NativeApi {
         val Email = view.findViewById<TextView>(R.id.tvWebUrlFooter)
         Email.text = email
 
+
         val dynamicColor = getValue(context, KEY_COLOR, "#FFFFFF") // Default to white
         val colorInt = android.graphics.Color.parseColor(dynamicColor) // Convert hex to color int
 
+        // Fetch the background drawable and update its color
+        fun updateBackground(view: View, colorInt: Int) {
+            val drawable = view.background as? GradientDrawable
+            drawable?.setColor(colorInt) // Update the solid color while keeping other properties
+        }
+
+        val heading = view.findViewById<View>(R.id.heading1)
+        val heading2 = view.findViewById<View>(R.id.heading2)
+        val heading3 = view.findViewById<View>(R.id.heading3)
+
+// Apply the dynamic color while retaining padding & corner radius
+        heading?.let { updateBackground(it, colorInt) }
+        heading2?.let { updateBackground(it, colorInt) }
+        heading3?.let { updateBackground(it, colorInt) }
+
+
+
         //  Set color for the Table Header
         val tableHeader = view.findViewById<View>(R.id.tableHeader)
-        tableHeader?.setBackgroundColor(colorInt)
+        tableHeader?.let { updateBackground(it, colorInt) }
         //  Set color for the Material Dividers
         val materialDivider1 = view.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDivider1)
         val materialDivider2 = view.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDivider2)
+        val materialDivider3 = view.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDivider3)
         materialDivider1?.dividerColor = colorInt
         materialDivider2?.dividerColor = colorInt
+        materialDivider3?.dividerColor = colorInt
 
         //  Set color for LinearLayout
         val linearLayout000 = view.findViewById<View>(R.id.linearLayout000)
