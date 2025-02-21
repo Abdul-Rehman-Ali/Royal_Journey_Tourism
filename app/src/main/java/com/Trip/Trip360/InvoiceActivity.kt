@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import com.Trip.Trip360.PrivateInvoiceActivity.Companion.getCollectionName
 import com.Trip.Trip360.data.BookingDao
 import com.Trip.Trip360.data.Invoice
 import com.Trip.Trip360.data.LocalDatabase
@@ -177,14 +178,16 @@ class InvoiceActivity : AppCompatActivity() {
             return
         }
 
-        NativeApi.generateInvoicePdf(selectedTemplate = selectedTemplate, booking =  invoice, context = this, callback =  object : PdfGenCallback {
+
+
+        NativeApi.generateInvoicePdf(selectedTemplate = selectedTemplate, termsTemplate = R.layout.terms_and_conditions, booking =  invoice, context = this, callback =  object : PdfGenCallback {
             override fun onPdfGenerated(filePath: String?) {
                 if (filePath.isNullOrEmpty()) {
                     showMessageDialog("File path is empty. Please try again.", "Error", this@InvoiceActivity)
                     return
                 }
 
-                invoice.filePath = filePath
+        invoice.filePath = filePath
                 if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
                     lifecycleScope.launch(Dispatchers.IO) {
                         bookingDao.insertInvoice(invoice)
@@ -217,7 +220,7 @@ class InvoiceActivity : AppCompatActivity() {
         existingInvoice?.filePath?.let { path ->
             File("$path.pdf").takeIf { it.exists() }?.delete()
         }
-        NativeApi.generateInvoicePdf(selectedTemplate = selectedTemplate, booking = updatedInvoice, context =  this, callback = object : PdfGenCallback {
+        NativeApi.generateInvoicePdf(selectedTemplate = selectedTemplate, termsTemplate = R.layout.terms_and_conditions, booking = updatedInvoice, context =  this, callback = object : PdfGenCallback {
             override fun onPdfGenerated(filePath: String?) {
                 updatedInvoice.filePath = filePath
                 lifecycleScope.launch(Dispatchers.IO) {

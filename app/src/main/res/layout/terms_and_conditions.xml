@@ -14,7 +14,7 @@
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewterm"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_centerInParent="true"
@@ -26,7 +26,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Booking Reservation"
+        android:text="Terms and Conditions"
         android:textSize="30px"
         android:textStyle="bold"
         android:fontFamily="@font/poppins_regular"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/materialDivider1"
+        android:id="@+id/materialDividerterm"
         android:layout_width="880px"
         android:layout_height="5px"
         android:layout_marginTop="12dp"
@@ -52,6 +52,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:padding="8dp">
 
 
@@ -63,6 +65,7 @@
             android:textSize="24px"
             android:textColor="@color/black"
             android:paddingStart="10dp"
+            android:fontFamily="@font/poppins_regular"
             android:paddingBottom="6dp" />
 
         <TextView
@@ -72,6 +75,7 @@
             android:textSize="24px"
             android:textColor="@color/black"
             android:paddingStart="10dp"
+            android:fontFamily="@font/poppins_regular"
             android:paddingBottom="6dp" />
 
         <TextView
@@ -80,6 +84,7 @@
             android:text="• Pickup and drop-off are included as per the selected package. Any changes must be informed in advance."
             android:textSize="24px"
             android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
             android:paddingStart="10dp"
             android:paddingBottom="6dp" />
 
@@ -90,6 +95,7 @@
             android:textSize="24px"
             android:textColor="@color/black"
             android:paddingStart="10dp"
+            android:fontFamily="@font/poppins_regular"
             android:paddingBottom="6dp" />
 
         <TextView
@@ -99,6 +105,7 @@
             android:textSize="24px"
             android:textColor="@color/black"
             android:paddingStart="10dp"
+            android:fontFamily="@font/poppins_regular"
             android:paddingBottom="6dp" />
 
         <TextView
@@ -108,6 +115,7 @@
             android:textSize="24px"
             android:textColor="@color/black"
             android:paddingStart="10dp"
+            android:fontFamily="@font/poppins_regular"
             android:paddingBottom="6dp" />
 
         <TextView
@@ -117,6 +125,7 @@
             android:textSize="24px"
             android:textColor="@color/black"
             android:paddingStart="10dp"
+            android:fontFamily="@font/poppins_regular"
             android:paddingBottom="6dp" />
 
         <TextView
@@ -125,6 +134,7 @@
             android:text="• The company is not responsible for lost or damaged personal belongings."
             android:textSize="24px"
             android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
             android:paddingStart="10dp"
             android:paddingBottom="6dp" />
 
@@ -135,17 +145,18 @@
             android:textSize="24px"
             android:textColor="@color/black"
             android:paddingStart="10dp"
+            android:fontFamily="@font/poppins_regular"
             android:paddingBottom="6dp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout000"
+        android:id="@+id/linearLayoutterm"
         android:layout_width="1000px"
         android:layout_height="wrap_content"
         android:background="@color/primaryColor"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="150dp"
         android:paddingVertical="8px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -153,7 +164,7 @@
 
 
         <TextView
-            android:id="@+id/tvPhoneFooter"
+            android:id="@+id/tvPhoneFooter1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
@@ -167,7 +178,7 @@
 
 
         <TextView
-            android:id="@+id/tvWebNameFooter"
+            android:id="@+id/tvWebNameFooter1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
@@ -179,7 +190,7 @@
             android:textSize="20px" />
 
         <TextView
-            android:id="@+id/tvWebUrlFooter"
+            android:id="@+id/tvWebUrlFooter1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
