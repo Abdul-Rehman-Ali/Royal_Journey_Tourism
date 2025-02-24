@@ -321,7 +321,7 @@
         <!-- Table Row 1: Header Row -->
         <TableRow
             android:id="@+id/tableHeader"
-            android:background="@color/primaryColor"
+            android:background="@drawable/nav_background"
             android:paddingVertical="8px">
 
             <TextView
@@ -329,7 +329,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:text="Person"
+                android:text="Guest"
                 android:textColor="@color/white"
                 android:textSize="10sp"
                 android:textStyle="bold" />
