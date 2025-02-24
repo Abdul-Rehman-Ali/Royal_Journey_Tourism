@@ -200,7 +200,7 @@ class PrivateInvoiceActivity : AppCompatActivity() {
             return
         }
 
-        NativeApi.generatePrivateInvoicePdf(selectedTemplate = selectedTemplate, termsTemplate = R.layout.terms_and_conditions, booking =  invoice, context = this, callback =  object : PdfGenCallback {
+        NativeApi.generatePrivateInvoicePdf(selectedTemplate = selectedTemplate, termsTemplate = R.layout.private_terms_and_condition, booking =  invoice, context = this, callback =  object : PdfGenCallback {
             override fun onPdfGenerated(filePath: String?) {
                 if (filePath.isNullOrEmpty()) {
                     showMessageDialog("File path is empty. Please try again.", "Error", this@PrivateInvoiceActivity)
@@ -240,7 +240,7 @@ class PrivateInvoiceActivity : AppCompatActivity() {
         existingInvoice?.filePath?.let { path ->
             File("$path.pdf").takeIf { it.exists() }?.delete()
         }
-        NativeApi.generatePrivateInvoicePdf(selectedTemplate = selectedTemplate,termsTemplate = R.layout.terms_and_conditions,  booking = updatedInvoice, context =  this, callback = object : PdfGenCallback {
+        NativeApi.generatePrivateInvoicePdf(selectedTemplate = selectedTemplate,termsTemplate = R.layout.private_terms_and_condition,  booking = updatedInvoice, context =  this, callback = object : PdfGenCallback {
             override fun onPdfGenerated(filePath: String?) {
                 updatedInvoice.filePath = filePath
                 lifecycleScope.launch(Dispatchers.IO) {

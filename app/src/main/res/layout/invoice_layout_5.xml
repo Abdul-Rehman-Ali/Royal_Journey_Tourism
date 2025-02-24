@@ -317,7 +317,7 @@
         <!-- Table Row 1: Header Row -->
         <TableRow
             android:id="@+id/tableHeader"
-            android:background="@color/primaryColor"
+            android:background="@drawable/nav_background"
             android:paddingVertical="8px">
 
             <TextView
