@@ -316,15 +316,15 @@ class InvoiceActivity : AppCompatActivity() {
 
     private fun getTemplateLayout(template: String): Int? {
         return when (template) {
-            "Template 1" -> R.layout.invoice_layout_1
-            "Template 2" -> R.layout.invoice_layout_2
-            "Template 3" -> R.layout.invoice_layout_3
+            "Template 1" -> R.layout.general_invoice_template
+//            "Template 2" -> R.layout.invoice_layout_2
+//            "Template 3" -> R.layout.invoice_layout_3
             else -> null
         }
     }
 
     private fun showTemplateDialog(onTemplateSelected: (String) -> Unit) {
-        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_template_list, null)
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.general_template_layout_list, null)
         val dialog = MaterialAlertDialogBuilder(this)
             .setTitle("Select a Template")
             .setView(dialogView)
@@ -335,14 +335,14 @@ class InvoiceActivity : AppCompatActivity() {
             onTemplateSelected("Template 1")
             dialog.dismiss()
         }
-        dialogView.findViewById<View>(R.id.item2).setOnClickListener {
-            onTemplateSelected("Template 2")
-            dialog.dismiss()
-        }
-        dialogView.findViewById<View>(R.id.item3).setOnClickListener {
-            onTemplateSelected("Template 3")
-            dialog.dismiss()
-        }
+//        dialogView.findViewById<View>(R.id.item2).setOnClickListener {
+//            onTemplateSelected("Template 2")
+//            dialog.dismiss()
+//        }
+//        dialogView.findViewById<View>(R.id.item3).setOnClickListener {
+//            onTemplateSelected("Template 3")
+//            dialog.dismiss()
+//        }
         dialog.show()
     }
 
