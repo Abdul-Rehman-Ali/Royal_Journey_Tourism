@@ -277,7 +277,8 @@ class InvoiceActivity : AppCompatActivity() {
             pickupLocation = binding.etPickupLocation.text.toString(),
             paymentStatus = binding.radioGroupPaymentStatus.checkedRadioButtonId == R.id.radio_paid,
             webName = webName,
-            currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
+//            currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
+            currentDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date()),
             totalPrice = 0.0,
             color = color,
             bookingCode = bookingCode

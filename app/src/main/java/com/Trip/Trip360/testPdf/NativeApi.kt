@@ -345,6 +345,7 @@ import com.Trip.Trip360.utils.SharedPrefUtils.KEY_WEB_URL
 import com.Trip.Trip360.utils.SharedPrefUtils.getValue
 import java.io.File
 import java.io.FileOutputStream
+import java.util.Locale
 
 object NativeApi {
     fun generateInvoicePdf(
@@ -402,6 +403,7 @@ object NativeApi {
             Log.e("InvoiceActivity", "Logo path is empty or invalid.")
         }
 
+
         val phoneNo1 = getValue(context, KEY_PHONE_NO, "")
         val phone1 = termsView.findViewById<TextView>(R.id.tvPhoneFooter1)
         phone1.text = phoneNo1
@@ -458,6 +460,7 @@ object NativeApi {
     // Function to populate invoice data
     private fun setupInvoiceData(view: View, booking: Invoice, context: InvoiceActivity) {
         (view.findViewById<TextView>(R.id.tvGuestName)).text = booking.name
+        (view.findViewById<TextView>(R.id.tvDate)).text = booking.currentDate
         (view.findViewById<TextView>(R.id.tvBookingCode)).text = booking.bookingCode
         (view.findViewById<TextView>(R.id.tvPickupTime)).text = booking.pickupTime
         (view.findViewById<TextView>(R.id.tvEmail)).text = booking.email
