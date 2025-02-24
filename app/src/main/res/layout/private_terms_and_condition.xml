@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:padding="16dp">
+    android:gravity="center_horizontal">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +18,6 @@
             android:layout_height="80dp"
             android:layout_centerInParent="true"
             android:src="@drawable/logo" />
-
     </RelativeLayout>
 
     <TextView
@@ -26,24 +25,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Terms and Conditions"
-        android:textSize="20px"
+        android:textSize="14sp"
         android:textStyle="bold"
         android:fontFamily="@font/poppins_regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:layout_marginTop="8dp" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDividerterm"
-        android:layout_width="880px"
-        android:layout_height="5px"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
         android:layout_marginTop="12dp"
-        app:dividerColor="@color/primaryColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:dividerColor="@color/primaryColor" />
 
     <!-- Terms and Conditions Section -->
     <LinearLayout
@@ -55,13 +47,11 @@
         android:layout_marginEnd="5dp"
         android:padding="8dp">
 
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="• A 5% additional VAT will be applied to payments made by card."
-            android:textSize="22px"
+            android:textSize="11sp"
             android:textColor="@color/black"
             android:paddingStart="10dp"
             android:fontFamily="@font/poppins_regular"
@@ -71,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="• Bookings canceled within 24 hours will be fully refunded; otherwise, full payment will be required."
-            android:textSize="22px"
+            android:textSize="11sp"
             android:textColor="@color/black"
             android:paddingStart="10dp"
             android:fontFamily="@font/poppins_regular"
@@ -81,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="• Pickup and drop-off are included as per the selected package. Any changes must be informed in advance."
-            android:textSize="22px"
+            android:textSize="11sp"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_regular"
             android:paddingStart="10dp"
@@ -91,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="• Guests should be ready at the pickup location at the scheduled time to avoid delays."
-            android:textSize="22px"
+            android:textSize="11sp"
             android:textColor="@color/black"
             android:paddingStart="10dp"
             android:fontFamily="@font/poppins_regular"
@@ -101,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="• Desert safari activities involve off-road driving, which may not be suitable for pregnant women, elderly guests, or those with back or heart conditions."
-            android:textSize="22px"
+            android:textSize="11sp"
             android:textColor="@color/black"
             android:paddingStart="10dp"
             android:fontFamily="@font/poppins_regular"
@@ -111,7 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="• Children must be accompanied by an adult."
-            android:textSize="22px"
+            android:textSize="11sp"
             android:textColor="@color/black"
             android:paddingStart="10dp"
             android:fontFamily="@font/poppins_regular"
@@ -121,7 +111,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="• Payments are due as per the agreed terms. No refunds for late arrivals or no-shows."
-            android:textSize="22px"
+            android:textSize="11sp"
             android:textColor="@color/black"
             android:paddingStart="10dp"
             android:fontFamily="@font/poppins_regular"
@@ -131,7 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="• The company is not responsible for lost or damaged personal belongings."
-            android:textSize="22px"
+            android:textSize="11sp"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_regular"
             android:paddingStart="10dp"
@@ -141,7 +131,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="• By proceeding with the booking, guests agree to follow safety guidelines provided by the tour operator."
-            android:textSize="22px"
+            android:textSize="11sp"
             android:textColor="@color/black"
             android:paddingStart="10dp"
             android:fontFamily="@font/poppins_regular"
@@ -150,56 +140,50 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutterm"
-        android:layout_width="1000px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primaryColor"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:layout_marginTop="140dp"
-        android:paddingVertical="8px"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
+        android:layout_marginTop="130dp"
+        android:paddingVertical="3dp">
 
         <TextView
             android:id="@+id/tvPhoneFooter1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
-            android:layout_weight=".33"
+            android:layout_weight="1"
             android:gravity="center"
             android:fontFamily="@font/poppins_regular"
             android:text="+971552255072"
             android:textColor="@color/white"
-            android:textSize="20px"
+            android:textSize="11sp"
             app:drawableStartCompat="@drawable/baseline_call_24" />
-
 
         <TextView
             android:id="@+id/tvWebNameFooter1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
-            android:layout_weight=".33"
+            android:layout_weight="1"
             android:text="trip360.com"
             android:fontFamily="@font/poppins_regular"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20px" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/tvWebUrlFooter1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
-            android:layout_weight=".33"
+            android:layout_weight="1"
             android:text="info@trip360.com"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20px"
+            android:textSize="11sp"
             android:fontFamily="@font/poppins_regular"
             app:drawableStartCompat="@drawable/ic_email" />
     </LinearLayout>
-
 </LinearLayout>

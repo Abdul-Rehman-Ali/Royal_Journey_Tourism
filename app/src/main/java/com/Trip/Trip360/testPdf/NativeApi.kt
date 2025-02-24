@@ -255,7 +255,7 @@ object NativeApi {
 
         val pdfDocument = PdfDocument()
         val pageWidth = 1000
-        val pageHeight = 1300
+        val pageHeight = 1500
         // Inflate the XML layout
         val view = LayoutInflater.from(context).inflate(selectedTemplate, null)
 
@@ -363,6 +363,7 @@ object NativeApi {
         (view.findViewById<TextView>(R.id.tvPickupTime)).text = booking.pickupTime
         (view.findViewById<TextView>(R.id.tvBookingDate)).text = booking.pickupDate
         (view.findViewById<TextView>(R.id.tvPhoneNo)).text = booking.phone
+        (view.findViewById<TextView>(R.id.tvEmail)).text = booking.email
         (view.findViewById<TextView>(R.id.tvAddon)).text = booking.additionalAddon
         (view.findViewById<TextView>(R.id.tvGrandTotal)).text = "AED " + calculateTotalPrice(booking)
         (view.findViewById<TextView>(R.id.tvPackageName)).text = booking.packageName ?: "N/A"
@@ -426,9 +427,11 @@ object NativeApi {
         //  Set color for the Material Dividers
         val materialDivider1 = view.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDivider1)
         val materialDivider2 = view.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDivider2)
+        val materialDivider3 = view.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDivider3)
 //        val materialDividerterm = view.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDividerterm)
         materialDivider1?.dividerColor = colorInt
         materialDivider2?.dividerColor = colorInt
+        materialDivider3?.dividerColor = colorInt
 //        materialDividerterm?.dividerColor = colorInt
 
         //  Set color for LinearLayout

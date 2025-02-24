@@ -90,7 +90,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Booking Reservation"
+        android:text="Private Booking Reservation"
         android:textSize="30px"
         android:textStyle="bold"
         android:fontFamily="@font/poppins_regular"
@@ -275,7 +275,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="250px"
+                android:layout_width="290px"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/poppins_regular"
@@ -286,7 +286,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
             <TextView
-                android:layout_width="250px"
+                android:layout_width="290px"
                 android:layout_height="wrap_content"
                 android:text="Booking Date:"
                 android:textSize="24px"
@@ -297,7 +297,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
             <TextView
-                android:layout_width="250px"
+                android:layout_width="290px"
                 android:layout_height="wrap_content"
                 android:text="Pickup Time:"
                 android:textSize="24px"
@@ -308,9 +308,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
             <TextView
-                android:layout_width="250px"
+                android:layout_width="290px"
                 android:layout_height="wrap_content"
-                android:text="Pickup Location:"
+                android:text="Private Pickup Location:"
                 android:textSize="24px"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
@@ -320,7 +320,30 @@
 
 
             <TextView
-                android:layout_width="250px"
+                android:layout_width="290px"
+                android:layout_height="wrap_content"
+                android:text="Private Dropoff Location:"
+                android:textSize="24px"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/poppins_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
+
+            <TextView
+                android:layout_width="290px"
+                android:layout_height="wrap_content"
+                android:text="No. of People in Car:"
+                android:textSize="24px"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/poppins_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
+
+
+            <TextView
+                android:layout_width="290px"
                 android:layout_height="wrap_content"
                 android:text="Payment Status:"
                 android:textSize="24px"
@@ -381,6 +404,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Pickup Loc"
+                android:textSize="24px"
+                android:fontFamily="@font/poppins_regular"
+                app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/tvDropOffLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Dropoff Loc"
+                android:textSize="24px"
+                android:fontFamily="@font/poppins_regular"
+                app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/tvNoOfPeople"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="No. of People in Car:"
                 android:textSize="24px"
                 android:fontFamily="@font/poppins_regular"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
@@ -541,7 +588,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Adult"
+                android:text="No. of Private Cars"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="24px" />
 
@@ -577,7 +624,8 @@
         </TableRow>
 
         <TableRow android:paddingVertical="4dp"
-            android:paddingHorizontal="40dp">
+            android:paddingHorizontal="40dp"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"

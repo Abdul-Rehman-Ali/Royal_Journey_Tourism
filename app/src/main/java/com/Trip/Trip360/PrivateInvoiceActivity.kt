@@ -200,7 +200,7 @@ class PrivateInvoiceActivity : AppCompatActivity() {
             return
         }
 
-        NativeApi.generatePrivateInvoicePdf(selectedTemplate = selectedTemplate, termsTemplate = R.layout.private_terms_and_condition, booking =  invoice, context = this, callback =  object : PdfGenCallback {
+        NativeApi.generatePrivateInvoicePdf(selectedTemplate = selectedTemplate, termsTemplate = R.layout.terms_and_conditions, booking =  invoice, context = this, callback =  object : PdfGenCallback {
             override fun onPdfGenerated(filePath: String?) {
                 if (filePath.isNullOrEmpty()) {
                     showMessageDialog("File path is empty. Please try again.", "Error", this@PrivateInvoiceActivity)
@@ -240,7 +240,7 @@ class PrivateInvoiceActivity : AppCompatActivity() {
         existingInvoice?.filePath?.let { path ->
             File("$path.pdf").takeIf { it.exists() }?.delete()
         }
-        NativeApi.generatePrivateInvoicePdf(selectedTemplate = selectedTemplate,termsTemplate = R.layout.private_terms_and_condition,  booking = updatedInvoice, context =  this, callback = object : PdfGenCallback {
+        NativeApi.generatePrivateInvoicePdf(selectedTemplate = selectedTemplate,termsTemplate = R.layout.terms_and_conditions,  booking = updatedInvoice, context =  this, callback = object : PdfGenCallback {
             override fun onPdfGenerated(filePath: String?) {
                 updatedInvoice.filePath = filePath
                 lifecycleScope.launch(Dispatchers.IO) {
@@ -261,6 +261,7 @@ class PrivateInvoiceActivity : AppCompatActivity() {
     private fun collectInvoiceData(): Invoice? {
         val name = binding.etUsername.text.toString()
         val phone = binding.etPhone.text.toString()
+        val email = binding.etEmail.text.toString()
         val title = binding.etPackageName.text.toString()
         val pickupTime = binding.etTime.text.toString()
         val bookingDate = binding.etDate.text.toString()
@@ -280,6 +281,7 @@ class PrivateInvoiceActivity : AppCompatActivity() {
         val invoice = Invoice(
             name = name,
             phone = phone,
+            email = email,
             packageName = binding.etPackageName.text.toString(),
             additionalAddon = binding.etAddonDescription.text.toString(),
             noOfAdults = binding.etAdults.text.toString().toIntOrNull(),
@@ -327,15 +329,15 @@ class PrivateInvoiceActivity : AppCompatActivity() {
 
     private fun getTemplateLayout(template: String): Int? {
         return when (template) {
-            "Template 1" -> R.layout.invoice_layout_4
-            "Template 2" -> R.layout.invoice_layout_5
-            "Template 3" -> R.layout.invoice_layout_6
+            "Template 1" -> R.layout.private_invoice_template
+//            "Template 2" -> R.layout.invoice_layout_5
+//            "Template 3" -> R.layout.invoice_layout_6
             else -> null
         }
     }
 
     private fun showTemplateDialog(onTemplateSelected: (String) -> Unit) {
-        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_template_list, null)
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.general_template_layout_list, null)
         val dialog = MaterialAlertDialogBuilder(this)
             .setTitle("Select a Template")
             .setView(dialogView)
@@ -346,14 +348,14 @@ class PrivateInvoiceActivity : AppCompatActivity() {
             onTemplateSelected("Template 1")
             dialog.dismiss()
         }
-        dialogView.findViewById<View>(R.id.item2).setOnClickListener {
-            onTemplateSelected("Template 2")
-            dialog.dismiss()
-        }
-        dialogView.findViewById<View>(R.id.item3).setOnClickListener {
-            onTemplateSelected("Template 3")
-            dialog.dismiss()
-        }
+//        dialogView.findViewById<View>(R.id.item2).setOnClickListener {
+//            onTemplateSelected("Template 2")
+//            dialog.dismiss()
+//        }
+//        dialogView.findViewById<View>(R.id.item3).setOnClickListener {
+//            onTemplateSelected("Template 3")
+//            dialog.dismiss()
+//        }
         dialog.show()
     }
 
