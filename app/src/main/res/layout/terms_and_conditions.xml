@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:padding="16dp">
+   >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -151,54 +151,46 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutterm"
-        android:layout_width="1000px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primaryColor"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:layout_marginTop="150dp"
-        android:paddingVertical="8px"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-
+        android:layout_marginTop="120dp"
+        android:paddingVertical="3dp">
         <TextView
-            android:id="@+id/tvPhoneFooter1"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvPhoneFooter"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
-            android:layout_weight=".33"
+            android:layout_weight="1"
             android:gravity="center"
             android:fontFamily="@font/poppins_regular"
             android:text="+971552255072"
             android:textColor="@color/white"
-            android:textSize="20px"
+            android:textSize="8sp"
             app:drawableStartCompat="@drawable/baseline_call_24" />
-
-
         <TextView
-            android:id="@+id/tvWebNameFooter1"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvWebNameFooter"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
-            android:layout_weight=".33"
+            android:layout_weight="1"
             android:text="trip360.com"
             android:fontFamily="@font/poppins_regular"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20px" />
-
+            android:textSize="8sp" />
         <TextView
-            android:id="@+id/tvWebUrlFooter1"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvWebUrlFooter"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
-            android:layout_weight=".33"
+            android:layout_weight="1"
             android:text="info@trip360.com"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20px"
+            android:textSize="8sp"
             android:fontFamily="@font/poppins_regular"
             app:drawableStartCompat="@drawable/ic_email" />
     </LinearLayout>

@@ -1,50 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="3508px"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:padding="16px">
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp">
 
-        <!-- Container for Date (Left Side of ImageView) -->
+        <!-- Date Container on the left -->
         <LinearLayout
+            android:id="@+id/dateContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"
+            android:orientation="horizontal"
             android:layout_alignParentStart="true"
-            android:orientation="horizontal">
-
-            <!-- Date Label -->
+            android:layout_centerVertical="true">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date:"
-                android:textSize="10sp"
+                android:textSize="6sp"
                 android:textStyle="bold"
+                android:layout_marginStart="20dp"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"
                 android:paddingEnd="4dp"/>
-
-            <!-- Date Value -->
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="01/01/2024"
-                android:textSize="10sp"
+                android:text="25/02/2025"
+                android:textSize="6sp"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"/>
         </LinearLayout>
 
-        <!-- ImageView Centered -->
+        <!-- Centered ImageView -->
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="90dp"
@@ -52,447 +49,307 @@
             android:layout_centerInParent="true"
             android:src="@drawable/logo" />
 
-        <!-- Container for Code (Right Side of ImageView) -->
+        <!-- Code Container on the right -->
         <LinearLayout
+            android:id="@+id/codeContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/imageView"
-            android:layout_marginStart="120dp"
-            android:orientation="horizontal">
-
-            <!-- Code Label -->
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Code:"
-                android:textSize="10sp"
+                android:textSize="6sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
                 android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
                 android:paddingEnd="4dp"/>
-
-            <!-- Code Value -->
             <TextView
                 android:id="@+id/tvBookingCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="001"
-                android:textSize="10sp"
+                android:textSize="6sp"
+                android:layout_marginEnd="20dp"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/black"/>
         </LinearLayout>
 
     </RelativeLayout>
 
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Booking Reservation"
-        android:textSize="30px"
+        android:textSize="10sp"
         android:textStyle="bold"
-        android:fontFamily="@font/poppins_regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:fontFamily="@font/poppins_regular" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider1"
-        android:layout_width="880px"
-        android:layout_height="5px"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
         android:layout_marginTop="12dp"
-        app:dividerColor="@color/primaryColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
+        android:layout_marginHorizontal="20dp"
+        app:dividerColor="@color/primaryColor" />
 
     <TextView
         android:id="@+id/heading1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Guest Information"
-        android:textSize="25px"
+        android:textSize="10sp"
         android:textStyle="bold"
         android:layout_marginTop="15dp"
         android:textColor="@color/white"
         android:fontFamily="@font/poppins_regular"
-        android:background="@drawable/nav_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:background="@drawable/nav_background" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="950px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:orientation="horizontal"
         android:layout_marginStart="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialDivider">
-
-
+        android:layout_marginEnd="10dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
+            android:orientation="vertical"
+            android:layout_weight="1">
             <TextView
-                android:layout_width="250px"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Guest Name:"
-                android:textSize="24px"
+                android:textSize="8sp"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
-
+                android:fontFamily="@font/poppins_regular"/>
             <TextView
-                android:layout_width="250px"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
                 android:text="Email:"
-                android:textSize="24px"
+                android:textSize="8sp"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
-
+                android:fontFamily="@font/poppins_regular"/>
             <TextView
-                android:layout_width="250px"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Phone No:"
-                android:textSize="24px"
+                android:textSize="8sp"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
-
-
+                android:fontFamily="@font/poppins_regular"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
+            android:orientation="vertical"
+            android:layout_weight="1">
             <TextView
                 android:id="@+id/tvGuestName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Guest Name"
-                android:textSize="24px"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintBottom_toBottomOf="@+id/textView4"
-                app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toTopOf="@+id/textView4" />
-
+                android:textSize="8sp"
+                android:fontFamily="@font/poppins_regular"/>
             <TextView
                 android:id="@+id/tvEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Email"
-                android:textSize="24px"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintBottom_toBottomOf="@+id/textView4"
-                app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toTopOf="@+id/textView4" />
-
+                android:textSize="8sp"
+                android:fontFamily="@font/poppins_regular"/>
             <TextView
                 android:id="@+id/tvPhoneNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Phone No."
-                android:textSize="24px"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintBottom_toBottomOf="@+id/textView4"
-                app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toTopOf="@+id/textView4" />
-
+                android:textSize="8sp"
+                android:fontFamily="@font/poppins_regular"/>
         </LinearLayout>
-
-
     </LinearLayout>
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider2"
-        android:layout_width="880px"
-        android:layout_height="5px"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
         android:layout_marginTop="12dp"
-        app:dividerColor="@color/primaryColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:layout_marginHorizontal="20dp"
+        app:dividerColor="@color/primaryColor" />
 
     <TextView
         android:id="@+id/heading2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Booking Details"
-        android:textSize="25px"
+        android:textSize="10sp"
         android:textStyle="bold"
         android:layout_marginTop="15dp"
         android:textColor="@color/white"
         android:fontFamily="@font/poppins_regular"
-        android:background="@drawable/nav_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:background="@drawable/nav_background" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
-        android:layout_width="950px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:orientation="horizontal"
         android:layout_marginStart="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialDivider">
+        android:layout_marginEnd="10dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:layout_weight="1">
             <TextView
-                android:layout_width="250px"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="Package Name:"
-                android:textSize="24px"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
-
+                android:textSize="8sp"
+                android:textStyle="bold"/>
             <TextView
-                android:layout_width="250px"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Booking Date:"
-                android:textSize="24px"
+                android:textSize="8sp"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
-
+                android:fontFamily="@font/poppins_regular"/>
             <TextView
-                android:layout_width="250px"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pickup Time:"
-                android:textSize="24px"
+                android:textSize="8sp"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
-
+                android:fontFamily="@font/poppins_regular"/>
             <TextView
-                android:layout_width="250px"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pickup Location:"
-                android:textSize="24px"
+                android:textSize="8sp"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
-
-
+                android:fontFamily="@font/poppins_regular"/>
             <TextView
-                android:layout_width="250px"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Payment Status:"
-                android:textSize="24px"
+                android:textSize="8sp"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
-
-
+                android:fontFamily="@font/poppins_regular"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:layout_weight="1">
             <TextView
                 android:id="@+id/tvPackageName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Package Name"
-                android:textSize="24px"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintBottom_toBottomOf="@+id/textView4"
-                app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toTopOf="@+id/textView4" />
-
+                android:textSize="8sp"
+                android:fontFamily="@font/poppins_regular"/>
             <TextView
                 android:id="@+id/tvBookingDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Booking Date"
-                android:textSize="24px"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintBottom_toBottomOf="@+id/textView4"
-                app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toTopOf="@+id/textView4" />
-
-
+                android:textSize="8sp"
+                android:fontFamily="@font/poppins_regular"/>
             <TextView
                 android:id="@+id/tvPickupTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Pickup Time"
-                android:textSize="24px"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintBottom_toBottomOf="@+id/textView4"
-                app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toTopOf="@+id/textView4" />
-
+                android:textSize="8sp"
+                android:fontFamily="@font/poppins_regular"/>
             <TextView
                 android:id="@+id/tvPickupLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Pickup Loc"
-                android:textSize="24px"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintBottom_toBottomOf="@+id/textView4"
-                app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toTopOf="@+id/textView4" />
-
+                android:textSize="8sp"
+                android:fontFamily="@font/poppins_regular"/>
             <TextView
                 android:id="@+id/tvPaymentStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Paid"
-                android:textSize="24px"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintBottom_toBottomOf="@+id/textView4"
-                app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toTopOf="@+id/textView4" />
-
+                android:textSize="8sp"
+                android:fontFamily="@font/poppins_regular"/>
         </LinearLayout>
-
-
     </LinearLayout>
-
 
     <TextView
         android:id="@+id/heading3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Additional Details"
-        android:textSize="25px"
+        android:textSize="10sp"
         android:fontFamily="@font/poppins_regular"
         android:layout_marginTop="15dp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:background="@drawable/nav_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:background="@drawable/nav_background" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="950px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:orientation="horizontal"
         android:layout_marginStart="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialDivider">
-
-
-
-        <LinearLayout
+        android:layout_marginEnd="10dp">
+        <TextView
+            android:id="@+id/tvAddon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:id="@+id/tvAddon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="24px"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/poppins_regular"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-
-        </LinearLayout>
-
-
+            android:text=""
+            android:textSize="8sp"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/poppins_regular"/>
     </LinearLayout>
-
-
-
-
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="950px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <!-- Table Row 1: Header Row -->
+        android:layout_marginEnd="5dp">
+        <!-- Header Row -->
         <TableRow
             android:id="@+id/tableHeader"
             android:background="@drawable/nav_background"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:paddingVertical="8px">
-
+            android:paddingVertical="4dp">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
@@ -501,7 +358,6 @@
                 android:textColor="@color/white"
                 android:textSize="10sp"
                 android:textStyle="bold" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -511,7 +367,6 @@
                 android:textColor="@color/white"
                 android:textSize="10sp"
                 android:textStyle="bold" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -521,7 +376,6 @@
                 android:textColor="@color/white"
                 android:textSize="10sp"
                 android:textStyle="bold" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -533,204 +387,172 @@
                 android:textStyle="bold" />
         </TableRow>
 
-        <!-- Table Row 2: Data Row -->
-        <TableRow android:paddingVertical="4dp"
+        <!-- Data Row for Adults -->
+        <TableRow
+            android:paddingVertical="4dp"
             android:paddingHorizontal="40dp">
-
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Adult"
                 android:fontFamily="@font/poppins_regular"
-                android:textSize="24px" />
-
+                android:textSize="8sp" />
             <TextView
                 android:id="@+id/tvAdultCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8px"
+                android:layout_marginEnd="8dp"
                 android:text="3"
                 android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textSize="24px" />
-
+                android:textSize="8sp" />
             <TextView
                 android:id="@+id/tvPricePerAdult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8px"
+                android:layout_marginEnd="8dp"
                 android:text="43"
                 android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textSize="24px" />
-
+                android:textSize="8sp" />
             <TextView
                 android:id="@+id/tvTotalOnAdults"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8px"
+                android:layout_marginEnd="8dp"
                 android:text="100"
                 android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textSize="24px" />
+                android:textSize="8sp" />
         </TableRow>
 
-        <TableRow android:paddingVertical="4dp"
+        <!-- Data Row for Kids -->
+        <TableRow
+            android:paddingVertical="4dp"
             android:paddingHorizontal="40dp">
-
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8px"
                 android:layout_weight="1"
                 android:text="Kids"
                 android:fontFamily="@font/poppins_regular"
-                android:textSize="24px" />
-
+                android:textSize="8sp" />
             <TextView
                 android:id="@+id/tvKidsCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8px"
+                android:layout_marginEnd="8dp"
                 android:text="3"
                 android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textSize="24px" />
-
+                android:textSize="8sp" />
             <TextView
                 android:id="@+id/tvPricePerKid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8px"
+                android:layout_marginEnd="8dp"
                 android:text="43"
                 android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textSize="24px" />
-
+                android:textSize="8sp" />
             <TextView
                 android:id="@+id/tvTotalOnKids"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8px"
+                android:layout_marginEnd="8dp"
                 android:text="100"
                 android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textSize="24px" />
+                android:textSize="8sp" />
         </TableRow>
-
     </TableLayout>
-
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider3"
-        android:layout_width="880px"
-        android:layout_height="4px"
-        app:dividerColor="@color/primaryColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginHorizontal="20dp"
+        app:dividerColor="@color/primaryColor" />
 
     <LinearLayout
-        android:layout_width="950px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="end"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="25dp"
         android:orientation="horizontal">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Grand Total"
-            android:textSize="24px"
+            android:textSize="8sp"
             android:layout_marginEnd="8dp"
             android:textStyle="bold"
-            android:fontFamily="@font/poppins_regular"
-            app:layout_constraintBottom_toBottomOf="@+id/textView9"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView9" />
-
+            android:fontFamily="@font/poppins_regular"/>
         <TextView
             android:id="@+id/tvGrandTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Grand Total"
-            android:textSize="24px"
+            android:textSize="8sp"
             android:textStyle="bold"
             android:layout_marginEnd="20dp"
-            android:fontFamily="@font/poppins_regular"
-            app:layout_constraintEnd_toStartOf="@+id/tvGrandTotal"
-            app:layout_constraintTop_toBottomOf="@+id/materialDivider11" />
-
+            android:fontFamily="@font/poppins_regular"/>
     </LinearLayout>
-
 
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="end"
-        android:layout_marginEnd="320dp"
+        android:layout_marginEnd="260dp"
         android:scaleType="fitXY"
         android:layout_marginTop="2dp"
-        android:src="@drawable/confirmtour"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout000"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        android:src="@drawable/confirmtour" />
 
     <LinearLayout
         android:id="@+id/linearLayout000"
-        android:layout_width="1000px"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primaryColor"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:layout_marginTop="30dp"
-        android:paddingVertical="8px"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-
+        android:layout_marginTop="25dp"
+        android:paddingVertical="3dp">
         <TextView
             android:id="@+id/tvPhoneFooter"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
-            android:layout_weight=".33"
+            android:layout_weight="1"
             android:gravity="center"
             android:fontFamily="@font/poppins_regular"
             android:text="+971552255072"
             android:textColor="@color/white"
-            android:textSize="20px"
+            android:textSize="8sp"
             app:drawableStartCompat="@drawable/baseline_call_24" />
-
-
         <TextView
             android:id="@+id/tvWebNameFooter"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
-            android:layout_weight=".33"
+            android:layout_weight="1"
             android:text="trip360.com"
             android:fontFamily="@font/poppins_regular"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20px" />
-
+            android:textSize="8sp" />
         <TextView
             android:id="@+id/tvWebUrlFooter"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
-            android:layout_weight=".33"
+            android:layout_weight="1"
             android:text="info@trip360.com"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20px"
+            android:textSize="8sp"
             android:fontFamily="@font/poppins_regular"
             app:drawableStartCompat="@drawable/ic_email" />
     </LinearLayout>
-
 </LinearLayout>

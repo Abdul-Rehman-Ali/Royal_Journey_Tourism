@@ -15,7 +15,7 @@ class ImageExportActivity : AppCompatActivity() {
         if (!outputDir.exists()) outputDir.mkdirs()
 
         val layouts = listOf(
-            Pair(R.layout.general_invoice_template, "general_invoice_template.png"),
+            Pair(R.layout.private_invoice_template, "private_invoice_template.png"),
 //            Pair(R.layout.invoice_layout_2, "invoice_layout_2.png"),
 //            Pair(R.layout.invoice_layout_3, "invoice_layout_3.png")
         )

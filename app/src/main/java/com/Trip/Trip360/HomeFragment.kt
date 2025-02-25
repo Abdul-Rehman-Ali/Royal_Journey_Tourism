@@ -200,7 +200,7 @@ class HomeFragment : Fragment() {
      * Show a template selection dialog.
      */
     private fun showTemplateDialog(onTemplateSelected: (String) -> Unit) {
-        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_template_list, null)
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.general_template_layout_list, null)
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle("Select a Template")
             .setView(dialogView)
@@ -211,14 +211,14 @@ class HomeFragment : Fragment() {
             onTemplateSelected("Template 1")
             dialog.dismiss()
         }
-        dialogView.findViewById<View>(R.id.item2).setOnClickListener {
-            onTemplateSelected("Template 2")
-            dialog.dismiss()
-        }
-        dialogView.findViewById<View>(R.id.item3).setOnClickListener {
-            onTemplateSelected("Template 3")
-            dialog.dismiss()
-        }
+//        dialogView.findViewById<View>(R.id.item2).setOnClickListener {
+//            onTemplateSelected("Template 2")
+//            dialog.dismiss()
+//        }
+//        dialogView.findViewById<View>(R.id.item3).setOnClickListener {
+//            onTemplateSelected("Template 3")
+//            dialog.dismiss()
+//        }
         dialog.show()
     }
 
