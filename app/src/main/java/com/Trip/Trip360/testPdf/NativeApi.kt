@@ -498,102 +498,30 @@ object NativeApi {
         callback: PdfGenCallback
     ) {
         val pdfDocument = PdfDocument()
-        val pageWidth = 1000
-        val pageHeight = 1500
 
-        // ----- Page 1: Invoice -----
+        // **1. Generate Page 1 - Invoice**
         val invoiceView = LayoutInflater.from(context).inflate(selectedTemplate, null)
-        generatePrivateInvoicePdf(invoiceView, booking, context) // Populate invoice data
+        setupInvoiceData(invoiceView, booking, context) // Populate invoice data
 
-        // Measure the invoice view with forced width but let height be measured naturally
-        invoiceView.measure(
-            MeasureSpec.makeMeasureSpec(pageWidth, MeasureSpec.EXACTLY),
-            MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
-        )
-        invoiceView.layout(0, 0, pageWidth, invoiceView.measuredHeight)
+        val invoiceBitmap = renderViewToBitmap(context, invoiceView)
+        addBitmapToPdf(invoiceBitmap, pdfDocument, 1)
 
-        // Calculate scale factor to fit the invoice view within the PDF page
-        val scaleInvoice = minOf(
-            pageWidth.toFloat() / invoiceView.measuredWidth,
-            pageHeight.toFloat() / invoiceView.measuredHeight
-        )
-
-        val pageInfo1 = PdfDocument.PageInfo.Builder(pageWidth, pageHeight, 1).create()
-        val page1 = pdfDocument.startPage(pageInfo1)
-        val canvas1 = page1.canvas
-        canvas1.save()
-        canvas1.scale(scaleInvoice, scaleInvoice)
-        invoiceView.draw(canvas1)
-        canvas1.restore()
-        pdfDocument.finishPage(page1)
-
-        // ----- Page 2: Terms & Conditions -----
+        // **2. Generate Page 2 - Terms & Conditions**
         val termsView = LayoutInflater.from(context).inflate(termsTemplate, null)
-        val dynamicColor = getValue(context, KEY_COLOR, "#FFFFFF") // Default to white
-        val colorInt = android.graphics.Color.parseColor(dynamicColor)
+        setupTermsView(termsView, context) // Populate terms & conditions
 
-        // Set dynamic colors and logo
-        termsView.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDividerterm)?.dividerColor = colorInt
-        termsView.findViewById<View>(R.id.linearLayoutterm)?.setBackgroundColor(colorInt)
+        val termsBitmap = renderViewToBitmap(context, termsView)
+        addBitmapToPdf(termsBitmap, pdfDocument, 2)
 
-        val logoLocalPath = getValue(context, KEY_LOGO_LOCAL_FILE_PATH, "")
-        val imgHeaderTerm = termsView.findViewById<ImageView>(R.id.imageViewterm)
-        if (logoLocalPath.isNotEmpty()) {
-            val file = File(logoLocalPath)
-            if (file.exists()) {
-                imgHeaderTerm.setImageDrawable(Drawable.createFromPath(logoLocalPath))
-            } else {
-                Log.e("InvoiceActivity", "Logo file does not exist at path: $logoLocalPath")
-            }
-        } else {
-            Log.e("InvoiceActivity", "Logo path is empty or invalid.")
-        }
+        // **3. Save the PDF**
+        val pdfDir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "Trip360")
+        if (!pdfDir.exists()) pdfDir.mkdirs()
 
-        termsView.findViewById<TextView>(R.id.tvPhoneFooter1)?.text = getValue(context, KEY_PHONE_NO, "")
-        termsView.findViewById<TextView>(R.id.tvWebNameFooter1)?.text = getValue(context, KEY_WEB_URL, "")
-        termsView.findViewById<TextView>(R.id.tvWebUrlFooter1)?.text = getValue(context, KEY_EMAIL, "")
-
-        // Measure the terms view with forced width but letting height adjust naturally
-        termsView.measure(
-            MeasureSpec.makeMeasureSpec(pageWidth, MeasureSpec.EXACTLY),
-            MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
-        )
-        termsView.layout(0, 0, pageWidth, termsView.measuredHeight)
-
-        // Calculate scale factor for the terms view
-        val scaleTerms = minOf(
-            pageWidth.toFloat() / termsView.measuredWidth,
-            pageHeight.toFloat() / termsView.measuredHeight
-        )
-
-        val pageInfo2 = PdfDocument.PageInfo.Builder(pageWidth, pageHeight, 2).create()
-        val page2 = pdfDocument.startPage(pageInfo2)
-        val canvas2 = page2.canvas
-        canvas2.save()
-        canvas2.scale(scaleTerms, scaleTerms)
-        termsView.draw(canvas2)
-        canvas2.restore()
-        pdfDocument.finishPage(page2)
-
-        // Define the Trip360 folder in Documents and ensure it exists
-        val trip360Dir = File(
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
-            "Trip360"
-        )
-        if (!trip360Dir.exists()) {
-            trip360Dir.mkdirs()
-        }
-
-        // Generate filename with Name + Timestamp
-        val timestamp = System.currentTimeMillis()
-        val sanitizedFileName = booking.name.replace("[^a-zA-Z0-9]".toRegex(), "_")
-        val fileName = "${sanitizedFileName}_$timestamp.pdf"
-
-        val pdfFile = File(trip360Dir, fileName)
+        val fileName = "${booking.name.replace("[^a-zA-Z0-9]".toRegex(), "_")}_${System.currentTimeMillis()}.pdf"
+        val pdfFile = File(pdfDir, fileName)
 
         try {
             pdfDocument.writeTo(FileOutputStream(pdfFile))
-            Log.d("TestingPdfCreation", "File saved: ${pdfFile.absolutePath}")
             callback.onPdfGenerated(pdfFile.absolutePath)
         } catch (e: Exception) {
             callback.onFailure(e.message.toString())
@@ -602,6 +530,185 @@ object NativeApi {
             pdfDocument.close()
         }
     }
+
+    // Helper function to render any View into a Bitmap
+//    private fun renderViewToBitmap(context: Context, view: View): Bitmap {
+//        val displayMetrics = context.resources.displayMetrics
+//        val screenWidth = displayMetrics.widthPixels
+//
+//        view.measure(
+//            View.MeasureSpec.makeMeasureSpec(screenWidth, View.MeasureSpec.EXACTLY),
+//            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+//        )
+//        view.layout(0, 0, screenWidth, view.measuredHeight)
+//
+//        val bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+//        val canvas = Canvas(bitmap)
+//        view.draw(canvas)
+//
+//        return bitmap
+//    }
+
+    // Helper function to add a Bitmap as a page in PDF
+//    private fun addBitmapToPdf(bitmap: Bitmap, pdfDocument: PdfDocument, pageNumber: Int) {
+//        val pageWidth = 500  // A4 width in pixels (8.27 inches at 72 DPI)
+//        val pageHeight = 842 // A4 height in pixels (11.69 inches at 72 DPI)
+//        val pageInfo = PdfDocument.PageInfo.Builder(pageWidth, pageHeight, pageNumber).create()
+//        val page = pdfDocument.startPage(pageInfo)
+//        val pdfCanvas = page.canvas
+//
+//        val scaleX = pageWidth.toFloat() / bitmap.width
+//        val scaleY = pageHeight.toFloat() / bitmap.height
+//        val scale = minOf(scaleX, scaleY)
+//
+//        val offsetX = (pageWidth - bitmap.width * scale) / 2
+//        val offsetY = (pageHeight - bitmap.height * scale) / 2
+//
+//        val matrix = Matrix()
+//        matrix.postScale(scale, scale)
+//        matrix.postTranslate(offsetX, offsetY)
+//
+//        pdfCanvas.drawBitmap(bitmap, matrix, null)
+//        pdfDocument.finishPage(page)
+//    }
+
+    // Helper function to setup Terms & Conditions
+//    private fun setupTermsView(termsView: View, context: Context) {
+//        val dynamicColor = getValue(context, KEY_COLOR, "#FFFFFF")
+//        val colorInt = android.graphics.Color.parseColor(dynamicColor)
+//
+//        termsView.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDividerterm)?.dividerColor = colorInt
+//        termsView.findViewById<View>(R.id.linearLayoutterm)?.setBackgroundColor(colorInt)
+//
+//        val logoLocalPath = getValue(context, KEY_LOGO_LOCAL_FILE_PATH, "")
+//        val imgHeaderTerm = termsView.findViewById<ImageView>(R.id.imageViewterm)
+//        if (logoLocalPath.isNotEmpty()) {
+//            val file = File(logoLocalPath)
+//            if (file.exists()) {
+//                imgHeaderTerm.setImageDrawable(Drawable.createFromPath(logoLocalPath))
+//            }
+//        }
+//
+//        termsView.findViewById<TextView>(R.id.tvPhoneFooter1)?.text = getValue(context, KEY_PHONE_NO, "")
+//        termsView.findViewById<TextView>(R.id.tvWebNameFooter1)?.text = getValue(context, KEY_WEB_URL, "")
+//        termsView.findViewById<TextView>(R.id.tvWebUrlFooter1)?.text = getValue(context, KEY_EMAIL, "")
+//    }
+
+//
+
+
+//    fun generatePrivateInvoicePdf(
+//        context: PrivateInvoiceActivity,
+//        selectedTemplate: Int,
+//        termsTemplate: Int,
+//        booking: Invoice,
+//        callback: PdfGenCallback
+//    ) {
+//        val pdfDocument = PdfDocument()
+//        val pageWidth = 1000
+//        val pageHeight = 1500
+//
+//        // ----- Page 1: Invoice -----
+//        val invoiceView = LayoutInflater.from(context).inflate(selectedTemplate, null)
+//        generatePrivateInvoicePdf(invoiceView, booking, context) // Populate invoice data
+//
+//        // Measure the invoice view with forced width but let height be measured naturally
+//        invoiceView.measure(
+//            MeasureSpec.makeMeasureSpec(pageWidth, MeasureSpec.EXACTLY),
+//            MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
+//        )
+//        invoiceView.layout(0, 0, pageWidth, invoiceView.measuredHeight)
+//
+//        // Calculate scale factor to fit the invoice view within the PDF page
+//        val scaleInvoice = minOf(
+//            pageWidth.toFloat() / invoiceView.measuredWidth,
+//            pageHeight.toFloat() / invoiceView.measuredHeight
+//        )
+//
+//        val pageInfo1 = PdfDocument.PageInfo.Builder(pageWidth, pageHeight, 1).create()
+//        val page1 = pdfDocument.startPage(pageInfo1)
+//        val canvas1 = page1.canvas
+//        canvas1.save()
+//        canvas1.scale(scaleInvoice, scaleInvoice)
+//        invoiceView.draw(canvas1)
+//        canvas1.restore()
+//        pdfDocument.finishPage(page1)
+//
+//        // ----- Page 2: Terms & Conditions -----
+//        val termsView = LayoutInflater.from(context).inflate(termsTemplate, null)
+//        val dynamicColor = getValue(context, KEY_COLOR, "#FFFFFF") // Default to white
+//        val colorInt = android.graphics.Color.parseColor(dynamicColor)
+//
+//        // Set dynamic colors and logo
+//        termsView.findViewById<com.google.android.material.divider.MaterialDivider>(R.id.materialDividerterm)?.dividerColor = colorInt
+//        termsView.findViewById<View>(R.id.linearLayoutterm)?.setBackgroundColor(colorInt)
+//
+//        val logoLocalPath = getValue(context, KEY_LOGO_LOCAL_FILE_PATH, "")
+//        val imgHeaderTerm = termsView.findViewById<ImageView>(R.id.imageViewterm)
+//        if (logoLocalPath.isNotEmpty()) {
+//            val file = File(logoLocalPath)
+//            if (file.exists()) {
+//                imgHeaderTerm.setImageDrawable(Drawable.createFromPath(logoLocalPath))
+//            } else {
+//                Log.e("InvoiceActivity", "Logo file does not exist at path: $logoLocalPath")
+//            }
+//        } else {
+//            Log.e("InvoiceActivity", "Logo path is empty or invalid.")
+//        }
+//
+//        termsView.findViewById<TextView>(R.id.tvPhoneFooter1)?.text = getValue(context, KEY_PHONE_NO, "")
+//        termsView.findViewById<TextView>(R.id.tvWebNameFooter1)?.text = getValue(context, KEY_WEB_URL, "")
+//        termsView.findViewById<TextView>(R.id.tvWebUrlFooter1)?.text = getValue(context, KEY_EMAIL, "")
+//
+//        // Measure the terms view with forced width but letting height adjust naturally
+//        termsView.measure(
+//            MeasureSpec.makeMeasureSpec(pageWidth, MeasureSpec.EXACTLY),
+//            MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
+//        )
+//        termsView.layout(0, 0, pageWidth, termsView.measuredHeight)
+//
+//        // Calculate scale factor for the terms view
+//        val scaleTerms = minOf(
+//            pageWidth.toFloat() / termsView.measuredWidth,
+//            pageHeight.toFloat() / termsView.measuredHeight
+//        )
+//
+//        val pageInfo2 = PdfDocument.PageInfo.Builder(pageWidth, pageHeight, 2).create()
+//        val page2 = pdfDocument.startPage(pageInfo2)
+//        val canvas2 = page2.canvas
+//        canvas2.save()
+//        canvas2.scale(scaleTerms, scaleTerms)
+//        termsView.draw(canvas2)
+//        canvas2.restore()
+//        pdfDocument.finishPage(page2)
+//
+//        // Define the Trip360 folder in Documents and ensure it exists
+//        val trip360Dir = File(
+//            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
+//            "Trip360"
+//        )
+//        if (!trip360Dir.exists()) {
+//            trip360Dir.mkdirs()
+//        }
+//
+//        // Generate filename with Name + Timestamp
+//        val timestamp = System.currentTimeMillis()
+//        val sanitizedFileName = booking.name.replace("[^a-zA-Z0-9]".toRegex(), "_")
+//        val fileName = "${sanitizedFileName}_$timestamp.pdf"
+//
+//        val pdfFile = File(trip360Dir, fileName)
+//
+//        try {
+//            pdfDocument.writeTo(FileOutputStream(pdfFile))
+//            Log.d("TestingPdfCreation", "File saved: ${pdfFile.absolutePath}")
+//            callback.onPdfGenerated(pdfFile.absolutePath)
+//        } catch (e: Exception) {
+//            callback.onFailure(e.message.toString())
+//            e.printStackTrace()
+//        } finally {
+//            pdfDocument.close()
+//        }
+//    }
 
 
     // Function to populate invoice data
