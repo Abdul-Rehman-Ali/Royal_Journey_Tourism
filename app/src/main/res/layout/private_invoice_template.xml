@@ -590,7 +590,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="+971552255072"
             android:textColor="@color/white"
-            android:textSize="8sp"
+            android:textSize="6sp"
             app:drawableStartCompat="@drawable/baseline_call_24" />
         <TextView
             android:id="@+id/tvWebNameFooter"
@@ -602,7 +602,7 @@
             android:fontFamily="@font/poppins_regular"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="8sp" />
+            android:textSize="6sp" />
         <TextView
             android:id="@+id/tvWebUrlFooter"
             android:layout_width="0dp"
@@ -612,7 +612,7 @@
             android:text="info@trip360.com"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="8sp"
+            android:textSize="6sp"
             android:fontFamily="@font/poppins_regular"
             app:drawableStartCompat="@drawable/ic_email" />
     </LinearLayout>

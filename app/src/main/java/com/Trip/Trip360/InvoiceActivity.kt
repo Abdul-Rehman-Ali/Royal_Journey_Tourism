@@ -295,7 +295,7 @@ class InvoiceActivity : AppCompatActivity() {
         val lastBookingNumber = sharedPreferences.getInt("LAST_BOOKING_NUMBER", 0)
 
         val newBookingNumber = lastBookingNumber + 1 // Increment from the last stored number
-        val bookingCode = String.format("%04d", newBookingNumber) // Format as 0001, 0002, 0003, etc.
+        val bookingCode = String.format("%05d", newBookingNumber) // Format as 0001, 0002, 0003, etc.
 
         // Save the new booking number
         sharedPreferences.edit().apply {
